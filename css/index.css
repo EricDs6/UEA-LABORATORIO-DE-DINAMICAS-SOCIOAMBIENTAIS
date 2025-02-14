@@ -29,7 +29,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header & Navigation */
+/* Cabeçalho e navegação */
 header {
     background: var(--white);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -91,7 +91,7 @@ nav {
     display: none;
 }
 
-/* Hero Section */
+/* Principal*/
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
@@ -135,7 +135,7 @@ nav {
     background: var(--primary-dark);
 }
 
-/* Sections */
+/* Seção*/
 .section {
     padding: 5rem 0;
 }
@@ -148,7 +148,7 @@ nav {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Features */
+/* Características */
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -174,7 +174,7 @@ nav {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Projects */
+/* Projetos */
 .projects {
     background: var(--background-light);
 }
@@ -208,7 +208,7 @@ nav {
     padding: 0 1.5rem 1.5rem;
 }
 
-/* Contact Form */
+/* Formulário de contato */
 .contact {
     background: var(--white);
 }
@@ -314,7 +314,7 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Responsive Design */
+/* Designer para dispositivos moveis  */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
