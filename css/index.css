@@ -348,4 +348,10 @@ footer {
     .section h2 {
         font-size: 2rem;
     }
+
+    .nav-links a {
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+    }
 }
