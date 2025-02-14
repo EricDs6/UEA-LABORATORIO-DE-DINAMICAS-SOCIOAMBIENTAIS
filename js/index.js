@@ -1,3 +1,5 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('a[href^="#"]');
     const mobileMenuButton = document.querySelector('.mobile-menu');
