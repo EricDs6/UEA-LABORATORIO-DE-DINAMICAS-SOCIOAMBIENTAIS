@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDS - Laboratório de Dinâmicas Socioambientais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="/img/favicons/icon-round.png" alt="Logo LDS">
+            </div>
+            <nav class="menu">
+                <ul class="menu-list">
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="pesquisa.html">Pesquisa</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>
+
+
+/* Paleta de cores */
+:root {
+    --primary-color: #CBDF28;
+    --background-color: #ffffff;
+    --text-color: #ffffff;
+    --hover-color: #A4C400;
+    --menu-bg: rgba(255, 255, 255, 0.1);
+    --white: #ffffff;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Corpo da página */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Estilização do cabeçalho */
+header {
+    background: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu {
+    position: absolute; /* Adicione esta linha */
+    top: 20px; /* Ajuste a posição conforme necessário */
+    right: 20px; /* Ajuste a posição conforme necessário */
+}
+
+/* Logo */
+.logo img {
+    width: 80px;
+    height: auto;
+}
+
+/* Menu de navegação */
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end; /* Alinhe os itens à direita */
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #000000; /* Ajuste a cor para preto */
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.menu ul li a:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+/* Remova o estilo dos ícones */
+.menu ul li a i {
+    display: none;
+}
+
+/* Ícone do favicon */
+link[rel="icon"] {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    object-fit: cover;
+}
+
