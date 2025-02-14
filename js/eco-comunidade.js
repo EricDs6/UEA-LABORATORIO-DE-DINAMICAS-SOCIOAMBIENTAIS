@@ -1,32 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const links = document.querySelectorAll('a[href^="#"]');
+    // Mobile Menu
     const mobileMenuButton = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-
-    for (const link of links) {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-
-            // Feche o menu mobile após clicar em um link
-            navLinks.classList.remove('active');
-        });
-    }
 
     mobileMenuButton.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Image Slider for Extensão em Ação
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('nav') && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+
+    // Image Slider
     const slides = document.querySelectorAll('.carousel-slide');
     const sliderDots = document.querySelector('.carousel-dots');
     let currentSlide = 0;
@@ -57,4 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => {
         goToSlide((currentSlide + 1) % slides.length);
     }, 5000);
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 64;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            }
+        });
+    });
 });
