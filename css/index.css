@@ -331,7 +331,7 @@ footer {
 }
 
 .footer-links h4 {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem;                            
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -428,5 +428,41 @@ footer {
         padding: 1rem;
         width: 100%;
         text-align: center;
+    }
+
+    header {
+        top: -100px; /* Ajuste para esconder completamente o cabeçalho */
+    }
+
+    .hero {
+        padding-top: 60px; /* Ajuste para compensar a altura do cabeçalho */
+    }
+
+    .hero-content {
+        padding: 0 10px; /* Ajuste para reduzir o padding lateral */
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.5rem; /* Ajuste para reduzir o padding do botão */
+    }
+
+    .features {
+        grid-template-columns: 1fr; /* Ajuste para exibir uma coluna */
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr; /* Ajuste para exibir uma coluna */
+    }
+
+    .carousel-slide {
+        height: 300px; /* Ajuste a altura para um tamanho ideal em dispositivos móveis */
+    }
+
+    .carousel-content {
+        padding: 10px; /* Ajuste para reduzir o padding */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr; /* Ajuste para exibir uma coluna */
     }
 }
