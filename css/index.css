@@ -37,6 +37,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    transition: top 0.3s;
 }
 
 nav {
@@ -428,5 +429,9 @@ footer {
         padding: 1rem;
         width: 100%;
         text-align: center;
+    }
+
+    header {
+        top: -100px; /* Ajuste para esconder completamente o cabeçalho */
     }
 }
