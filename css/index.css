@@ -99,7 +99,7 @@ nav {
     margin-left: 1rem;
 }
 
-/* Principal*/
+/* Principal */
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
@@ -144,7 +144,7 @@ nav {
     background: var(--primary-dark);
 }
 
-/* Seção*/
+/* Seção */
 .section {
     padding: 5rem 0;
 }
@@ -309,34 +309,6 @@ nav {
 
 .carousel-dots button.active {
     background: var(--primary-color);
-}
-
-/* Formulário de contato */
-.contact {
-    background: var(--white);
-}
-
-.contact-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-input, textarea {
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-}
-
-textarea {
-    height: 150px;
-    resize: vertical;
 }
 
 /* Footer */
