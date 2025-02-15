@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         goToSlide((currentSlide + 1) % slides.length);
     }, 5000);
 
-    // Hide header on scroll down
+    // Hide header on scroll down, show on scroll up
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > lastScrollTop) {

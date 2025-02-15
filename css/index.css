@@ -209,7 +209,7 @@ nav {
 
 .project-card h3 {
     padding: 1.5rem 1.5rem 0.5rem;
-    color: var (--secondary-color);
+    color: var(--secondary-color);
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -431,7 +431,7 @@ footer {
     }
 
     header {
-        top: -100px; /* Ajuste para esconder completamente o cabeçalho */
+        top: 0; /* Ajuste para que o cabeçalho recue apenas quando rolar para baixo */
     }
 
     .hero {
