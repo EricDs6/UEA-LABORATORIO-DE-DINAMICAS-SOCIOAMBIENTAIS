@@ -45,7 +45,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -429,9 +428,5 @@ footer {
         padding: 1rem;
         width: 100%;
         text-align: center;
-    }
-
-    header {
-        top: -100px; /* Ajuste para esconder completamente o cabeçalho */
     }
 }
