@@ -311,6 +311,33 @@ nav {
     background: var(--primary-color);
 }
 
+/* Carousel navigation arrows */
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
 /* Footer */
 footer {
     background: var(--secondary-color);
@@ -464,5 +491,146 @@ footer {
 
     .footer-content {
         grid-template-columns: 1fr; /* Ajuste para exibir uma coluna */
+    }
+}
+/* Destaques */
+.highlights {
+    background-color: var(--background-light);
+    padding: 5rem 0;
+    position: relative;
+}
+
+.highlights::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    opacity: 0.1;
+    transform: skewY(-3deg);
+    transform-origin: 100%;
+    z-index: 1;
+    /* Adicionado para ficar abaixo do ícone */
+}
+
+.highlights-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.highlight-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+    /* Garante que todos os cards tenham a mesma altura */
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.highlight-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #f8f8f8;
+    transition: transform 0.5s ease;
+}
+
+.highlight-card:hover .highlight-image img {
+    transform: scale(1.1);
+}
+
+.highlight-content {
+    padding: 2.5rem 2rem 2rem;
+    /* Aumentado o padding-top */
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    /* Adicionado */
+}
+
+.highlight-icon {
+    position: absolute;
+    top: -30px;
+    /* Aumentado de -25px para -30px */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    /* Aumentado de 50px para 60px */
+    height: 60px;
+    /* Aumentado de 50px para 60px */
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    /* Aumentado de 1.5rem para 2rem */
+    box-shadow: 0 5px 15px rgba(196, 214, 0, 0.3);
+    border: 4px solid var(--white);
+    /* Aumentado de 3px para 4px */
+    z-index: 2;
+    /* Adicionado para garantir que fique acima do gradiente */
+}
+
+.highlight-card h3 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 1.5rem 0 1rem;
+    line-height: 1.3;
+}
+
+.highlight-card p {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .highlights {
+        padding: 3rem 1rem;
+    }
+
+    .highlights-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .highlight-image {
+        height: 300px;
+    }
+
+    .highlight-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .highlight-card p {
+        font-size: 1rem;
     }
 }

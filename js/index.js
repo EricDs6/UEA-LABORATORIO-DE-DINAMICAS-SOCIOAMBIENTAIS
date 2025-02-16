@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const header = document.querySelector('header');
     let lastScrollTop = 0;
+    let autoSlideInterval;
 
     for (const link of links) {
         link.addEventListener('click', function (e) {
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Image Slider for Extensão em Ação
     const slides = document.querySelectorAll('.carousel-slide');
     const sliderDots = document.querySelector('.carousel-dots');
+    const prevButton = document.querySelector('.carousel-prev');
+    const nextButton = document.querySelector('.carousel-next');
     let currentSlide = 0;
 
     // Create dots
@@ -56,9 +59,35 @@ document.addEventListener('DOMContentLoaded', () => {
     goToSlide(0);
 
     // Auto-advance slides
-    setInterval(() => {
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            goToSlide((currentSlide + 1) % slides.length);
+        }, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    startAutoSlide();
+
+    // Stop auto-slide on image click and allow manual navigation
+    slides.forEach(slide => {
+        slide.addEventListener('click', () => {
+            stopAutoSlide();
+        });
+    });
+
+    // Manual navigation with arrows
+    prevButton.addEventListener('click', () => {
+        stopAutoSlide();
+        goToSlide((currentSlide - 1 + slides.length) % slides.length);
+    });
+
+    nextButton.addEventListener('click', () => {
+        stopAutoSlide();
         goToSlide((currentSlide + 1) % slides.length);
-    }, 5000);
+    });
 
     // Hide header on scroll down, show on scroll up
     window.addEventListener('scroll', () => {
