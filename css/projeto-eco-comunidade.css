@@ -103,7 +103,10 @@ nav {
 .carousel-slide {
     display: none;
     width: 100%;
-    height: 60vh;
+    height: auto;
+        /* Alterado de altura fixa para automática */
+        min-height: 300px;
+        /* Altura mínima para garantir visibilidade */
     position: relative;
     background: var(--background-light);
     transition: opacity 0.5s ease-in-out;
@@ -117,16 +120,24 @@ nav {
 .carousel-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+        /* Alterado de 'cover' para 'contain' */
+        background-color: rgba(0, 0, 0, 0.05);
+        /* Fundo sutil para imagens */
 }
 
 .carousel-content {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
+    bottom: 0;
+        left: 0;
+        right: 0;
+        /* Adicionado para ocupar toda largura */
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        width: 100%;
+        /* Garante largura total */
+        border-radius: 0;
+        /* Remove border-radius */
     color: var(--white);
 }
 
@@ -306,7 +317,8 @@ nav {
 
 .slide-item-content p {
     font-size: 1rem;
-    color: var(--white); /* Texto sempre branco */
+    color: var (--white);
+        /* Texto sempre branco */
 }
 
 /* Footer */
@@ -427,4 +439,233 @@ footer {
         width: 100%;
         text-align: center;
     }
+.carousel-slide {
+    min-height: 250px;
+    margin-top: 60px;
+    /* Espaço para o header fixo */
 }
+
+.carousel-content {
+    position: relative;
+    /* Alterado para relativo em mobile */
+    background: var(--secondary-color);
+}
+
+.carousel-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.carousel-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.carousel-content .cta-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    
+
+        .carousel-dots {
+            bottom: 5px;
+        }
+    
+        .carousel-dots button {
+            width: 8px;
+            height: 8px;
+        }
+    
+        /* Ajustes para os controles do carrossel */
+        .carousel-prev,
+        .carousel-next {
+            display: none;
+            /* Oculta as setas em dispositivos móveis */
+        }
+        }
+    
+        /* Ajustes para telas muito pequenas */
+        @media (max-width: 480px) {
+            .carousel-slide {
+                min-height: 200px;
+            }
+    
+            .carousel-content h2 {
+                font-size: 1.2rem;
+            }
+    
+            .carousel-content p {
+                font-size: 0.8rem;
+            }
+        }
+    
+        .project-details h3 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+    
+        .project-details p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+    
+        .project-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+    
+        .project-details ul li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+    
+        .project-actions {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+    
+        .project-actions h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+    
+        .project-actions .highlight-carousel {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .project-actions .carousel-slide {
+            width: 30%;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    
+        .project-actions .carousel-slide img {
+            width: 100%;
+            height: auto;
+        }
+    
+        .project-actions .carousel-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            color: var(--white);
+        }
+    
+        .project-actions .carousel-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+    
+        .project-actions .carousel-content p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+    
+        .project-actions .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+    
+        .project-actions .cta-button:hover {
+            background: var(--primary-dark);
+        }
+    
+        footer {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 2rem 0;
+        }
+    
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        .footer-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    
+        .footer-logo {
+            width: 40px;
+            height: auto;
+        }
+    
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+        }
+    
+        .footer-links ul {
+            list-style: none;
+        }
+    
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+    
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+    
+        .footer-social {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    
+        .footer-social ul {
+            list-style: none;
+        }
+    
+        .footer-social a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+    
+        .footer-social .social-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+    }
