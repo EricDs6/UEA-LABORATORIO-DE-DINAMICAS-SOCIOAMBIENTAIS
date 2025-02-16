@@ -460,6 +460,7 @@ footer {
     margin-bottom: 8px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     /* Limita o texto a 2 linhas */
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -494,5 +495,6 @@ footer {
     .carousel-content p {
         font-size: 0.8rem;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
     }
 }
