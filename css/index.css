@@ -202,12 +202,12 @@ nav {
 .feature-card {
     background: var(--white);
     padding: 2.5rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .feature-card:hover {
@@ -221,21 +221,21 @@ nav {
     margin-bottom: 1rem;
     font-family: 'Montserrat', sans-serif;
     position: relative;
-        padding-left: 2rem;
-    }
-    
-    .feature-card h3::before {
-        content: '→';
-        position: absolute;
-        left: 0;
-        color: var(--primary-color);
-        font-weight: bold;
-    }
-    
-    .feature-card p {
-        color: #666;
-        line-height: 1.6;
-        font-size: 1.05rem;
+    padding-left: 2rem;
+}
+
+.feature-card h3::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1.05rem;
 }
 
 /* Projetos */
@@ -309,7 +309,7 @@ nav {
     display: none;
     width: 100%;
     height: 500px;
-        /* Ajuste a altura para um tamanho ideal */
+    /* Ajuste a altura para um tamanho ideal */
     position: relative;
     background: var(--background-light);
     transition: opacity 0.5s ease-in-out;
@@ -341,14 +341,14 @@ nav {
     margin-bottom: 10px;
     font-family: 'Montserrat', sans-serif;
     color: var(--white);
-        /* Título sempre branco */
+    /* Título sempre branco */
 }
 
 .carousel-content p {
     font-size: 1rem;
     margin-bottom: 10px;
     color: var(--white);
-        /* Texto sempre branco */
+    /* Texto sempre branco */
 }
 
 .carousel-dots {
@@ -417,13 +417,13 @@ footer {
     margin-bottom: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-        padding: 0 20px;
-    }
-    
-    .footer-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+    padding: 0 20px;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .footer-logo {
@@ -451,7 +451,7 @@ footer {
     list-style: none;
     display: flex;
     flex-direction: column;
-        gap: 0.8rem;
+    gap: 0.8rem;
 }
 
 .footer-links a {
@@ -459,9 +459,9 @@ footer {
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .footer-links a:hover {
@@ -476,7 +476,7 @@ footer {
 .footer-social h4 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-        font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .footer-social ul {
@@ -511,68 +511,71 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.9rem;
     color: #f5f5f5;
-    }
-    
-    /* Responsividade do Footer */
-    @media (max-width: 768px) {
-        .footer-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            text-align: center;
-        }
-    
-        .footer-info p {
-            margin: 0 auto;
-        }
-    
-        .footer-links ul {
-            align-items: center;
-        }
-    
-        .footer-social ul {
-            justify-content: center;
-        }
-    
-        .footer-links a:hover {
-            transform: none;
-        }
-    
-        footer {
-            padding: 3rem 0 1rem;
-        }
-    
-        .footer-logo {
-            margin: 0 auto 1rem;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .footer-content {
-            gap: 1.5rem;
-        }
-    
-        .footer-links h4,
-        .footer-social h4 {
-            font-size: 1.1rem;
-        }
-    
-        .footer-bottom {
-            font-size: 0.8rem;
-        }
 }
 
-/* Designer para dispositivos moveis  */
+/* Responsividade do Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-info p {
+        margin: 0 auto;
+    }
+
+    .footer-links ul {
+        align-items: center;
+    }
+
+    .footer-social ul {
+        justify-content: center;
+    }
+
+    .footer-links a:hover {
+        transform: none;
+    }
+
+    footer {
+        padding: 3rem 0 1rem;
+    }
+
+    .footer-logo {
+        margin: 0 auto 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        gap: 1.5rem;
+    }
+
+    .footer-links h4,
+    .footer-social h4 {
+        font-size: 1.1rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+    }
+}
+
+/* Designer para dispositivos móveis */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        /* Mudado de absolute para fixed */
+        top: 80px;
+        /* Altura do cabeçalho */
         left: 0;
         right: 0;
+        bottom: 0;
         background: var(--white);
         flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        overflow-y: auto;
     }
 
     .nav-links.active {
@@ -599,52 +602,45 @@ footer {
     .nav-links a {
         padding: 1rem;
         width: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     header {
         top: 0;
-            /* Ajuste para que o cabeçalho recue apenas quando rolar para baixo */
     }
 
     .hero {
-        padding-top: 60px;
-            /* Ajuste para compensar a altura do cabeçalho */
+        padding-top: 140px;
+        /* Ajuste para compensar a altura do cabeçalho */
     }
 
     .hero-content {
         padding: 0 10px;
-            /* Ajuste para reduzir o padding lateral */
     }
 
     .cta-button {
         padding: 0.8rem 1.5rem;
-            /* Ajuste para reduzir o padding do botão */
     }
 
     .features {
         grid-template-columns: 1fr;
-            /* Ajuste para exibir uma coluna */
     }
 
     .project-grid {
         grid-template-columns: 1fr;
-            /* Ajuste para exibir uma coluna */
     }
 
     .carousel-slide {
         height: 300px;
-            /* Ajuste a altura para um tamanho ideal em dispositivos móveis */
+        /* Ajuste a altura para dispositivos móveis */
     }
 
     .carousel-content {
         padding: 10px;
-            /* Ajuste para reduzir o padding */
     }
 
     .footer-content {
         grid-template-columns: 1fr;
-            /* Ajuste para exibir uma coluna */
     }
 }
 
@@ -868,7 +864,7 @@ footer {
 }
 
 .event-content h3 {
-    color: var (--secondary-color);
+    color: var(--secondary-color);
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-family: 'Montserrat', sans-serif;
@@ -1038,8 +1034,9 @@ footer {
     padding: 4px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
-    display: inline-block;
+    display: inline-block; 
 }
+
 #sobre {
     background: linear-gradient(135deg, var(--background-light) 0%, #ffffff 100%);
     padding: 6rem 0;

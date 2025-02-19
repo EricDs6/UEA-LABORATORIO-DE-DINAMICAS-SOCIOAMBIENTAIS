@@ -8,24 +8,35 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking outside
+    // Fechar menu mobile ao clicar fora
     document.addEventListener('click', (e) => {
         if (!e.target.closest('nav') && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
         }
     });
 
-    // Hide header on scroll down
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            header.style.top = '-80px'; // Adjust this value based on your header height
-        } else {
-            header.style.top = '0';
+    // Esconder header ao rolar para baixo apenas em dispositivos móveis
+    function isMobile() {
+        return window.innerWidth <= 768; // Ajuste conforme necessário
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', function(e) {
+        if (isMobile() && !ticking) {
+            window.requestAnimationFrame(function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop) {
+                    header.style.top = '-100px'; 
+                } else {
+                    header.style.top = '0';
+                }
+                lastScrollTop = scrollTop;
+                ticking = false;
+            });
+            ticking = true;
         }
-        lastScrollTop = scrollTop;
     });
 
-    // Add smooth transition to header
+    
     header.style.transition = 'top 0.3s';
 });

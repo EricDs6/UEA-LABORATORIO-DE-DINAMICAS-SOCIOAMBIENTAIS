@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu
+    // Menu Mobile
     const mobileMenuButton = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
     const header = document.querySelector('header');
@@ -9,19 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking outside
+    // Fechar menu mobile ao clicar fora
     document.addEventListener('click', (e) => {
         if (!e.target.closest('nav') && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
         }
     });
 
-    // Image Slider
+    // Carrossel de Imagens
     const slides = document.querySelectorAll('.carousel-slide');
     const sliderDots = document.querySelector('.carousel-dots');
     let currentSlide = 0;
 
-    // Create dots
+    // Criar pontos de navegação
     slides.forEach((_, index) => {
         const dot = document.createElement('button');
         dot.classList.add('dot');
@@ -40,15 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
         dots[currentSlide].classList.add('active');
     }
 
-    // Initialize first slide
+    // Inicializar o primeiro slide
     goToSlide(0);
 
-    // Auto-advance slides
+    // Avançar slides automaticamente
     setInterval(() => {
         goToSlide((currentSlide + 1) % slides.length);
     }, 5000);
 
-    // Smooth scroll for navigation links
+    // Rolar suavemente para links de navegação
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -63,23 +63,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
 
-                // Close mobile menu if open
+                // Fechar menu mobile se estiver aberto
                 navLinks.classList.remove('active');
             }
         });
     });
 
-    // Hide header on scroll down
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            header.style.top = '-80px'; // Adjust this value based on your header height
-        } else {
-            header.style.top = '0';
+    // Esconder header ao rolar para baixo apenas em dispositivos móveis
+    function isMobile() {
+        return window.innerWidth <= 768; 
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', function(e) {
+        if (isMobile() && !ticking) {
+            window.requestAnimationFrame(function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop) {
+                    header.style.top = '-100px'; 
+                } else {
+                    header.style.top = '0';
+                }
+                lastScrollTop = scrollTop;
+                ticking = false;
+            });
+            ticking = true;
         }
-        lastScrollTop = scrollTop;
     });
 
-    // Add smooth transition to header
+    
     header.style.transition = 'top 0.3s';
 });
