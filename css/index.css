@@ -136,13 +136,25 @@ nav {
 /* Principal */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('/img/banner.webp') center/cover;
+    position: relative;
     display: flex;
     align-items: center;
     text-align: center;
     color: var(--white);
     padding-top: 80px;
+    overflow: hidden;
+    }
+    
+    .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        filter: brightness(0.5);
+        /* Isso substitui o gradient overlay */
 }
 
 .hero-content {
