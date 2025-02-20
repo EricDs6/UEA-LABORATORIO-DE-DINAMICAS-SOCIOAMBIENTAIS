@@ -137,7 +137,7 @@ nav {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3') center/cover;
+        url('/img/banner.webp') center/cover;
     display: flex;
     align-items: center;
     text-align: center;
