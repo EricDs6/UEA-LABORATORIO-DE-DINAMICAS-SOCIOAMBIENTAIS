@@ -3,9 +3,9 @@
     --primary-dark: #a8b800;
     --secondary-color: #333;
     --text-color: #000000;
-    /* Letras pretas no modo claro */
     --background-light: #f5f5f5;
     --white: #ffffff;
+    --gradient-primary: linear-gradient(135deg, #c4d600 0%, #a8b800 100%);
     --shadow: rgba(0, 0, 0, 0.1);
     --transition-speed: 0.3s;
 }
@@ -143,18 +143,18 @@ nav {
     color: var(--white);
     padding-top: 80px;
     overflow: hidden;
-    }
-    
-    .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-        filter: brightness(0.5);
-        /* Isso substitui o gradient overlay */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5);
+    /* Isso substitui o gradient overlay */
 }
 
 .hero-content {
@@ -537,11 +537,11 @@ footer {
         margin: 0 auto;
     }
 
-    .footer-links ul {
+        ..footer-links ul {
         align-items: center;
     }
 
-    .footer-social ul {
+        ..footer-social ul {
         justify-content: center;
     }
 
@@ -1042,11 +1042,11 @@ footer {
 /* Tag */
 .community-tag {
     background: var(--primary-color);
-    color: var(--white);
+    color: var (--white);
     padding: 4px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
-    display: inline-block; 
+    display: inline-block;
 }
 
 #sobre {

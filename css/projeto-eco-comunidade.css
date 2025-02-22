@@ -5,6 +5,9 @@
     --text-color: #000000;
     --background-light: #f5f5f5;
     --white: #ffffff;
+    --gradient-primary: linear-gradient(135deg, #c4d600 0%, #a8b800 100%);
+        --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+        --transition: all 0.3s ease;
 }
 
 * {
@@ -27,7 +30,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: clamp(1rem, 5vw, 3rem);
 }
 
 /* Cabeçalho e navegação */
@@ -82,6 +85,26 @@ nav {
     color: var(--secondary-color);
     font-weight: 500;
     transition: color 0.3s;
+    position: relative;
+        overflow: hidden;
+    }
+    
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        transform-origin: right;
+    }
+    
+    .nav-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
 }
 
 .nav-links a:hover {
@@ -139,6 +162,9 @@ nav {
         border-radius: 0;
         /* Remove border-radius */
     color: var(--white);
+    backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .carousel-content h2 {
@@ -195,8 +221,10 @@ nav {
 /* Principal */
 .project-hero {
     height: 60vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('/img/projetos/eco-comunidade/eco-comunidade.jpg') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url('/img/projetos/eco-comunidade/eco-comunidade.jpg') center/cover fixed;
+        position: relative;
+        overflow: hidden;
     display: flex;
     align-items: center;
     text-align: center;
@@ -204,6 +232,16 @@ nav {
     padding-top: 80px;
 }
 
+.project-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0.1;
+}
 .project-hero-content {
     max-width: 800px;
     margin: 0 auto;
@@ -234,8 +272,9 @@ nav {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--secondary-color);
+    color: var (--secondary-color);
     font-family: 'Montserrat', sans-serif;
+    animation: fadeIn 0.8s ease forwards;
 }
 
 .project-details h3 {
@@ -249,6 +288,7 @@ nav {
     font-size: 1rem;
     margin-bottom: 1rem;
     color: var(--text-color);
+    animation: fadeIn 0.8s ease forwards;
 }
 
 .project-details ul {
@@ -262,6 +302,16 @@ nav {
     background: var(--white);
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: var(--transition);
+        animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .project-section:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
 }
 
 /* Ações do projeto */
@@ -323,12 +373,19 @@ nav {
 
 /* Footer */
 footer {
-    background: var(--secondary-color);
-    color: var(--white);
-    padding: 4rem 0 1rem;
+    background: linear-gradient(180deg, var(--secondary-color) 0%, #1a1a1a 100%);
         position: relative;
 }
 
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
 .footer-content {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
@@ -337,6 +394,8 @@ footer {
     max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
+    position: relative;
+        z-index: 1;
     }
     
     .footer-info {
@@ -789,3 +848,63 @@ footer {
             color: var(--white);
         }
     }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-details h2,
+.project-details p,
+.project-section {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    letter-spacing: 0.2px;
+    line-height: 1.8;
+}
+
+.cta-button {
+    background: var(--gradient-primary);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(196, 214, 0, 0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(196, 214, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .project-hero-content {
+        padding: clamp(1rem, 5vw, 2rem);
+    }
+
+    .carousel-content {
+        padding: 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+}
