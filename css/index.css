@@ -537,11 +537,11 @@ footer {
         margin: 0 auto;
     }
 
-        ..footer-links ul {
+        .footer-links ul {
         align-items: center;
     }
 
-        ..footer-social ul {
+        .footer-social ul {
         justify-content: center;
     }
 
