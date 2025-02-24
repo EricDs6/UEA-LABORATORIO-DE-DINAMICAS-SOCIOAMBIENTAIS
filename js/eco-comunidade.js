@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Carrossel de Imagens
     const slides = document.querySelectorAll('.carousel-slide');
     const sliderDots = document.querySelector('.carousel-dots');
+    const prevButton = document.querySelector('.carousel-prev');
+    const nextButton = document.querySelector('.carousel-next');
     let currentSlide = 0;
+    let autoSlideInterval;
 
     // Criar pontos de navegação
     slides.forEach((_, index) => {
@@ -44,9 +47,35 @@ document.addEventListener('DOMContentLoaded', () => {
     goToSlide(0);
 
     // Avançar slides automaticamente
-    setInterval(() => {
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            goToSlide((currentSlide + 1) % slides.length);
+        }, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    startAutoSlide();
+
+    // Parar o avanço automático ao clicar em uma imagem e permitir navegação manual
+    slides.forEach(slide => {
+        slide.addEventListener('click', () => {
+            stopAutoSlide();
+        });
+    });
+
+    // Navegação manual com setas
+    prevButton.addEventListener('click', () => {
+        stopAutoSlide();
+        goToSlide((currentSlide - 1 + slides.length) % slides.length);
+    });
+
+    nextButton.addEventListener('click', () => {
+        stopAutoSlide();
         goToSlide((currentSlide + 1) % slides.length);
-    }, 5000);
+    });
 
     // Rolar suavemente para links de navegação
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
