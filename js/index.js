@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startAutoSlide() {
         autoSlideInterval = setInterval(() => {
             goToSlide((currentSlide + 1) % slides.length);
-        }, 5000);
+        }, 2500);
     }
 
     function stopAutoSlide() {
