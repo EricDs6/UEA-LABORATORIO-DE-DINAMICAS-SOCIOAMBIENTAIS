@@ -233,15 +233,18 @@ nav {
 
 /* Principal */
 .project-hero {
-    height: 60vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url('/img/projetos/eco-comunidade/eco-comunidade.jpg') center/cover fixed;
-    position: relative;
+    height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url('/img/projetos/eco-comunidade/eco-comunidade.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     text-align: center;
     color: var(--white);
     padding-top: 80px;
+    position: relative;
+        background-attachment: fixed;
+        overflow: hidden;
+        width: 100%;
 }
 
 .project-hero::before {
@@ -253,12 +256,27 @@ nav {
     bottom: 0;
     background: var(--gradient-primary);
     opacity: 0.1;
+    mix-blend-mode: overlay;
+    }
+    
+    .project-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom,
+                transparent 0%,
+                rgba(0, 0, 0, 0.7) 100%);
+        z-index: 1;
 }
 
 .project-hero-content {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
+    color: var(--white);
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 1s ease-out;
 }
 
 .project-hero-content h2 {
@@ -594,6 +612,7 @@ footer::before {
         .footer-bottom {
             font-size: 0.8rem;
         }
+    }
     }
 
     /* Animações */
