@@ -379,10 +379,14 @@ nav {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
 }
 
 .carousel-dots button.active {
+    width: 30px;
+        /* Transforme o ponto em um traço */
+        border-radius: 5px;
+        /* Ajuste a borda para um traço */
     background: var(--primary-color);
 }
 
