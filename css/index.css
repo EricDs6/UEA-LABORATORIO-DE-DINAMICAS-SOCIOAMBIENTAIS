@@ -14,6 +14,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 html {
@@ -88,29 +89,31 @@ nav {
     text-decoration: none;
     color: var(--secondary-color);
     font-weight: 500;
-    font-size: 1rem;
+    transition: color 0.3s;
     position: relative;
-    transition: color var(--transition-speed);
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
+    overflow: hidden;
 }
 
 .nav-links a::after {
-    content: "";
+    content: '';
     position: absolute;
-    width: 0;
-    height: 3px;
+    bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
     background: var(--primary-color);
-    left: 50%;
-    bottom: -5px;
-    transform: translateX(-50%);
-    transition: width var(--transition-speed);
+    transform: scaleX(0);
+        transition: transform 0.3s ease;
+        transform-origin: right;
 }
 
 .nav-links a:hover::after {
-    width: 100%;
+    transform: scaleX(1);
+        transform-origin: left;
+    }
+    
+    .nav-links a:hover {
+        color: var(--primary-color);
 }
 
 /* Botão de alternância de tema */
@@ -143,18 +146,18 @@ nav {
     color: var(--white);
     padding-top: 80px;
     overflow: hidden;
-    }
-    
-    .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-        filter: brightness(0.5);
-        /* Isso substitui o gradient overlay */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5);
+    /* Isso substitui o gradient overlay */
 }
 
 .hero-content {
@@ -177,22 +180,27 @@ nav {
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: 12px 30px;
     background: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--white);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px;
     font-weight: 600;
-    transition: background-color var(--transition-speed);
+    letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(196, 214, 0, 0.2);
 }
 
 .cta-button:hover {
     background: var(--primary-dark);
+    transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(196, 214, 0, 0.3);
 }
 
 /* Seção */
 .section {
     padding: 5rem 0;
+    animation: fadeIn 0.8s ease forwards;
 }
 
 .section h2 {
@@ -265,12 +273,13 @@ nav {
     background: var(--white);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px var(--shadow);
-    transition: transform var(--transition-speed);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .project-card img {
@@ -336,6 +345,11 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+    }
+    
+    .carousel-slide img:hover {
+        transform: scale(1.05);
 }
 
 .carousel-content {
@@ -384,7 +398,7 @@ nav {
 
 .carousel-dots button.active {
     width: 30px;
-        /* Transforme o ponto em um traço */
+    /* Transforme o ponto em um traço */
         border-radius: 5px;
         /* Ajuste a borda para um traço */
     background: var(--primary-color);
@@ -934,10 +948,9 @@ footer {
 
 .news-card {
     background: var(--white);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -945,6 +958,7 @@ footer {
 
 .news-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .news-image {
@@ -1050,7 +1064,7 @@ footer {
     padding: 4px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
-    display: inline-block; 
+    display: inline-block;
 }
 
 #sobre {
@@ -1105,5 +1119,17 @@ footer {
 
     .feature-card h3 {
         font-size: 1.3rem;
+    }
+}
+/* Animações de Fade-In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
