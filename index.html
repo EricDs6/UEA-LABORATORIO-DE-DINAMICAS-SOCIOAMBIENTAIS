@@ -23,6 +23,25 @@
     <meta property="og:url" content="https://laboratorio-de-dinamicas-socioambi-git-7e0ef9-ericds6s-projects.vercel.app">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Laboratório de Dinâmicas Socioambientais">
+    <!-- Preload de imagens críticas -->
+    <link rel="preload" as="image" href="/img/banner.webp" type="image/webp">
+    <link rel="preload" as="image" href="/img/favicons/icon-round.png" type="image/png">
+    <!-- Preconnect para recursos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn-icons-png.flaticon.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" as="style">
+    <!-- Fallback de fonte -->
+    <style>
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Arial');
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -51,8 +70,8 @@
         <section class="hero">
             <img src="/img/banner.webp" alt="Banner LDS" class="hero-background" fetchpriority="high">
             <div class="hero-content">
-                <h2>Preservação Ambiental e Pesquisa</h2>
-                <p>Desenvolvendo soluções sustentáveis através da ciência e inovação</p>
+                <h2><span class="hero-title">Inovação para um</span><br><span class="hero-subtitle">Futuro Sustentável</span></h2>
+                <p>Desenvolvendo soluções que transformam nossa relação com o meio ambiente</p>
                 <a href="#projetos" class="cta-button">Conheça Nossos Projetos</a>
             </div>
         </section>
@@ -60,19 +79,22 @@
         <section id="sobre" class="section">
             <div class="container">
                 <h2>Sobre o LDS</h2>
-                <p>O Laboratório de Dinâmicas Socioambientais (LDS) é dedicado à pesquisa e desenvolvimento de soluções para questões ambientais contemporâneas, integrando aspectos sociais e ecológicos em suas análises e propostas.</p>
+                <p class="section-description">O LDS desenvolve pesquisas e soluções inovadoras para desafios ambientais, unindo tecnologia e sustentabilidade em Itacoatiara-AM.</p>
                 <div class="features">
                     <div class="feature-card">
+                        <div class="feature-icon">🔬</div>
                         <h3>Pesquisa</h3>
-                        <p>Desenvolvimento de estudos científicos focados em sustentabilidade e preservação ambiental.</p>
+                        <p>Pesquisas científicas focadas em soluções sustentáveis</p>
                     </div>
                     <div class="feature-card">
+                        <div class="feature-icon">🌱</div>
                         <h3>Extensão</h3>
-                        <p>Projetos que conectam a academia à comunidade, promovendo educação ambiental.</p>
+                        <p>Conexão entre academia e comunidade através da educação ambiental</p>
                     </div>
                     <div class="feature-card">
+                        <div class="feature-icon">💡</div>
                         <h3>Inovação</h3>
-                        <p>Desenvolvimento de soluções inovadoras para desafios ambientais.</p>
+                        <p>Tecnologia e criatividade para preservação ambiental</p>
                     </div>
                 </div>
             </div>
@@ -83,16 +105,26 @@
                 <h2>Projetos em Destaque</h2>
                 <div class="project-grid">
                     <article class="project-card">
-                        <img src="/img/projetos/nao-esquenta/nao-esquenta.jpg" alt="Conservação" loading="lazy">
+                        <img 
+                            src="/img/projetos/nao-esquenta/nao-esquenta-small.jpg"
+                            srcset="/img/projetos/nao-esquenta/nao-esquenta-small.jpg 300w,
+                                    /img/projetos/nao-esquenta/nao-esquenta-medium.jpg 600w,
+                                    /img/projetos/nao-esquenta/nao-esquenta.jpg 900w"
+                            sizes="(max-width: 300px) 300px,
+                                   (max-width: 600px) 600px,
+                                   900px"
+                            loading="lazy"
+                            alt="Projeto Não Esquenta"
+                        >
                         <h3>NÃO ESQUENTA! 🌱🔥</h3>
-                        <p>O NÃO ESQUENTA! é um programa de extensão do LDS que atua na mitigação dos impactos das mudanças climáticas em Itacoatiara-AM, por meio de sensibilização comunitária, capacitação de agentes locais e monitoramento ambiental, em parceria com a SEMMA.</p>
+                        <p>Programa que combate os impactos das mudanças climáticas através de ações comunitárias e monitoramento ambiental em Itacoatiara.</p>
                         <a href="projeto-nao-esquenta.html" class="cta-button">Ver Mais</a>
                     </article>
+                    
                     <article class="project-card">
-                        <img src="/img/projetos/eco-comunidade/eco-comunidade.jpg" alt="Educação" loading="lazy">
+                        <img src="/img/projetos/eco-comunidade/eco-comunidade.jpg" alt="Projeto Ecocomunidade" loading="lazy">
                         <h3>ECOCOMUNIDADE 🌿🏙️</h3>
-                        <p>O ECOCOMUNIDADE é um projeto do LDS que visa promover a sustentabilidade e a preservação ambiental em comunidades urbanas e rurais, através de ações educativas, práticas sustentáveis e engajamento comunitário.</p> 
-                        <br>
+                        <p>Iniciativa que promove práticas sustentáveis e educação ambiental em comunidades locais, transformando a relação entre pessoas e meio ambiente.</p>
                         <a href="projeto-eco-comunidade.html" class="cta-button">Ver Mais</a>
                     </article>
                 </div>
@@ -256,22 +288,29 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="footer-logo">
-                    <p>LDS - CESIT - UEA</p>
+                    <div class="footer-text">
+                        <h4>LDS</h4>
+                        <p>Laboratório de Dinâmicas Socioambientais</p>
+                        <p>CESIT - UEA, Itacoatiara-AM</p>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>Links Rápidos</h4>
                     <ul>
                         <li><a href="#sobre">Sobre</a></li>
                         <li><a href="#projetos">Projetos</a></li>
-                        <li><a href="#pesquisas">Pesquisas</a></li>
-                        <li><a href="#contato">Contato</a></li>
                         <li><a href="parceiros.html">Parceiros</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
-                    <h4>Siga-nos</h4>
+                    <h4>Redes Sociais</h4>
                     <ul>
-                        <li><a href="https://www.instagram.com/lds_cesit/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon"> Instagram</a></li>
+                        <li>
+                            <a href="https://www.instagram.com/lds_cesit/" target="_blank" class="social-link">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon">
+                                <span>Instagram</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -281,6 +320,21 @@
         </div>
     </footer>
 
+    <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">↑</button>
+
     <script src="/js/index.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/js/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registrado');
+                    })
+                    .catch(error => {
+                        console.log('Erro no registro do ServiceWorker:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

@@ -117,4 +117,40 @@ document.addEventListener('DOMContentLoaded', () => {
         slide.setAttribute('role', 'img');
         slide.setAttribute('aria-label', `Slide ${index + 1}`);
     });
+
+    // Usar IntersectionObserver para lazy loading de imagens
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+    
+    // Debounce para eventos de scroll
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Aplicar debounce no evento de scroll
+    const handleScroll = debounce(() => {
+        // Seu código de scroll aqui
+    }, 20);
+
+    window.addEventListener('scroll', handleScroll);
 });
