@@ -153,4 +153,198 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 20);
 
     window.addEventListener('scroll', handleScroll);
+
+    const storyItems = document.querySelectorAll('.story-item');
+    const storyModal = document.getElementById('storyModal');
+    if (!storyModal) {
+        console.error('Modal não encontrado');
+        return;
+    }
+    const storyImage = storyModal.querySelector('.story-image');
+    const closeButton = storyModal.querySelector('.story-close');
+    const prevButton = storyModal.querySelector('.story-nav.prev');
+    const nextButton = storyModal.querySelector('.story-nav.next');
+    const progress = storyModal.querySelector('.progress');
+    
+    const stories = [
+        {
+            image: '/img/destaques/Campeões do hackathon.jpg',
+            title: 'Hackathon',
+            description: 'Primeiro lugar no Hackathon Inova Itacoatiara! 🏆'
+        },
+        {
+            image: '/img/projetos/nao-esquenta/visita_inpa.gif',
+            title: 'INPA',
+            description: 'Visita técnica ao INPA para desenvolvimento de projetos 🔬'
+        },
+        {
+            image: '/img/projetos/eco-comunidade/eco-comunidade.jpg',
+            title: 'Eco',
+            description: 'Projeto EcoComunidade em ação! 🌱'
+        },
+        {
+            image: '/img/extras/capacitacao rural.jpg',
+            title: 'Capacitação',
+            description: 'Capacitação em Cadastro Ambiental Rural 📚'
+        },
+        {
+            image: '/img/extensao/extensao1.jpg',
+            title: 'Extensão',
+            description: 'Atividades de extensão com a comunidade 🤝'
+        }
+    ];
+
+    let currentStoryIndex = 0;
+    let storyTimeout;
+
+    storyItems.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            openStoryModal(index);
+        });
+    });
+
+    function showStory(index) {
+        const story = stories[index];
+        
+        // Atualizar indicadores
+        const indicators = document.querySelector('.story-indicators');
+        if (indicators) {
+            indicators.innerHTML = stories.map((_, i) => `
+                <div class="story-indicator ${i === index ? 'active' : ''}">
+                    <div class="progress" style="width: ${i < index ? '100%' : '0'}"></div>
+                </div>
+            `).join('');
+        }
+        
+        // Atualizar conteúdo
+        if (storyImage) {
+            storyImage.innerHTML = `
+                <div class="story-click-area prev"></div>
+                <div class="story-click-area next"></div>
+                <img src="${story.image}" alt="${story.title}">
+                <div class="story-description">
+                    <strong>${story.title}</strong>
+                    <p>${story.description}</p>
+                </div>
+            `;
+
+            // Configurar áreas clicáveis
+            const prevArea = storyImage.querySelector('.story-click-area.prev');
+            const nextArea = storyImage.querySelector('.story-click-area.next');
+            
+            if (prevArea && nextArea) {
+                prevArea.addEventListener('click', prevStory);
+                nextArea.addEventListener('click', nextStory);
+            }
+        }
+
+        // Animar progresso
+        if (indicators) {
+            const currentIndicator = indicators.children[index].querySelector('.progress');
+            if (currentIndicator) {
+                currentIndicator.style.width = '0';
+                setTimeout(() => {
+                    currentIndicator.style.width = '100%';
+                }, 50);
+            }
+        }
+
+        // Configurar timeout
+        clearTimeout(storyTimeout);
+        storyTimeout = setTimeout(nextStory, 5000);
+    }
+
+    function nextStory() {
+        currentStoryIndex = (currentStoryIndex + 1) % stories.length;
+        if (currentStoryIndex === 0) {
+            closeStoryModal();
+        } else {
+            showStory(currentStoryIndex);
+        }
+    }
+
+    function prevStory() {
+        currentStoryIndex = (currentStoryIndex - 1 + stories.length) % stories.length;
+        showStory(currentStoryIndex);
+    }
+
+    function openStoryModal(index) {
+        if (!storyModal) return;
+        
+        currentStoryIndex = index;
+        storyModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Adicionar indicadores se não existirem
+        if (!storyModal.querySelector('.story-indicators')) {
+            const indicators = document.createElement('div');
+            indicators.className = 'story-indicators';
+            storyModal.querySelector('.story-modal-content').insertBefore(
+                indicators,
+                storyModal.querySelector('.story-view')
+            );
+        }
+        
+        showStory(currentStoryIndex);
+    }
+
+    function closeStoryModal() {
+        storyModal.classList.remove('active');
+        document.body.style.overflow = '';
+        clearTimeout(storyTimeout);
+    }
+
+    closeButton.addEventListener('click', closeStoryModal);
+    prevButton.addEventListener('click', prevStory);
+    nextButton.addEventListener('click', nextStory);
+
+    // Fechar com tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeStoryModal();
+    });
+
+    // Adicionar controle por toque
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    storyModal.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    storyModal.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchEndX - touchStartX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                prevStory();
+            } else {
+                nextStory();
+            }
+        }
+    }
+
+    // Pausar o timer quando o usuário pressionar o mouse/toque
+    storyModal.addEventListener('mousedown', () => {
+        clearTimeout(storyTimeout);
+    });
+
+    storyModal.addEventListener('touchstart', () => {
+        clearTimeout(storyTimeout);
+    });
+
+    // Retomar o timer quando soltar
+    storyModal.addEventListener('mouseup', () => {
+        storyTimeout = setTimeout(nextStory, 5000);
+    });
+
+    storyModal.addEventListener('touchend', () => {
+        storyTimeout = setTimeout(nextStory, 5000);
+    });
 });

@@ -70,9 +70,55 @@
         <section class="hero">
             <img src="/img/banner.webp" alt="Banner LDS" class="hero-background" fetchpriority="high">
             <div class="hero-content">
-                <h2><span class="hero-title">Inovação para um</span><br><span class="hero-subtitle">Futuro Sustentável</span></h2>
-                <p>Desenvolvendo soluções que transformam nossa relação com o meio ambiente</p>
+                <div class="hero-text-container">
+                    <h2>
+                        <span class="hero-highlight">Laboratório de</span>
+                        <span class="hero-main">Dinâmicas Socioambientais</span>
+                    </h2>
+                    <p class="hero-subtitle">Inovação e pesquisa para um futuro sustentável na Amazônia</p>
+                </div>
                 <a href="#projetos" class="cta-button">Conheça Nossos Projetos</a>
+            </div>
+        </section>
+
+        <section class="instagram-highlights">
+            <div class="container">
+                <div class="stories-container">
+                    <a href="coleta.html" class="story-item">
+                        <div class="story-ring">
+                            <img src="/img/destaques/palestra-coleta1.jpg" alt="Coleta">
+                        </div>
+                        <span class="story-title">Coleta 🗑️</span>
+                    </a>
+                    
+                    <a href="inpa.html" class="story-item">
+                        <div class="story-ring">
+                            <img src="/img/projetos/nao-esquenta/visita_inpa.gif" alt="INPA">
+                        </div>
+                        <span class="story-title">INPA</span>
+                    </a>
+                    
+                    <a href="eco.html" class="story-item">
+                        <div class="story-ring">
+                            <img src="/img/projetos/eco-comunidade/eco-comunidade.jpg" alt="Eco">
+                        </div>
+                        <span class="story-title">Eco</span>
+                    </a>
+                    
+                    <a href="capacitacao.html" class="story-item">
+                        <div class="story-ring">
+                            <img src="/img/extras/capacitacao rural.jpg" alt="Capacitação">
+                        </div>
+                        <span class="story-title">Capacitação</span>
+                    </a>
+                    
+                    <a href="extensao.html" class="story-item">
+                        <div class="story-ring">
+                            <img src="/img/extensao/extensao1.jpg" alt="Extensão">
+                        </div>
+                        <span class="story-title">Extensão</span>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -281,6 +327,26 @@
     </div>
 </section>
 
+        <!-- Nova seção de Números -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Projetos Ativos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Parceiros</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Pessoas Impactadas</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>
@@ -336,5 +402,31 @@
             });
         }
     </script>
+
+    <!-- Adicionar antes do fechamento do body -->
+    <div class="story-modal" id="storyModal">
+        <div class="story-modal-content">
+            <div class="story-header">
+                <div class="story-user">
+                    <div class="story-user-pic">
+                        <img src="/img/favicons/icon-round.png" alt="LDS">
+                    </div>
+                    <span class="story-user-name">LDS</span>
+                    <span class="story-time">Agora</span>
+                </div>
+                <button class="story-close">×</button>
+            </div>
+            <div class="story-progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="story-view">
+                <button class="story-nav prev">‹</button>
+                <div class="story-image">
+                    <!-- As imagens serão inseridas aqui via JavaScript -->
+                </div>
+                <button class="story-nav next">›</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
