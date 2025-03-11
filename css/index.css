@@ -514,23 +514,21 @@ nav {
 .extension-carousel {
     position: relative;
     width: 100%;
+    height: 500px;
     overflow: hidden;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-slide {
-    display: none;
+    position: absolute;
     width: 100%;
-    height: 500px;
-    /* Ajuste a altura para um tamanho ideal */
-    position: relative;
-    background: var(--background-light);
+    height: 100%;
+        opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
 
 .carousel-slide.active {
-    display: block;
     opacity: 1;
 }
 
@@ -538,37 +536,6 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-    border-radius: var(--border-radius);
-}
-
-.carousel-slide img:hover {
-    transform: scale(1.05);
-}
-
-.carousel-content {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    color: var(--white);
-}
-
-.carousel-content h3 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--white);
-    /* Título sempre branco */
-}
-
-.carousel-content p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: var(--white);
-    /* Texto sempre branco */
 }
 
 .carousel-dots {
@@ -577,52 +544,67 @@ nav {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 12px 20px;
-    border-radius: 30px;
+    gap: 8px;
+        z-index: 2;
 }
 
 .carousel-dots button {
-    width: 10px;
-    height: 10px;
-    background: var(--white);
-    border: none;
+    width: 8px;
+        height: 8px;
     border-radius: 50%;
+    border: none;
+        background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    transition: all 0.3s;
+    padding: 0;
+        transition: all 0.3s ease;
 }
 
 .carousel-dots button.active {
-    background: var(--primary-color);
+    background: #fff;
+        transform: scale(1.2);
 }
 
-/* Carousel navigation arrows */
 .carousel-prev,
 .carousel-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: var(--white);
+    background: rgba(0, 0, 0, 0.3);
+        color: #fff;
     border: none;
-    padding: 10px;
+    width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 20px;
     cursor: pointer;
-    z-index: 1000;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+        z-index: 2;
 }
 
 .carousel-prev:hover,
 .carousel-next:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .carousel-prev {
-    left: 10px;
+    left: 20px;
 }
 
 .carousel-next {
-    right: 10px;
+    right: 20px;
+    }
+    
+    @media (max-width: 768px) {
+        .extension-carousel {
+            height: 300px;
+        }
+    
+        .carousel-prev,
+        .carousel-next {
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+        }
 }
 
 /* Footer */
@@ -1408,310 +1390,28 @@ footer {
 }
 
 /* Instagram Highlights Style */
-.instagram-highlights {
-    padding: 2rem 0;
-    background: var(--white);
-    position: relative;
-    z-index: 4;
-    margin-top: -2rem;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.stories-container {
-    display: flex;
-    gap: 2rem;
-    padding: 1rem;
-    overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    justify-content: center;
-}
-
-.stories-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
-}
-
-.story-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-}
-
-.story-item:hover {
-    transform: translateY(-5px);
-}
-
-.story-ring {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    padding: 3px;
-    background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
-    position: relative;
-}
-
-.story-ring::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    border-radius: 50%;
-    border: 2px solid var(--white);
-}
-
-.story-ring img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.story-title {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--secondary-color);
-    text-align: center;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .instagram-highlights {
-        margin-top: -1rem;
-        padding: 1rem 0;
-    }
-
-    .stories-container {
-        gap: 1rem;
-        padding: 0.5rem;
-        justify-content: flex-start;
-    }
-
-    .story-ring {
-        width: 65px;
-        height: 65px;
-    }
-
-    .story-title {
-        font-size: 0.8rem;
-    }
-}
-
-/* Modal de Stories */
-.story-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    visibility: hidden;
-}
-
-.story-modal.active {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-}
-
-.story-modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    height: 100vh;
-    margin: 0 auto;
-    background: #000;
-    display: flex;
-    flex-direction: column;
-}
-
-.story-header {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff;
-    z-index: 2;
-}
-
-.story-user {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.story-user-pic {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.story-user-pic img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.story-user-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.story-time {
-    font-size: 0.8rem;
-    opacity: 0.7;
-}
-
-.story-close {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.story-progress-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.2);
-    z-index: 2;
-}
-
-.progress {
-    height: 100%;
-    background: var(--primary-color);
-    width: 0;
-    transition: width 0.1s linear;
-}
-
-.story-view {
-    flex: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.story-image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.story-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.story-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    padding: 1rem 0.5rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.story-nav:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.story-nav.prev {
-    left: 0;
-}
-
-.story-nav.next {
-    right: 0;
-}
-
-@media (max-width: 768px) {
-    .story-modal-content {
-        width: 100%;
-        height: 100%;
-    }
-
-    .story-nav {
-        font-size: 1.5rem;
-        padding: 0.8rem 0.3rem;
-    }
-}
-
-/* Áreas clicáveis para navegação */
-.story-click-area {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    z-index: 3;
-    cursor: pointer;
-}
-
-.story-click-area.prev {
-    left: 0;
-}
-
-.story-click-area.next {
-    right: 0;
-}
-
-/* Descrição do Story */
-.story-description {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: #fff;
-    font-size: 1rem;
-    line-height: 1.4;
-}
-
-/* Indicadores de Story */
-.story-indicators {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    display: flex;
-    gap: 4px;
-    padding: 0 8px;
-    z-index: 3;
-}
-
+.instagram-highlights,
+.stories-container,
+.story-item,
+.story-ring,
+.story-title,
+.story-modal,
+.story-modal-content,
+.story-header,
+.story-user,
+.story-user-pic,
+.story-user-name,
+.story-time,
+.story-close,
+.story-progress-bar,
+.story-view,
+.story-image,
+.story-nav,
+.story-click-area,
+.story-description,
+.story-indicators,
 .story-indicator {
-    flex: 1;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
+    display: none;
 }
 
-.story-indicator.active {
-    background: #fff;
-}
-
-.story-indicator .progress {
-    height: 100%;
-    background: #fff;
-    width: 0;
-    transition: width 5s linear;
-}
+/* Manter o resto do CSS existente */

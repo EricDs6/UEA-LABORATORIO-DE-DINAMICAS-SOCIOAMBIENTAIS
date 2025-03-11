@@ -29,65 +29,66 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Carrossel de Imagens para Extensão em Ação
-    const slides = document.querySelectorAll('.carousel-slide');
-    const sliderDots = document.querySelector('.carousel-dots');
-    const prevButton = document.querySelector('.carousel-prev');
-    const nextButton = document.querySelector('.carousel-next');
-    let currentSlide = 0;
+    // Carrossel de Extensão
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const carouselDots = document.querySelector('.carousel-dots');
+    const carouselPrevBtn = document.querySelector('.carousel-prev');
+    const carouselNextBtn = document.querySelector('.carousel-next');
+    let currentCarouselSlide = 0;
+    let carouselInterval;
 
     // Criar pontos de navegação
-    slides.forEach((_, index) => {
+    carouselSlides.forEach((_, index) => {
         const dot = document.createElement('button');
         dot.classList.add('dot');
         dot.setAttribute('aria-label', `Slide ${index + 1}`);
-        dot.addEventListener('click', () => goToSlide(index));
-        sliderDots.appendChild(dot);
+        dot.addEventListener('click', () => goToCarouselSlide(index));
+        carouselDots.appendChild(dot);
     });
 
-    const dots = document.querySelectorAll('.dot');
+    const carouselDotBtns = document.querySelectorAll('.dot');
 
-    function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        dots[currentSlide].classList.remove('active');
-        currentSlide = index;
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
+    function goToCarouselSlide(index) {
+        carouselSlides[currentCarouselSlide].classList.remove('active');
+        carouselDotBtns[currentCarouselSlide].classList.remove('active');
+        currentCarouselSlide = index;
+        carouselSlides[currentCarouselSlide].classList.add('active');
+        carouselDotBtns[currentCarouselSlide].classList.add('active');
     }
 
     // Inicializar o primeiro slide
-    goToSlide(0);
+    goToCarouselSlide(0);
 
     // Avançar slides automaticamente
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            goToSlide((currentSlide + 1) % slides.length);
-        }, 2500);
+    function startCarouselAuto() {
+        carouselInterval = setInterval(() => {
+            goToCarouselSlide((currentCarouselSlide + 1) % carouselSlides.length);
+        }, 5000);
     }
 
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
+    function stopCarouselAuto() {
+        clearInterval(carouselInterval);
     }
 
-    startAutoSlide();
+    startCarouselAuto();
 
-    // Parar o avanço automático ao clicar em uma imagem e permitir navegação manual
-    slides.forEach(slide => {
-        slide.addEventListener('click', () => {
-            stopAutoSlide();
-        });
+    // Navegação manual
+    carouselPrevBtn.addEventListener('click', () => {
+        stopCarouselAuto();
+        goToCarouselSlide((currentCarouselSlide - 1 + carouselSlides.length) % carouselSlides.length);
+        startCarouselAuto();
     });
 
-    // Navegação manual com setas
-    prevButton.addEventListener('click', () => {
-        stopAutoSlide();
-        goToSlide((currentSlide - 1 + slides.length) % slides.length);
+    carouselNextBtn.addEventListener('click', () => {
+        stopCarouselAuto();
+        goToCarouselSlide((currentCarouselSlide + 1) % carouselSlides.length);
+        startCarouselAuto();
     });
 
-    nextButton.addEventListener('click', () => {
-        stopAutoSlide();
-        goToSlide((currentSlide + 1) % slides.length);
-    });
+    // Pausar autoplay ao passar o mouse
+    const carouselContainer = document.querySelector('.extension-carousel');
+    carouselContainer.addEventListener('mouseenter', stopCarouselAuto);
+    carouselContainer.addEventListener('mouseleave', startCarouselAuto);
 
     // Esconder header ao rolar para baixo em dispositivos móveis
     function isMobile() {
@@ -111,9 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    
-    sliderDots.setAttribute('aria-live', 'polite');
-    slides.forEach((slide, index) => {
+    carouselDots.setAttribute('aria-live', 'polite');
+    carouselSlides.forEach((slide, index) => {
         slide.setAttribute('role', 'img');
         slide.setAttribute('aria-label', `Slide ${index + 1}`);
     });
@@ -153,198 +153,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 20);
 
     window.addEventListener('scroll', handleScroll);
-
-    const storyItems = document.querySelectorAll('.story-item');
-    const storyModal = document.getElementById('storyModal');
-    if (!storyModal) {
-        console.error('Modal não encontrado');
-        return;
-    }
-    const storyImage = storyModal.querySelector('.story-image');
-    const closeButton = storyModal.querySelector('.story-close');
-    const prevButton = storyModal.querySelector('.story-nav.prev');
-    const nextButton = storyModal.querySelector('.story-nav.next');
-    const progress = storyModal.querySelector('.progress');
-    
-    const stories = [
-        {
-            image: '/img/destaques/Campeões do hackathon.jpg',
-            title: 'Hackathon',
-            description: 'Primeiro lugar no Hackathon Inova Itacoatiara! 🏆'
-        },
-        {
-            image: '/img/projetos/nao-esquenta/visita_inpa.gif',
-            title: 'INPA',
-            description: 'Visita técnica ao INPA para desenvolvimento de projetos 🔬'
-        },
-        {
-            image: '/img/projetos/eco-comunidade/eco-comunidade.jpg',
-            title: 'Eco',
-            description: 'Projeto EcoComunidade em ação! 🌱'
-        },
-        {
-            image: '/img/extras/capacitacao rural.jpg',
-            title: 'Capacitação',
-            description: 'Capacitação em Cadastro Ambiental Rural 📚'
-        },
-        {
-            image: '/img/extensao/extensao1.jpg',
-            title: 'Extensão',
-            description: 'Atividades de extensão com a comunidade 🤝'
-        }
-    ];
-
-    let currentStoryIndex = 0;
-    let storyTimeout;
-
-    storyItems.forEach((item, index) => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            openStoryModal(index);
-        });
-    });
-
-    function showStory(index) {
-        const story = stories[index];
-        
-        // Atualizar indicadores
-        const indicators = document.querySelector('.story-indicators');
-        if (indicators) {
-            indicators.innerHTML = stories.map((_, i) => `
-                <div class="story-indicator ${i === index ? 'active' : ''}">
-                    <div class="progress" style="width: ${i < index ? '100%' : '0'}"></div>
-                </div>
-            `).join('');
-        }
-        
-        // Atualizar conteúdo
-        if (storyImage) {
-            storyImage.innerHTML = `
-                <div class="story-click-area prev"></div>
-                <div class="story-click-area next"></div>
-                <img src="${story.image}" alt="${story.title}">
-                <div class="story-description">
-                    <strong>${story.title}</strong>
-                    <p>${story.description}</p>
-                </div>
-            `;
-
-            // Configurar áreas clicáveis
-            const prevArea = storyImage.querySelector('.story-click-area.prev');
-            const nextArea = storyImage.querySelector('.story-click-area.next');
-            
-            if (prevArea && nextArea) {
-                prevArea.addEventListener('click', prevStory);
-                nextArea.addEventListener('click', nextStory);
-            }
-        }
-
-        // Animar progresso
-        if (indicators) {
-            const currentIndicator = indicators.children[index].querySelector('.progress');
-            if (currentIndicator) {
-                currentIndicator.style.width = '0';
-                setTimeout(() => {
-                    currentIndicator.style.width = '100%';
-                }, 50);
-            }
-        }
-
-        // Configurar timeout
-        clearTimeout(storyTimeout);
-        storyTimeout = setTimeout(nextStory, 5000);
-    }
-
-    function nextStory() {
-        currentStoryIndex = (currentStoryIndex + 1) % stories.length;
-        if (currentStoryIndex === 0) {
-            closeStoryModal();
-        } else {
-            showStory(currentStoryIndex);
-        }
-    }
-
-    function prevStory() {
-        currentStoryIndex = (currentStoryIndex - 1 + stories.length) % stories.length;
-        showStory(currentStoryIndex);
-    }
-
-    function openStoryModal(index) {
-        if (!storyModal) return;
-        
-        currentStoryIndex = index;
-        storyModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Adicionar indicadores se não existirem
-        if (!storyModal.querySelector('.story-indicators')) {
-            const indicators = document.createElement('div');
-            indicators.className = 'story-indicators';
-            storyModal.querySelector('.story-modal-content').insertBefore(
-                indicators,
-                storyModal.querySelector('.story-view')
-            );
-        }
-        
-        showStory(currentStoryIndex);
-    }
-
-    function closeStoryModal() {
-        storyModal.classList.remove('active');
-        document.body.style.overflow = '';
-        clearTimeout(storyTimeout);
-    }
-
-    closeButton.addEventListener('click', closeStoryModal);
-    prevButton.addEventListener('click', prevStory);
-    nextButton.addEventListener('click', nextStory);
-
-    // Fechar com tecla ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeStoryModal();
-    });
-
-    // Adicionar controle por toque
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    storyModal.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-
-    storyModal.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchEndX - touchStartX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                prevStory();
-            } else {
-                nextStory();
-            }
-        }
-    }
-
-    // Pausar o timer quando o usuário pressionar o mouse/toque
-    storyModal.addEventListener('mousedown', () => {
-        clearTimeout(storyTimeout);
-    });
-
-    storyModal.addEventListener('touchstart', () => {
-        clearTimeout(storyTimeout);
-    });
-
-    // Retomar o timer quando soltar
-    storyModal.addEventListener('mouseup', () => {
-        storyTimeout = setTimeout(nextStory, 5000);
-    });
-
-    storyModal.addEventListener('touchend', () => {
-        storyTimeout = setTimeout(nextStory, 5000);
-    });
 });
