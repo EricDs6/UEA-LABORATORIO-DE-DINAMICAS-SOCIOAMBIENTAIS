@@ -34,9 +34,10 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--text-color);
-    background: var(--background-light);
+    background: var(--white);
+        letter-spacing: 0.2px;
 }
 
 /* Layout Container */
@@ -252,13 +253,12 @@ nav {
 }
 
 .hero-content h2 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.2;
+    font-family: 'Montserrat', sans-serif;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 700;
+        line-height: 1.3;
     margin-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    letter-spacing: -0.5px;
 }
 
 .hero-highlight {
@@ -273,21 +273,18 @@ nav {
 }
 
 .hero-subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    font-weight: 300;
-    opacity: 0.9;
-    max-width: 800px;
-    margin: 0 auto;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        font-weight: 400;
 }
 
 /* Nova seção de Números */
 .stats-section {
     background: var(--white);
     padding: 4rem 0;
-    margin-top: -4rem;
-    position: relative;
-    z-index: 3;
-    border-radius: 20px 20px 0 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .stats-grid {
@@ -305,15 +302,16 @@ nav {
 }
 
 .stat-number {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 800;
-    color: var(--primary-color);
     font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
 }
 
 .stat-label {
-    font-size: 1.1rem;
-    color: var(--secondary-color);
+    font-size: 1rem;
+        color: var(--text-color);
     font-weight: 500;
 }
 
@@ -342,20 +340,20 @@ nav {
 
 /* Seção */
 .section {
-    padding: var(--section-spacing) 0;
+    padding: 5rem 0;
     position: relative;
     overflow: hidden;
     animation: fadeIn 0.8s ease forwards;
 }
 
 .section h2 {
-    text-align: center;
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 3rem;
-    color: var(--secondary-color);
     font-family: 'Montserrat', sans-serif;
-    position: relative;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        letter-spacing: -0.3px;
+        line-height: 1.3;
 }
 
 .section h2::after {
@@ -369,12 +367,12 @@ nav {
 }
 
 .section-description {
+    font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto 3rem;
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto 4rem;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 /* Features */
@@ -386,18 +384,11 @@ nav {
 }
 
 .feature-card {
-    background: linear-gradient(145deg, var(--white), #f8f9fa);
     padding: 2.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(196, 214, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    background: var(--white);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease;
 }
 
 .feature-card:hover {
@@ -406,11 +397,11 @@ nav {
 }
 
 .feature-card h3 {
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
     font-family: 'Montserrat', sans-serif;
-    position: relative;
+    font-size: 1.4rem;
+        font-weight: 600;
+        margin: 1.5rem 0 1rem;
+        color: var(--secondary-color);
 }
 
 .feature-icon {
@@ -420,9 +411,9 @@ nav {
 }
 
 .feature-card p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 1.05rem;
+    font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-color);
 }
 
 /* Projetos */
@@ -444,15 +435,10 @@ nav {
 
 .project-card {
     background: var(--white);
-    border-radius: var(--border-radius);
+    border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     overflow: hidden;
-    box-shadow: var(--card-shadow);
-    transition: all 0.4s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    will-change: transform;
+    transition: transform 0.3s ease;
 }
 
 .project-card img {
@@ -468,22 +454,19 @@ nav {
 }
 
 .project-card h3 {
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    margin: 1.25rem;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
     font-weight: 600;
-    line-height: 1.3;
-    padding-left: 1rem;
-    border-left: 4px solid var(--primary-color);
+    margin: 1.5rem 0 1rem;
+        color: var(--secondary-color);
+        padding: 0 1.5rem;
 }
 
 .project-card p {
+    font-size: 1rem;
+        line-height: 1.7;
     color: var(--text-color);
-    line-height: 1.6;
-    padding: 0 1.25rem;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
+    padding: 0 1.5rem 1.5rem;
 }
 
 .project-card .cta-button {
@@ -988,13 +971,10 @@ footer {
 
 .news-card {
     background: var(--white);
-    border-radius: var(--border-radius);
+    border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     overflow: hidden;
-    box-shadow: var(--card-shadow);
-    transition: all 0.4s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
 .news-card:hover {
@@ -1020,14 +1000,13 @@ footer {
 }
 
 .news-date {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: var(--secondary-color);
-    padding: 0.6rem 1.2rem;
-    border-radius: 25px;
-    font-weight: 600;
+    font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-color);
+        background: rgba(196, 214, 0, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        display: inline-block;
 }
 
 .news-content {
@@ -1038,18 +1017,19 @@ footer {
 }
 
 .news-content h3 {
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--secondary-color);
     line-height: 1.4;
 }
 
 .news-content p {
-    color: #666;
-    line-height: 1.6;
+    font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-color);
     margin-bottom: 1.5rem;
-    flex-grow: 1;
 }
 
 .news-partners {
