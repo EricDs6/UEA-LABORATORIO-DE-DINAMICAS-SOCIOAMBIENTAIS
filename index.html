@@ -7,25 +7,25 @@
     <title>LDS - Laboratório de Dinâmicas Socioambientais</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicons/favicon-16x16.png">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap"></noscript>
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="preload" href="/css/index.css" as="style">
-    <link rel="preload" href="/js/index.js" as="script">
-    <link rel="preload" href="/img/banner.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="preload" href="./css/index.css" as="style">
+    <link rel="preload" href="./js/index.js" as="script">
+    <link rel="preload" href="./img/banner.webp" as="image" type="image/webp" fetchpriority="high">
     <!-- Open Graph tags -->
     <meta property="og:title" content="Laboratório de Dinâmicas Socioambientais">
     <meta property="og:description" content="Organização para preservação ambiental">
-    <meta property="og:image" content="/img/favicons/icon-round.png">
+    <meta property="og:image" content="./img/favicons/icon-round.png">
     <meta property="og:url" content="https://laboratorio-de-dinamicas-socioambi-git-7e0ef9-ericds6s-projects.vercel.app">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Laboratório de Dinâmicas Socioambientais">
     <!-- Preload de imagens críticas -->
-    <link rel="preload" as="image" href="/img/banner.webp" type="image/webp">
-    <link rel="preload" as="image" href="/img/favicons/icon-round.png" type="image/png">
+    <link rel="preload" as="image" href="./img/banner.webp" type="image/webp">
+    <link rel="preload" as="image" href="./img/favicons/icon-round.png" type="image/png">
     <!-- Preconnect para recursos externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,7 @@
         <nav>
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="logo">
+                    <img src="./img/favicons/icon-round.png" alt="Logo LDS" class="logo">
                 </a>
                 <div class="logo-text">
                     <h1>LDS</h1>
@@ -68,7 +68,7 @@
 
     <main>
         <section class="hero">
-            <img src="/img/banner.webp" alt="Banner LDS" class="hero-background" fetchpriority="high">
+            <img src="./img/banner.webp" alt="Banner LDS" class="hero-background" fetchpriority="high">
             <div class="hero-content">
                 <div class="hero-text-container">
                     <h2>
@@ -312,7 +312,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="footer-logo">
+                    <img src="./img/favicons/icon-round.png" alt="Logo LDS" class="footer-logo">
                     <div class="footer-text">
                         <h4>LDS</h4>
                         <p>Laboratório de Dinâmicas Socioambientais</p>
@@ -347,11 +347,11 @@
 
     <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">↑</button>
 
-    <script src="/js/index.js" defer></script>
+    <script src="./js/index.js" defer></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/js/service-worker.js')
+                navigator.serviceWorker.register('./js/service-worker.js')
                     .then(registration => {
                         console.log('ServiceWorker registrado');
                     })
