@@ -383,7 +383,7 @@ nav {
 .project-details ul {
     font-size: 1rem;
     margin-bottom: 1rem;
-    color: var(--text-color);
+    color: var (--text-color);
     list-style: disc;
     padding-left: 20px;
 }

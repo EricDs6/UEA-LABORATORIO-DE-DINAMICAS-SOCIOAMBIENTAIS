@@ -307,7 +307,7 @@ nav {
 /* Principal */
 .project-hero {
     height: 100vh;
-        width: 100%;
+    width: 100%;
         position: relative;
         display: flex;
         align-items: center;
@@ -366,7 +366,7 @@ nav {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--secondary-color);
+    color: var (--secondary-color);
     font-family: 'Montserrat', sans-serif;
 }
 
