@@ -312,7 +312,7 @@ nav {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url('/img/projetos/nao-esquenta/nao-esquenta 1920x1080.jpg') center center no-repeat;
+        background: url('/img/img/projetos/nao-esquenta/nao-esquenta 1920x1080.jpg') center center no-repeat;
         background-size: cover;
         margin-top: 80px;
         padding: 0;
@@ -366,7 +366,7 @@ nav {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--secondary-color);
+    color: var (--secondary-color);
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -1282,7 +1282,7 @@ p {
         padding-left: 2rem;
     margin-bottom: 1rem;
     font-size: 1.1rem;
-        color: var(--text-color);
+        color: var (--text-color);
 }
 
 .info-card li::before {
@@ -1418,4 +1418,155 @@ p {
     border-radius: 50px;
     font-size: 0.9rem;
     font-weight: 600;
+}
+/* Melhorias para responsividade do projeto */
+@media (max-width: 768px) {
+    .project-hero {
+        height: 60vh;
+    }
+
+    .project-hero-content {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .project-hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .project-section {
+        padding: 1.8rem;
+        margin: 1rem 1rem 2rem;
+    }
+
+    .project-section h3 {
+        font-size: 1.4rem;
+        padding-left: 1.2rem;
+    }
+
+    .project-section p,
+    .project-section ul {
+        font-size: 1rem;
+    }
+
+    .project-section ul li {
+        padding-left: 1.2rem;
+    }
+
+    /* Melhoria nos controles do carousel para touch */
+    .carousel-prev,
+    .carousel-next {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        font-size: 1.2rem;
+    }
+
+    .carousel-content p {
+        font-size: 1.2rem;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+    .featured-image {
+        height: 250px;
+    }
+
+    .featured-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .featured-content h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-hero {
+        height: 50vh;
+        margin-top: 60px;
+    }
+
+    .project-hero-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .project-hero-content p {
+        font-size: 1rem;
+    }
+
+    .project-details h2 {
+        font-size: 1.6rem;
+    }
+
+    .project-section {
+        padding: 1.5rem;
+        margin: 0.8rem 0.8rem 1.5rem;
+    }
+
+    .project-section h3 {
+        font-size: 1.2rem;
+        padding-left: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-section h3::before {
+        width: 3px;
+    }
+
+    .featured-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .featured-content p {
+        font-size: 0.95rem;
+    }
+
+    /* Melhor ocupação de espaço para dispositivos pequenos */
+    .info-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .info-icon {
+        font-size: 2.5rem;
+    }
+
+    .info-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .info-card li {
+        font-size: 0.95rem;
+        padding-left: 1.5rem;
+    }
+}
+
+/* Melhoria da acessibilidade de elementos interativos */
+.carousel-content a:focus,
+.cta-button:focus,
+.nav-links a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Melhor feedback visual para interações em dispositivos touch */
+@media (hover: none) {
+    .project-section:active {
+        transform: translateY(-3px);
+    }
+
+    .nav-links a:active {
+        background: rgba(196, 214, 0, 0.2);
+    }
+
+    .cta-button:active {
+        transform: translateY(-2px);
+        background: var(--primary-dark);
+    }
 }

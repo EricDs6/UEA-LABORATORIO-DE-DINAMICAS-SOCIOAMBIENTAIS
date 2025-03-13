@@ -350,36 +350,122 @@ footer {
 @media (max-width: 768px) {
     .nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+            top: 80px;
         left: 0;
         right: 0;
         background: var(--white);
         flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        align-items: center;
+            justify-content: flex-start;
+            padding: 2rem 1rem;
+            overflow-y: auto;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
     }
 
     .nav-links.active {
         display: flex;
     }
 
+        .nav-links li {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+    
+        .nav-links a {
+            display: block;
+            padding: 0.8rem 1rem;
+            width: 100%;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: rgba(196, 214, 0, 0.05);
+        }
+    
+        .nav-links a:hover,
+        .nav-links a:focus {
+            background: rgba(196, 214, 0, 0.15);
+        }
     .mobile-menu {
         display: block;
         background: none;
         border: none;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         color: var(--secondary-color);
         cursor: pointer;
+        z-index: 1000;
+            transition: color 0.3s ease;
+        }
+        
+        /* Ajustes para a página de parceiros */
+        .partners {
+            padding-top: 100px;
     }
-
+    
     .partners h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .partners p {
+            font-size: 1rem;
+            padding: 0 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .partners-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+        
+        .partner-card {
+            padding: 1.5rem;
+        }
+        
+        .partner-card h3 {
+            font-size: 1.2rem;
+        }
+        
+        .partner-card p {
+            font-size: 0.9rem;
+        }
+        }
+        
+        /* Ajustes para telas muito pequenas */
+        @media (max-width: 480px) {
+            .partners {
+                padding-top: 80px;
+            }
+        
+            .partners h2 {
+                font-size: 1.6rem;
+            }
+        
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+        
+            .partner-card {
+                padding: 1.2rem;
+            }
+        
+            .partner-card img {
+                width: 80px;
     }
+    
+        .partner-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+    }
+}
 
-    .nav-links a {
-        padding: 1rem;
-        width: 100%;
-        text-align: center;
-    }
+/* Melhoria da acessibilidade */
+.partner-card:focus-within {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
