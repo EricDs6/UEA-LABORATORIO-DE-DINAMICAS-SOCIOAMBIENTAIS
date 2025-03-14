@@ -990,7 +990,7 @@ p {
 
 .news-card:hover .news-image img,
 .news-card:hover .news-image video {
-    transform: scale(1.05);
+    transform: scale(1.05);                     
 }
 
 .news-date {
