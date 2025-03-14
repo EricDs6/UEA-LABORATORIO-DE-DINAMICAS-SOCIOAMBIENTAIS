@@ -1463,3 +1463,32 @@ footer {
     background: var(--primary-dark);
     transform: translateY(-3px);
 }
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .project-card {
+        padding: 1rem;
+    }
+
+    button {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0.8rem 1.2rem;
+    }
+
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (hover: none) {
+
+    button,
+    a {
+        touch-action: manipulation;
+        min-height: 48px;
+    }
+}
