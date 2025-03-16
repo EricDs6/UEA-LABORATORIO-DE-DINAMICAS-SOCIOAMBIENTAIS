@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0, minimum-scale=1.0, user-scalable=yes">
     <meta name="description" content="O Laboratório de Dinâmicas Socioambientais (LDS) promove pesquisa e soluções sustentáveis para preservação ambiental e engajamento comunitário em Itacoatiara-AM.">
     <title>LDS - Laboratório de Dinâmicas Socioambientais</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,8 +95,8 @@
     <link rel="preload" href="./js/mobile-menu.js" as="script">
 </head>
 <body>
-    <header>
-        <nav>
+    <header class="site-header">
+        <div class="container header-container">
             <div class="logo-container">
                 <a href="index.html" aria-label="Página inicial">
                     <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="logo" width="55" height="55">
@@ -106,17 +106,21 @@
                     <p>Laboratório de Dinâmicas Socioambientais</p>
                 </div>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#pesquisas">Pesquisas</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a href="parceiros.html">Parceiros</a></li>
-            </ul>
-            <button class="mobile-menu" id="mobileMenuBtn" aria-label="Abrir menu">☰</button>
-        </nav>
+            <nav class="main-navigation">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#pesquisas">Pesquisas</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="parceiros.html">Parceiros</a></li>
+                </ul>
+                <button class="mobile-menu" id="mobileMenuBtn" aria-label="Abrir menu">
+                    <span class="menu-icon"></span>
+                </button>
+            </nav>
+        </div>
     </header>
-
+    
     <main>
         <section class="hero">
             <img src="/img/banner.webp" alt="Banner LDS" class="hero-background" fetchpriority="high">
@@ -418,11 +422,32 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navLinks = document.getElementById('navLinks');
+            const header = document.querySelector('.site-header');
             
             mobileMenuBtn.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
-                mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-                mobileMenuBtn.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+                mobileMenuBtn.classList.toggle('active');
+                header.classList.toggle('menu-open');
+                const isExpanded = navLinks.classList.contains('active');
+                mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            });
+            
+            // Controle de scroll para o header
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 100) {
+                    header.classList.add('scrolled');
+                    if (scrollTop > lastScrollTop) {
+                        header.classList.add('hidden');
+                    } else {
+                        header.classList.remove('hidden');
+                    }
+                } else {
+                    header.classList.remove('scrolled');
+                    header.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop;
             });
             
             // Fecha menu ao clicar nos links
