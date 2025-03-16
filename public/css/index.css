@@ -1302,85 +1302,6 @@ footer {
     }
 }
 
-/* Seção de Introdução do Hackathon */
-.hackathon-intro {
-    background: var(--background-light);
-    padding: 4rem 2rem;
-    text-align: center;
-    border-bottom: 3px solid var(--primary-color);
-    margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-    .hackathon-intro {
-        padding: 2rem 1rem;
-    }
-}
-.hackathon-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hackathon-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-    color: var(--primary-color);
-}
-
-.hackathon-intro h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-    .hackathon-intro h3 {
-        font-size: 1.5rem;
-    }
-}
-.hackathon-intro p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #444;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .hackathon-intro {
-        padding: 3rem 1.5rem;
-    }
-
-    .hackathon-intro h3 {
-        font-size: 1.8rem;
-    }
-
-    .hackathon-intro p {
-        font-size: 1.1rem;
-    }
-}
-
-/* Ajuste das imagens do hackathon */
-.hackathon-image {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
-
-.hackathon-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    /* Move a imagem para cima */
-    transition: transform 0.3s ease;
-}
-
-.hackathon-image img:hover {
-    transform: scale(1.05);
-}
 /* Destaques */
 .highlights {
     background-color: var(--background-light);
@@ -3065,4 +2986,105 @@ footer {
     .header-container {
         padding: 0 0.8rem;
     }
+}
+/* Seção de destaques */
+.featured-news {
+    padding: 6rem 0 4rem;
+    background: var(--background-light);
+    position: relative;
+}
+
+.featured-news h2 {
+    text-align: center; /* Centraliza o título */
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.featured-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.featured-main {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.featured-main:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+.featured-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.featured-main:hover .featured-image img {
+    transform: scale(1.05);
+}
+
+.featured-date {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.featured-content {
+    padding: 2rem;
+    background: var(--white);
+}
+
+.featured-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.2;
+}
+
+.featured-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.featured-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.featured-tag {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
 }
