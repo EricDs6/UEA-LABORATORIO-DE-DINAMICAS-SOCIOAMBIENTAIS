@@ -29,6 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
+    // Fechar menu mobile ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('nav') && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+
     // Carrossel de Extensão
     const carouselSlides = document.querySelectorAll('.carousel-slide');
     const carouselDots = document.querySelector('.carousel-dots');
@@ -153,4 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 20);
 
     window.addEventListener('scroll', handleScroll);
+
+    // Adicionar transição suave ao header
+    header.style.transition = 'top 0.3s';
 });
