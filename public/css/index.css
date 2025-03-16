@@ -1361,6 +1361,26 @@ footer {
     }
 }
 
+/* Ajuste das imagens do hackathon */
+.hackathon-image {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.hackathon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    /* Move a imagem para cima */
+    transition: transform 0.3s ease;
+}
+
+.hackathon-image img:hover {
+    transform: scale(1.05);
+}
 /* Destaques */
 .highlights {
     background-color: var(--background-light);
