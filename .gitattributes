@@ -1,1 +1,2 @@
 img/projetos/nao-esquenta/visita-INPA.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
