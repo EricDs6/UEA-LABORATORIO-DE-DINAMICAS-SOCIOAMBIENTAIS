@@ -3830,3 +3830,27 @@ footer {
         /* Ajusta o tamanho do texto */
     }
 }
+/* Banner de Apoios */
+.support-banner {
+    background-color: var(--primary-color);
+    /* Cor verde do site */
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.support-banner .container {
+    max-width: 1684px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.support-banner-image {
+    width: 100%;
+    max-width: 1684px;
+    height: auto;
+    object-fit: contain;
+}
