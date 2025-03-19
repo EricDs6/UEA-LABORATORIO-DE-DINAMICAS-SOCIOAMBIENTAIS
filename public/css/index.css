@@ -3520,3 +3520,215 @@ footer {
         /* Ajusta o tamanho do texto no rodapé */
     }
 }
+/* Ajustes gerais para dispositivos móveis */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+        /* Reduz a base do tamanho da fonte */
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        padding: 0 1rem;
+        /* Ajusta o espaçamento lateral */
+    }
+
+    header {
+        height: 60px;
+        /* Reduz a altura do cabeçalho */
+        padding: 0 1rem;
+    }
+
+    .logo {
+        width: 40px;
+        /* Reduz o tamanho do logo */
+    }
+
+    .logo-text h1 {
+        font-size: 1.2rem;
+        /* Ajusta o tamanho do texto do logo */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        /* Exibe os links em coluna */
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .hero {
+        height: 70vh;
+        /* Reduz a altura da seção hero */
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+        /* Ajusta o tamanho do título */
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        /* Ajusta o tamanho do subtítulo */
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+        padding: 0.7rem 1.2rem;
+        /* Ajusta o tamanho do botão */
+        font-size: 0.9rem;
+    }
+
+    .section {
+        padding: 2rem 0;
+        /* Reduz o espaçamento entre seções */
+    }
+
+    .section h2 {
+        font-size: 1.6rem;
+        /* Ajusta o tamanho do título da seção */
+        margin-bottom: 1.5rem;
+    }
+
+    .features,
+    .project-grid,
+    .news-grid,
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        /* Exibe os itens em uma única coluna */
+        gap: 1rem;
+        /* Reduz o espaçamento entre os itens */
+    }
+
+    .feature-card,
+    .project-card,
+    .highlight-card {
+        padding: 1.5rem;
+        /* Ajusta o espaçamento interno dos cards */
+    }
+
+    .feature-card h3,
+    .highlight-card h3 {
+        font-size: 1.3rem;
+        /* Ajusta o tamanho do título dos cards */
+    }
+
+    .project-card img,
+    .highlight-image {
+        height: 200px;
+        /* Reduz a altura das imagens */
+    }
+
+    .carousel-slide {
+        height: 250px;
+        /* Ajusta a altura do carrossel */
+    }
+
+    .carousel-content h3 {
+        font-size: 1.4rem;
+        /* Ajusta o tamanho do título no carrossel */
+    }
+
+    .carousel-prev,
+    .carousel-next {
+        width: 35px;
+        /* Reduz o tamanho das setas de navegação */
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    footer {
+        padding: 2rem 1rem;
+        /* Ajusta o espaçamento do rodapé */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        /* Exibe o conteúdo do rodapé em uma única coluna */
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .footer-links ul {
+        align-items: center;
+        /* Centraliza os links no rodapé */
+    }
+
+    .footer-social ul {
+        justify-content: center;
+        /* Centraliza os ícones sociais */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 60vh;
+        /* Reduz ainda mais a altura da seção hero */
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+        /* Ajusta o tamanho do título */
+    }
+
+    .hero-content p {
+        font-size: 0.85rem;
+        /* Ajusta o tamanho do subtítulo */
+    }
+
+    .cta-button {
+        padding: 0.6rem 1rem;
+        /* Ajusta o tamanho do botão */
+        font-size: 0.85rem;
+    }
+
+    .section h2 {
+        font-size: 1.4rem;
+        /* Ajusta o tamanho do título da seção */
+    }
+
+    .feature-card,
+    .project-card,
+    .highlight-card {
+        padding: 1.2rem;
+        /* Reduz o espaçamento interno dos cards */
+    }
+
+    .feature-card h3,
+    .highlight-card h3 {
+        font-size: 1.2rem;
+        /* Ajusta o tamanho do título dos cards */
+    }
+
+    .project-card img,
+    .highlight-image {
+        height: 180px;
+        /* Reduz ainda mais a altura das imagens */
+    }
+
+    .carousel-slide {
+        height: 200px;
+        /* Ajusta a altura do carrossel */
+    }
+
+    .carousel-content h3 {
+        font-size: 1.2rem;
+        /* Ajusta o tamanho do título no carrossel */
+    }
+
+    .footer-content {
+        gap: 1rem;
+        /* Reduz o espaçamento entre os itens do rodapé */
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+        /* Ajusta o tamanho do texto no rodapé */
+    }
+}
