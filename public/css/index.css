@@ -3266,20 +3266,28 @@ footer {
 .featured-image {
     position: relative;
     width: 100%;
-        height: 0;
-        padding-bottom: 56.25%;
+    height: 0;
+    padding-bottom: 56.25%;
         /* Proporção 16:9 */
     overflow: hidden;
     border-radius: var(--border-radius);
-    }
-    
-    .featured-image iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--background-light);
+        /* Fundo para evitar espaços vazios */
+}
+
+.featured-image iframe {
+    position: absolute;
+    top: 50%;
+        left: 50%;
         width: 100%;
         height: 100%;
-        border: none;
+    transform: translate(-50%, -50%);
+        object-fit: contain;
+        /* Garante que o vídeo seja exibido completamente */
+    border: none;
 }
 
 .featured-image img {
