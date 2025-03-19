@@ -3271,22 +3271,16 @@ footer {
         /* Proporção 16:9 */
     overflow: hidden;
     border-radius: var(--border-radius);
-    display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--background-light);
+    background: var(--background-light);
         /* Fundo para evitar espaços vazios */
 }
 
 .featured-image iframe {
     position: absolute;
-    top: 50%;
-        left: 50%;
+    top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-    transform: translate(-50%, -50%);
-        object-fit: contain;
-        /* Garante que o vídeo seja exibido completamente */
     border: none;
 }
 
@@ -3738,5 +3732,101 @@ footer {
     .footer-bottom {
         font-size: 0.8rem;
         /* Ajusta o tamanho do texto no rodapé */
+    }
+}
+/* Ajuste geral para dispositivos móveis */
+@media (max-width: 768px) {
+
+    /* Ajustar grids para exibir itens em uma única coluna */
+    .features,
+    .project-grid,
+    .news-grid,
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        /* Exibe os itens em uma única coluna */
+        gap: 1.5rem;
+        /* Espaçamento entre os itens */
+    }
+
+    /* Ajustar cards para ocupar toda a largura */
+    .feature-card,
+    .project-card,
+    .news-card,
+    .highlight-card {
+        width: 100%;
+        /* Ocupa toda a largura disponível */
+        margin: 0 auto;
+        /* Centraliza os cards */
+    }
+
+    /* Ajustar imagens para se adaptarem ao novo layout */
+    .project-card img,
+    .highlight-image img,
+    .news-image img {
+        height: auto;
+        /* Ajusta a altura automaticamente */
+        object-fit: cover;
+        /* Garante que a imagem seja exibida corretamente */
+    }
+
+    /* Ajustar textos para melhor legibilidade */
+    .highlight-card h3,
+    .feature-card h3,
+    .news-content h3 {
+        font-size: 1.4rem;
+        /* Ajusta o tamanho do título */
+        text-align: center;
+        /* Centraliza o texto */
+    }
+
+    .highlight-card p,
+    .feature-card p,
+    .news-content p {
+        font-size: 1rem;
+        /* Ajusta o tamanho do texto */
+        text-align: justify;
+        /* Melhora a legibilidade */
+    }
+}
+
+/* Ajustes adicionais para telas muito pequenas */
+@media (max-width: 480px) {
+
+    /* Reduzir ainda mais o espaçamento e ajustar o layout */
+    .features,
+    .project-grid,
+    .news-grid,
+    .highlights-grid {
+        gap: 1rem;
+        /* Reduz o espaçamento entre os itens */
+    }
+
+    .feature-card,
+    .project-card,
+    .news-card,
+    .highlight-card {
+        padding: 1rem;
+        /* Reduz o espaçamento interno dos cards */
+    }
+
+    .project-card img,
+    .highlight-image img,
+    .news-image img {
+        height: 180px;
+        /* Ajusta a altura das imagens */
+    }
+
+    .highlight-card h3,
+    .feature-card h3,
+    .news-content h3 {
+        font-size: 1.2rem;
+        /* Ajusta o tamanho do título */
+    }
+
+    .highlight-card p,
+    .feature-card p,
+    .news-content p {
+        font-size: 0.9rem;
+        /* Ajusta o tamanho do texto */
     }
 }
