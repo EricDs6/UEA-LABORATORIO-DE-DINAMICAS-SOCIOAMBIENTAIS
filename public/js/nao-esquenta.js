@@ -1,19 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Menu Mobile
-    const mobileMenuButton = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-    const header = document.querySelector('header');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const siteHeader = document.querySelector('.site-header');
     let lastScrollTop = 0;
 
-    mobileMenuButton.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            siteHeader.classList.toggle('menu-open');
+            const isExpanded = navLinks.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+        });
+    }
 
     // Fechar menu mobile ao clicar fora
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('nav') && navLinks.classList.contains('active')) {
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.main-navigation') && navLinks && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+            if (siteHeader) {
+                siteHeader.classList.remove('menu-open');
+            }
         }
+    });
+
+    // Controle de scroll para o header
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > 100 && siteHeader) {
+            siteHeader.classList.add('scrolled');
+            if (scrollTop > lastScrollTop) {
+                siteHeader.classList.add('hidden');
+            } else {
+                siteHeader.classList.remove('hidden');
+            }
+        } else if (siteHeader) {
+            siteHeader.classList.remove('scrolled');
+            siteHeader.classList.remove('hidden');
+        }
+        lastScrollTop = scrollTop;
     });
 
     // Carrossel de Imagens

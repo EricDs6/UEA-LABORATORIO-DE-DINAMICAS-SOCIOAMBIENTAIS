@@ -21,31 +21,36 @@
     <meta property="og:type" content="website">
 </head>
 <body>
-    <header>
-        <nav>
+    <header class="site-header">
+        <div class="container header-container">
             <div class="logo-container">
-                <a href="index.html">
-                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="logo">
+                <a href="index.html" aria-label="Página inicial">
+                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="logo" width="55" height="55">
                 </a>
                 <div class="logo-text">
                     <h1>LDS</h1>
                     <p>Laboratório de Dinâmicas Socioambientais</p>
                 </div>
             </div>
-            <ul class="nav-links">
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#noticias">Noticias</a></li>
-                    <li><a href="#contato">Contato</a></li>
-            </ul>
-            <button class="mobile-menu">☰</button>
-        </nav>
+            <nav class="main-navigation">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#projetos">Projetos</a></li>
+                    <li><a href="index.html#noticias">Notícias</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul>
+                <button class="mobile-menu" id="mobileMenuBtn" aria-label="Abrir menu">
+                    <span class="menu-icon"></span>
+                </button>
+            </nav>
+        </div>
     </header>
 
     <main>
         <!-- Hero Section mais compacto -->
         <section class="project-hero">
             <div class="project-hero-content">
+                <h2>NÃO ESQUENTA!</h2>
                 <p>Programa inovador que combate os impactos das mudanças climáticas através de ações comunitárias e monitoramento ambiental em Itacoatiara</p>
             </div>
         </section>
@@ -157,9 +162,8 @@
                     <ul>
                         <li><a href="index.html#sobre">Sobre</a></li>
                         <li><a href="index.html#projetos">Projetos</a></li>
-                        <li><a href="index.html#pesquisas">Pesquisas</a></li>
+                        <li><a href="index.html#noticias">Notícias</a></li>
                         <li><a href="index.html#contato">Contato</a></li>
-                        <li><a href="parceiros.html">Parceiros</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
