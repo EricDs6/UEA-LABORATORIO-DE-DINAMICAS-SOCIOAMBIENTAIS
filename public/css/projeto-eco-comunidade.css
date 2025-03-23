@@ -1866,16 +1866,17 @@ p {
     overflow: hidden;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     background-color: #000;
+    z-index: 1;
 }
 
-.news-video iframe, 
-.news-video > div {
-    position: absolute !important;
+.news-video iframe {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: var(--border-radius) var (--border-radius) 0 0;
+    border: none;
+        z-index: 2;
 }
 
 .news-video .news-date {
@@ -1894,17 +1895,17 @@ p {
 
 @media (max-width: 768px) {
     .news-video {
-        height: auto;
+        height: 0;
+            padding-bottom: 56.25%;
+            /* Manter proporção 16:9 */
     }
 }
 
 @media (max-width: 480px) {
     .news-video {
-        height: auto;
-    }
-        .news-video .news-date {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.8rem;
+        height: 0;
+            padding-bottom: 56.25%;
+            /* Manter proporção 16:9 */
         }
 }
 

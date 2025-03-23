@@ -1,3 +1,15 @@
+// Garantir carregamento do script do Vimeo logo no início
+(function() {
+    // Carregar script do Vimeo se ainda não estiver carregado
+    if (!document.querySelector('script[src="https://player.vimeo.com/api/player.js"]')) {
+        console.log('Carregando script do Vimeo');
+        const vimeoScript = document.createElement('script');
+        vimeoScript.src = "https://player.vimeo.com/api/player.js";
+        vimeoScript.async = true;
+        document.head.appendChild(vimeoScript);
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     // Menu Mobile
     const mobileMenuButton = document.querySelector('.mobile-menu');
@@ -417,6 +429,39 @@ document.addEventListener('DOMContentLoaded', () => {
         vimeoScript.src = 'https://player.vimeo.com/api/player.js';
         document.body.appendChild(vimeoScript);
     }
+
+    // Função específica para inicialização de vídeos do Vimeo
+    function setupVimeoVideos() {
+        console.log('Configurando vídeos do Vimeo');
+        const vimeoIframes = document.querySelectorAll('.news-video iframe[src*="player.vimeo.com"]');
+        
+        vimeoIframes.forEach((iframe, index) => {
+            console.log(`Ajustando iframe ${index + 1}`);
+            
+            // Garantir visibilidade
+            iframe.style.display = 'block';
+            
+            // Verificar se já tem o script do Vimeo
+            if (typeof Vimeo !== 'undefined') {
+                try {
+                    // Inicializar o player para garantir funcionamento
+                    new Vimeo.Player(iframe);
+                    console.log(`Player Vimeo inicializado para iframe ${index + 1}`);
+                } catch (e) {
+                    console.error('Erro ao inicializar Vimeo Player:', e);
+                }
+            }
+        });
+    }
+    
+    // Executar configuração de vídeos com delay
+    setTimeout(setupVimeoVideos, 1000);
+    
+    // Adicionar chamada para inicializar vídeos após carregamento completo
+    window.addEventListener('load', function() {
+        // Configurar vídeos do Vimeo
+        setTimeout(setupVimeoVideos, 1500);
+    });
 });
 
 // Adicionar função para garantir carregamento dos vídeos do Vimeo
