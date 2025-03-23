@@ -118,7 +118,7 @@
                                     <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-7.jpg" alt="Replantio 7">
                                 </div>
                             </div>
-                            <!-- Botões de navegação e indicadores são adicionados via JavaScript -->
+                            <!-- Navegação e indicadores serão injetados via JavaScript -->
                             <div class="news-date">15 de maio de 2024</div>
                         </div>
                         <div class="news-content">
@@ -237,7 +237,7 @@
             
             mobileMenuBtn.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
-                mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+                mobileMenuBtn.textContent = navLinks.class.contains('active') ? '✕' : '☰';
                 mobileMenuBtn.setAttribute('aria-expanded', navLinks.class.contains('active'));
             });
             
@@ -277,6 +277,29 @@
                     });
                 }
             });
+        });
+    </script>
+    <script>
+        // Garantir que o carrossel seja iniciado corretamente
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof initNewsCarousels === 'function') {
+                console.log('Tentando inicializar carrosséis via callback de DOMContentLoaded');
+                initNewsCarousels();
+            } else {
+                console.log('Função initNewsCarousels não disponível ainda, esperando carregamento completo');
+            }
+        });
+        
+        // Backup: tentar novamente após o carregamento completo
+        window.addEventListener('load', function() {
+            console.log('Página completamente carregada, reinicializando carrosséis');
+            setTimeout(function() {
+                if (typeof initNewsCarousels === 'function') {
+                    initNewsCarousels();
+                } else {
+                    console.error('Função initNewsCarousels não encontrada após carregamento completo');
+                }
+            }, 1000);
         });
     </script>
 </body>
