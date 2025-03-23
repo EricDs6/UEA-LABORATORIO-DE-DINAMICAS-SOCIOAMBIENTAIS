@@ -112,21 +112,13 @@
                                     <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-1.jpg" alt="Replantio 1" class="active">
                                     <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-2.jpg" alt="Replantio 2">
                                     <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-3.jpg" alt="Replantio 3">
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-4.jpg" alt="Replantio 3">
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-5.jpg" alt="Replantio 3">
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-6.jpg" alt="Replantio 3">
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-7.jpg" alt="Replantio 3">
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-3.jpg" alt="Replantio 3">
-
-
-
-
-                                    
+                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-4.jpg" alt="Replantio 4">
+                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-5.jpg" alt="Replantio 5">
+                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-6.jpg" alt="Replantio 6">
+                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-7.jpg" alt="Replantio 7">
                                 </div>
                             </div>
-                            <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
-                            <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
-                            <div class="carousel-indicators"></div>
+                            <!-- Botões de navegação e indicadores são adicionados via JavaScript -->
                             <div class="news-date">15 de maio de 2024</div>
                         </div>
                         <div class="news-content">
@@ -257,6 +249,33 @@
                     mobileMenuBtn.textContent = '☰';
                     mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 });
+            });
+        });
+    </script>
+    <script>
+        // Garantir que o carrossel seja inicializado corretamente após o carregamento
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se as imagens do carrossel estão carregadas
+            const carouselImages = document.querySelectorAll('.carousel-slides img');
+            let imagesLoaded = 0;
+            
+            carouselImages.forEach((img) => {
+                if (img.complete) {
+                    imagesLoaded++;
+                } else {
+                    img.addEventListener('load', () => {
+                        imagesLoaded++;
+                        if (imagesLoaded === carouselImages.length) {
+                            console.log('Todas as imagens do carrossel carregadas!');
+                            // Reinicializar o carrossel após carregar todas as imagens
+                            setTimeout(() => {
+                                if (typeof initNewsCarousels === 'function') {
+                                    initNewsCarousels();
+                                }
+                            }, 100);
+                        }
+                    });
+                }
             });
         });
     </script>

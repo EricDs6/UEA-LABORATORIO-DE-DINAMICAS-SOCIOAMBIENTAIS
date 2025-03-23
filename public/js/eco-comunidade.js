@@ -122,85 +122,99 @@ document.addEventListener('DOMContentLoaded', () => {
 
     header.style.transition = 'top 0.3s';
     
-    // Inicializar carrosséis de imagens nas notícias - versão corrigida
+    // Inicializar carrosséis de imagens nas notícias - versão reescrita e simplificada
     function initNewsCarousels() {
         console.log('Inicializando carrosséis de notícias');
         const newsCarousels = document.querySelectorAll('.news-image-carousel');
         
-        newsCarousels.forEach((carousel) => {
-            // Limpar event listeners existentes para evitar duplicações
+        newsCarousels.forEach((carousel, carouselIndex) => {
+            const slidesContainer = carousel.querySelector('.carousel-slides');
+            if (!slidesContainer) {
+                console.log(`Carrossel #${carouselIndex}: Container de slides não encontrado`);
+                return;
+            }
+            
+            const slides = Array.from(slidesContainer.querySelectorAll('img'));
+            if (slides.length <= 1) {
+                console.log(`Carrossel #${carouselIndex}: Não há slides suficientes (${slides.length})`);
+                return;
+            }
+            
+            console.log(`Carrossel #${carouselIndex}: ${slides.length} slides encontrados`);
+            
+            // Limpar e recriar botões de navegação para evitar duplicação de event listeners
             const oldPrevBtn = carousel.querySelector('.carousel-nav.prev');
             const oldNextBtn = carousel.querySelector('.carousel-nav.next');
             
-            if (oldPrevBtn) {
-                const newPrevBtn = oldPrevBtn.cloneNode(true);
-                oldPrevBtn.parentNode.replaceChild(newPrevBtn, oldPrevBtn);
-            }
+            if (oldPrevBtn) oldPrevBtn.remove();
+            if (oldNextBtn) oldNextBtn.remove();
             
-            if (oldNextBtn) {
-                const newNextBtn = oldNextBtn.cloneNode(true);
-                oldNextBtn.parentNode.replaceChild(newNextBtn, oldNextBtn);
-            }
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'carousel-nav prev';
+            prevBtn.innerHTML = '&#10094;';
+            prevBtn.setAttribute('aria-label', 'Imagem anterior');
             
-            const slidesContainer = carousel.querySelector('.carousel-slides');
-            if (!slidesContainer) {
-                console.log('Container de slides não encontrado');
-                return;
-            }
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'carousel-nav next';
+            nextBtn.innerHTML = '&#10095;';
+            nextBtn.setAttribute('aria-label', 'Próxima imagem');
             
-            const slides = slidesContainer.querySelectorAll('img');
-            if (slides.length <= 1) {
-                console.log('Não há slides suficientes para criar um carrossel');
-                return;
-            }
+            carousel.appendChild(prevBtn);
+            carousel.appendChild(nextBtn);
             
-            console.log(`Carrossel iniciado com ${slides.length} slides`);
-            
-            // Botões de navegação
-            const prevBtn = carousel.querySelector('.carousel-nav.prev');
-            const nextBtn = carousel.querySelector('.carousel-nav.next');
-            
-            // Container de indicadores - limpar e recriar
+            // Limpar e recriar container de indicadores
             let indicatorsContainer = carousel.querySelector('.carousel-indicators');
-            if (!indicatorsContainer) {
-                indicatorsContainer = document.createElement('div');
-                indicatorsContainer.className = 'carousel-indicators';
-                carousel.appendChild(indicatorsContainer);
-            } else {
-                indicatorsContainer.innerHTML = '';
-            }
+            if (indicatorsContainer) indicatorsContainer.remove();
+            
+            indicatorsContainer = document.createElement('div');
+            indicatorsContainer.className = 'carousel-indicators';
+            carousel.appendChild(indicatorsContainer);
             
             // Configurar estado inicial
             let currentSlide = 0;
             let autoSlideTimer = null;
             
-            // Garantir que apenas uma imagem esteja ativa inicialmente
-            slides.forEach(slide => slide.classList.remove('active'));
-            if (slides.length > 0) {
-                slides[0].classList.add('active');
-            }
-            
-            // Criar indicadores
-            slides.forEach((_, index) => {
-                const indicator = document.createElement('button');
-                indicator.classList.add('carousel-indicator');
-                if (index === 0) indicator.classList.add('active');
-                indicator.setAttribute('aria-label', `Imagem ${index + 1}`);
-                indicator.addEventListener('click', () => goToSlide(index));
-                indicatorsContainer.appendChild(indicator);
+            // Garantir que apenas a primeira imagem esteja ativa
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === 0) slide.classList.add('active');
             });
             
-            const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
+            // Criar indicadores
+            for (let i = 0; i < slides.length; i++) {
+                const indicator = document.createElement('button');
+                indicator.classList.add('carousel-indicator');
+                if (i === 0) indicator.classList.add('active');
+                indicator.setAttribute('aria-label', `Imagem ${i + 1}`);
+                indicator.setAttribute('data-slide-index', i);
+                indicatorsContainer.appendChild(indicator);
+            }
             
+            const indicators = Array.from(indicatorsContainer.querySelectorAll('.carousel-indicator'));
+            
+            // Função para navegar entre slides
             function goToSlide(index) {
-                console.log(`Indo para o slide ${index}`);
+                console.log(`Carrossel #${carouselIndex}: Indo para slide ${index}`);
+                
                 slides[currentSlide].classList.remove('active');
-                if (indicators[currentSlide]) indicators[currentSlide].classList.remove('active');
+                indicators[currentSlide].classList.remove('active');
                 
                 currentSlide = index;
+                
                 slides[currentSlide].classList.add('active');
-                if (indicators[currentSlide]) indicators[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
             }
+            
+            // Adicionar event listeners aos indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    stopAutoSlide();
+                    goToSlide(index);
+                    startAutoSlide();
+                });
+            });
             
             function nextSlide() {
                 goToSlide((currentSlide + 1) % slides.length);
@@ -222,28 +236,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Adicionar event listeners para os botões de navegação
-            if (prevBtn) {
-                prevBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Botão anterior clicado');
-                    stopAutoSlide();
-                    prevSlide();
-                    startAutoSlide();
-                });
-            }
+            // Adicionar event listeners aos botões de navegação
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
             
-            if (nextBtn) {
-                nextBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Botão próximo clicado');
-                    stopAutoSlide();
-                    nextSlide();
-                    startAutoSlide();
-                });
-            }
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
             
             // Iniciar carrossel automático
             startAutoSlide();
@@ -274,13 +282,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Inicializar carrosséis de notícias
+    // Inicializar carrosséis imediatamente após o DOM estar pronto
     initNewsCarousels();
     
     // Garantir que os carrosséis sejam inicializados após o carregamento completo da página
     window.addEventListener('load', () => {
+        console.log('Página totalmente carregada. Reinicializando carrosséis...');
+        // Pequeno atraso para garantir que todas as imagens estejam carregadas
         setTimeout(() => {
-            console.log('Reinicializando carrosséis após carregamento completo');
             initNewsCarousels();
         }, 500);
     });
