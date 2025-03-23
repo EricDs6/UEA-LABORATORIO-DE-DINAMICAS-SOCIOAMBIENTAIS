@@ -326,17 +326,17 @@
             <!-- Notícia da Capacitação -->
             <div class="news-card">
                 <div class="news-image">
-                    <img src="/img/extras/capacitacao rural.jpg" alt="Capacitação CAR" loading="lazy">
-                    <div class="news-date">09 de setembro de 2024</div>
+                    <img src="img/extras/campeoes-da-gincana-de-ideacao.jpg" alt="Campeões da Gincana de Ideação" loading="lazy">
+                    <div class="news-date">20 de março de 2025</div>
                 </div>
                 <div class="news-content">
-                    <h3>Capacitação em Cadastro Ambiental Rural</h3>
-                    <p>No dia 09 de setembro ocorreu a capacitação de cadastro ambiental rural e etapas de licenciamento- CAR, para os bolsistas do laboratório de dinâmicas socioambientais, promovido pelo IPAAM em parceria com o SEBRAE.</p>
+                    <h3>Parabéns aos nossos bolsistas campeões da gincana de ideação</h3>
+                    <p>Realizada pela professora Deoluci, a gincana de ideação destacou a criatividade e o trabalho em equipe dos nossos bolsistas. Um momento de aprendizado e celebração!</p>
                     <div class="news-partners">
-                        <span>Parceiros:</span>
+                        <span>Participantes:</span>
                         <div class="partner-logos">
-                            <img src="/img/favicons/Logotipo-IPAAM.png" alt="Logo IPAAM" class="partner-logo">
-                            <img src="/img/favicons/Sebrae.svg" alt="Logo SEBRAE" class="partner-logo">
+                            <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="partner-logo">
+                            <span class="community-tag">UEA</span>
                         </div>
                     </div>
                 </div>
@@ -359,8 +359,35 @@
                     </div>
                 </div>
             </div>
-            <!-- Nova Notícia -->
-        
+            
+            <!-- Notícia com múltiplas imagens - carrossel corrigido -->
+            <article class="news-card">
+                <div class="news-image-carousel">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-slides">
+                            <img src="img/extras/Apresentacao-dos-projetos1.jpg" alt="Apresentação dos projetos 1" class="active">
+                            <img src="img/extras/Apresentacao-dos-projetos2.jpg" alt="Apresentação dos projetos 2">
+                            <img src="img/extras/Apresentacao-dos-projetos3.jpg" alt="Apresentação dos projetos 3">
+                            <img src="img/extras/Apresentacao-dos-projetos4.jpg" alt="Apresentação dos projetos 4">
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
+                    <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
+                    <div class="carousel-indicators"></div>
+                    <div class="news-date">Abril 2024</div>
+                </div>
+                <div class="news-content">
+                    <h3>Visita Técnica às Comunidades Ribeirinhas</h3>
+                    <p>Equipe do LDS realizou visita técnica a comunidades ribeirinhas para avaliar os impactos das mudanças climáticas e discutir ações de adaptação. Durante a visita, foram realizadas reuniões com lideranças locais e oficinas de sensibilização sobre os efeitos do desmatamento na região.</p>
+                    <div class="news-partners">
+                        <span>Parceiros:</span>
+                        <div class="partner-logos">
+                            <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="partner-logo">
+                            <span class="community-tag">Comunidade São Jorge</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
 </section>
@@ -508,6 +535,16 @@
         <!-- Remover todo o conteúdo do modal -->
     </div>
     <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Garantir que o carrossel seja inicializado também após o carregamento total
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof initNewsCarousels === 'function') {
+                    initNewsCarousels();
+                }
+            }, 100);
+        });
+    </script>
 </body>
 
 </html>
