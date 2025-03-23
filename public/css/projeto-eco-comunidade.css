@@ -1778,6 +1778,10 @@ p {
     transition: opacity 0.5s ease;
 }
 
+.news-image-carousel .carousel-slides img.active {
+    display: block;
+    opacity: 1;
+}
 /* Melhorar a visibilidade e o estilo dos botões de navegação */
 .carousel-nav {
     position: absolute;
@@ -1871,7 +1875,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-radius: var(--border-radius) var (--border-radius) 0 0;
 }
 
 .news-video .news-date {

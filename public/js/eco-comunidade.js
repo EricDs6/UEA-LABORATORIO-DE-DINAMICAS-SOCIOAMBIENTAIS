@@ -419,6 +419,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Adicionar função para garantir carregamento dos vídeos do Vimeo
+function initVimeoVideos() {
+    console.log('Inicializando vídeos do Vimeo');
+    
+    // Carregar script do Vimeo se ainda não estiver carregado
+    if (!document.querySelector('script[src="https://player.vimeo.com/api/player.js"]')) {
+        const vimeoScript = document.createElement('script');
+        vimeoScript.src = 'https://player.vimeo.com/api/player.js';
+        vimeoScript.async = true;
+        document.body.appendChild(vimeoScript);
+        
+        vimeoScript.onload = function() {
+            console.log('Script do Vimeo carregado com sucesso');
+            checkVimeoIframes();
+        };
+    } else {
+        checkVimeoIframes();
+    }
+}
+
+function checkVimeoIframes() {
+    // Verificar todos os iframes do Vimeo e recarregá-los se necessário
+    const vimeoIframes = document.querySelectorAll('iframe[src*="player.vimeo.com"]');
+    console.log(`Encontrados ${vimeoIframes.length} iframes do Vimeo`);
+    
+    vimeoIframes.forEach((iframe, index) => {
+        console.log(`Verificando iframe ${index + 1}`);
+        
+        // Garantir que o iframe esteja visível
+        iframe.style.display = 'block';
+        
+        // Recarregar o iframe se necessário
+        const currentSrc = iframe.getAttribute('src');
+        iframe.setAttribute('src', currentSrc);
+    });
+}
+
+// Adicionar a função ao carregamento da página e window.load
+document.addEventListener('DOMContentLoaded', initVimeoVideos);
+window.addEventListener('load', () => {
+    setTimeout(initVimeoVideos, 1000);
+});
+
 // Disponibilizar a função globalmente também fora do DOMContentLoaded
 // para garantir que esteja acessível o mais cedo possível
 console.log('Definindo função initNewsCarousels global');
