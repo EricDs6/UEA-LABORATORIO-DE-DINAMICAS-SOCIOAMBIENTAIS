@@ -164,69 +164,61 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adicionar transição suave ao header
     header.style.transition = 'top 0.3s';
 
-    // Função corrigida para inicializar carrosséis de imagens nas notícias
+    // Função otimizada para inicializar carrosséis de imagens nas notícias
     function initNewsCarousels() {
-        console.log('Iniciando função initNewsCarousels');
+        console.log('Inicializando carrosséis de notícias');
         const newsCarousels = document.querySelectorAll('.news-image-carousel');
         
         if (newsCarousels.length === 0) {
-            console.warn('Nenhum carrossel de notícias encontrado. Verifique se a classe .news-image-carousel existe no HTML.');
+            console.log('Nenhum carrossel de notícias encontrado');
             return;
         }
         
-        console.log(`Inicializando ${newsCarousels.length} carrosséis de notícias`);
-        
         newsCarousels.forEach((carousel, carouselIndex) => {
-            console.log(`Configurando carrossel #${carouselIndex}`);
-            
-            // Verificar estrutura do carrossel
-            const slidesContainer = carousel.querySelector('.carousel-slides');
-            if (!slidesContainer) {
-                console.error(`Carrossel #${carouselIndex} não possui o container .carousel-slides`);
-                return;
-            }
-            
-            const slides = slidesContainer.querySelectorAll('img');
-            if (!slides.length) {
-                console.error(`Carrossel #${carouselIndex} não tem imagens dentro de .carousel-slides`);
-                return;
-            }
-            
-            console.log(`Carrossel #${carouselIndex} tem ${slides.length} slides`);
-            
-            // Remover handlers de eventos anteriores para evitar duplicação
+            // Limpar os event listeners anteriores para evitar duplicações
             const oldPrevBtn = carousel.querySelector('.carousel-nav.prev');
             const oldNextBtn = carousel.querySelector('.carousel-nav.next');
-            const oldIndicators = carousel.querySelector('.carousel-indicators');
             
-            if (oldPrevBtn) oldPrevBtn.replaceWith(oldPrevBtn.cloneNode(true));
-            if (oldNextBtn) oldNextBtn.replaceWith(oldNextBtn.cloneNode(true));
-            if (oldIndicators) oldIndicators.innerHTML = '';
+            if (oldPrevBtn) {
+                const newPrevBtn = oldPrevBtn.cloneNode(true);
+                oldPrevBtn.parentNode.replaceChild(newPrevBtn, oldPrevBtn);
+            }
+            
+            if (oldNextBtn) {
+                const newNextBtn = oldNextBtn.cloneNode(true);
+                oldNextBtn.parentNode.replaceChild(newNextBtn, oldNextBtn);
+            }
+            
+            // Obter elementos do carrossel
+            const slidesContainer = carousel.querySelector('.carousel-slides');
+            if (!slidesContainer) return;
+            
+            const slides = slidesContainer.querySelectorAll('img');
+            if (slides.length <= 0) return;
             
             // Botões de navegação
-            let prevBtn = carousel.querySelector('.carousel-nav.prev');
-            let nextBtn = carousel.querySelector('.carousel-nav.next');
+            const prevBtn = carousel.querySelector('.carousel-nav.prev');
+            const nextBtn = carousel.querySelector('.carousel-nav.next');
             
             // Container de indicadores
             let indicatorsContainer = carousel.querySelector('.carousel-indicators');
             if (!indicatorsContainer) {
-                console.log(`Criando container de indicadores para carrossel #${carouselIndex}`);
                 indicatorsContainer = document.createElement('div');
                 indicatorsContainer.className = 'carousel-indicators';
                 carousel.appendChild(indicatorsContainer);
+            } else {
+                indicatorsContainer.innerHTML = '';
             }
             
-            // Resetar estado atual do carrossel
+            // Configurar estado inicial
             let currentSlide = 0;
-            let autoSlideTimer;
-            
-            // Limpar indicadores existentes
-            indicatorsContainer.innerHTML = '';
+            let autoSlideTimer = null;
             
             // Garantir que apenas uma imagem esteja ativa inicialmente
             slides.forEach(slide => slide.classList.remove('active'));
+            slides[0].classList.add('active');
             
-            // Criar indicadores dinamicamente
+            // Criar indicadores
             slides.forEach((_, index) => {
                 const indicator = document.createElement('button');
                 indicator.classList.add('carousel-indicator');
@@ -236,22 +228,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 indicatorsContainer.appendChild(indicator);
             });
             
-            const indicatorDots = carousel.querySelectorAll('.carousel-indicator');
-            
-            // Ativar primeiro slide
-            if (slides.length > 0) {
-                slides[0].classList.add('active');
-            }
+            const indicators = carousel.querySelectorAll('.carousel-indicator');
             
             function goToSlide(index) {
-                console.log(`Mudando para slide ${index} no carrossel #${carouselIndex}`);
+                // Remover classe active do slide atual
                 slides[currentSlide].classList.remove('active');
-                if (indicatorDots[currentSlide]) indicatorDots[currentSlide].classList.remove('active');
+                if (indicators[currentSlide]) indicators[currentSlide].classList.remove('active');
                 
+                // Atualizar índice e adicionar classe active ao novo slide
                 currentSlide = index;
-                
                 slides[currentSlide].classList.add('active');
-                if (indicatorDots[currentSlide]) indicatorDots[currentSlide].classList.add('active');
+                if (indicators[currentSlide]) indicators[currentSlide].classList.add('active');
             }
             
             function nextSlide() {
@@ -262,45 +249,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 goToSlide((currentSlide - 1 + slides.length) % slides.length);
             }
             
-            // Criar botões de navegação se não existirem e adicionar event listeners
-            if (!prevBtn) {
-                console.log(`Criando botão de navegação anterior para carrossel #${carouselIndex}`);
-                prevBtn = document.createElement('button');
-                prevBtn.className = 'carousel-nav prev';
-                prevBtn.innerHTML = '&#10094;';
-                prevBtn.setAttribute('aria-label', 'Imagem anterior');
-                carousel.appendChild(prevBtn);
-            }
-            
-            prevBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                clearInterval(autoSlideTimer);
-                prevSlide();
-                startAutoSlide();
-            });
-            
-            if (!nextBtn) {
-                console.log(`Criando botão de navegação próximo para carrossel #${carouselIndex}`);
-                nextBtn = document.createElement('button');
-                nextBtn.className = 'carousel-nav next';
-                nextBtn.innerHTML = '&#10095;';
-                nextBtn.setAttribute('aria-label', 'Próxima imagem');
-                carousel.appendChild(nextBtn);
-            }
-            
-            nextBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                clearInterval(autoSlideTimer);
-                nextSlide();
-                startAutoSlide();
-            });
-            
-            // Iniciar carrossel automático com função específica
             function startAutoSlide() {
                 if (autoSlideTimer) clearInterval(autoSlideTimer);
                 if (slides.length > 1) {
                     autoSlideTimer = setInterval(nextSlide, 5000);
                 }
+            }
+            
+            function stopAutoSlide() {
+                if (autoSlideTimer) {
+                    clearInterval(autoSlideTimer);
+                    autoSlideTimer = null;
+                }
+            }
+            
+            // Adicionar event listeners
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    stopAutoSlide();
+                    prevSlide();
+                    startAutoSlide();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    stopAutoSlide();
+                    nextSlide();
+                    startAutoSlide();
+                });
             }
             
             // Iniciar carrossel automático se houver mais de uma imagem
@@ -310,43 +289,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (nextBtn) nextBtn.style.display = 'block';
                 indicatorsContainer.style.display = 'flex';
                 
-                console.log(`Iniciando carrossel automático para carrossel #${carouselIndex}`);
                 startAutoSlide();
                 
                 // Pausar autoplay ao passar o mouse
-                carousel.addEventListener('mouseenter', () => {
-                    clearInterval(autoSlideTimer);
-                });
-                
-                carousel.addEventListener('mouseleave', () => {
-                    startAutoSlide();
-                });
+                carousel.addEventListener('mouseenter', stopAutoSlide);
+                carousel.addEventListener('mouseleave', startAutoSlide);
                 
                 // Suporte para gestos de swipe em dispositivos móveis
                 let touchStartX = 0;
-                let touchEndX = 0;
                 
                 carousel.addEventListener('touchstart', (e) => {
                     touchStartX = e.changedTouches[0].screenX;
                 }, { passive: true });
                 
                 carousel.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }, { passive: true });
-                
-                function handleSwipe() {
-                    clearInterval(autoSlideTimer);
-                    if (touchEndX < touchStartX - 30) {
+                    const touchEndX = e.changedTouches[0].screenX;
+                    const diff = touchEndX - touchStartX;
+                    
+                    stopAutoSlide();
+                    if (diff < -30) {
                         nextSlide(); // Swipe para a esquerda
-                    } else if (touchEndX > touchStartX + 30) {
+                    } else if (diff > 30) {
                         prevSlide(); // Swipe para a direita
                     }
                     startAutoSlide();
-                }
+                }, { passive: true });
             } else {
                 // Esconder navegação se houver apenas uma imagem
-                console.log(`Carrossel #${carouselIndex} tem apenas uma imagem, ocultando controles de navegação`);
                 if (prevBtn) prevBtn.style.display = 'none';
                 if (nextBtn) nextBtn.style.display = 'none';
                 indicatorsContainer.style.display = 'none';
@@ -357,56 +326,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Garantir que a função initNewsCarousels esteja disponível globalmente
     window.initNewsCarousels = initNewsCarousels;
     
-    // Inicializar carrosséis de notícias na carga do DOM
-    console.log('Agendando inicialização de carrosséis');
-    
-    // Primeiro, tentar inicializar imediatamente
+    // Inicializar carrosséis logo que possível
     initNewsCarousels();
-    
-    // Como fallback, tentar novamente após pequenos atrasos crescentes
-    setTimeout(() => {
-        console.log('Tentando inicializar carrosséis novamente após 500ms');
-        initNewsCarousels();
-    }, 500);
-    
-    setTimeout(() => {
-        console.log('Tentando inicializar carrosséis novamente após 1500ms');
-        initNewsCarousels();
-    }, 1500);
 });
 
-// Garantir que o carrossel seja inicializado quando a página estiver completamente carregada
+// Inicializar carrosséis novamente após a carga completa da página
 window.addEventListener('load', () => {
-    console.log('Evento load disparado');
-    if (typeof initNewsCarousels === 'function') {
-        console.log('Inicializando carrosséis após carga completa');
-        initNewsCarousels();
-        
-        // Adicionar um MutationObserver para detectar mudanças no DOM
-        const observer = new MutationObserver((mutations) => {
-            // Verificar se alguma alteração afeta os carrosséis
-            for (let mutation of mutations) {
-                if (mutation.type === 'childList' || 
-                    (mutation.target.classList && 
-                     mutation.target.classList.contains('news-image-carousel'))) {
-                    console.log('Mudanças no DOM detectadas, reinicializando carrosséis');
+    // Garantir que todos os recursos estejam carregados antes de inicializar
+    setTimeout(() => {
+        if (typeof initNewsCarousels === 'function') {
+            initNewsCarousels();
+            
+            // Observar mudanças no DOM que possam afetar os carrosséis
+            const newsContainer = document.querySelector('.news-grid');
+            if (newsContainer && 'MutationObserver' in window) {
+                const observer = new MutationObserver(() => {
                     initNewsCarousels();
-                    break;
-                }
+                });
+                
+                observer.observe(newsContainer, {
+                    childList: true,
+                    subtree: true
+                });
             }
-        });
-        
-        // Observar mudanças no container de notícias
-        const newsSection = document.querySelector('.news-grid');
-        if (newsSection) {
-            observer.observe(newsSection, { 
-                childList: true, 
-                subtree: true, 
-                attributes: true,
-                attributeFilter: ['class']
-            });
         }
-    } else {
-        console.error('Função initNewsCarousels não foi definida corretamente');
-    }
+    }, 500);
 });
