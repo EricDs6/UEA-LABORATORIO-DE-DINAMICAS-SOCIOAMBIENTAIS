@@ -124,20 +124,43 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Inicializar carrosséis de imagens nas notícias - versão corrigida
     function initNewsCarousels() {
+        console.log('Inicializando carrosséis de notícias');
         const newsCarousels = document.querySelectorAll('.news-image-carousel');
         
         newsCarousels.forEach((carousel) => {
+            // Limpar event listeners existentes para evitar duplicações
+            const oldPrevBtn = carousel.querySelector('.carousel-nav.prev');
+            const oldNextBtn = carousel.querySelector('.carousel-nav.next');
+            
+            if (oldPrevBtn) {
+                const newPrevBtn = oldPrevBtn.cloneNode(true);
+                oldPrevBtn.parentNode.replaceChild(newPrevBtn, oldPrevBtn);
+            }
+            
+            if (oldNextBtn) {
+                const newNextBtn = oldNextBtn.cloneNode(true);
+                oldNextBtn.parentNode.replaceChild(newNextBtn, oldNextBtn);
+            }
+            
             const slidesContainer = carousel.querySelector('.carousel-slides');
-            if (!slidesContainer) return;
+            if (!slidesContainer) {
+                console.log('Container de slides não encontrado');
+                return;
+            }
             
             const slides = slidesContainer.querySelectorAll('img');
-            if (slides.length <= 1) return;
+            if (slides.length <= 1) {
+                console.log('Não há slides suficientes para criar um carrossel');
+                return;
+            }
+            
+            console.log(`Carrossel iniciado com ${slides.length} slides`);
             
             // Botões de navegação
             const prevBtn = carousel.querySelector('.carousel-nav.prev');
             const nextBtn = carousel.querySelector('.carousel-nav.next');
             
-            // Container de indicadores
+            // Container de indicadores - limpar e recriar
             let indicatorsContainer = carousel.querySelector('.carousel-indicators');
             if (!indicatorsContainer) {
                 indicatorsContainer = document.createElement('div');
@@ -167,9 +190,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 indicatorsContainer.appendChild(indicator);
             });
             
-            const indicators = carousel.querySelectorAll('.carousel-indicator');
+            const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
             
             function goToSlide(index) {
+                console.log(`Indo para o slide ${index}`);
                 slides[currentSlide].classList.remove('active');
                 if (indicators[currentSlide]) indicators[currentSlide].classList.remove('active');
                 
@@ -198,10 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Adicionar event listeners
+            // Adicionar event listeners para os botões de navegação
             if (prevBtn) {
                 prevBtn.addEventListener('click', (e) => {
                     e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Botão anterior clicado');
                     stopAutoSlide();
                     prevSlide();
                     startAutoSlide();
@@ -211,6 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (nextBtn) {
                 nextBtn.addEventListener('click', (e) => {
                     e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Botão próximo clicado');
                     stopAutoSlide();
                     nextSlide();
                     startAutoSlide();
@@ -249,13 +277,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar carrosséis de notícias
     initNewsCarousels();
     
-    // Reiniciar carrosséis quando a página estiver totalmente carregada
+    // Garantir que os carrosséis sejam inicializados após o carregamento completo da página
     window.addEventListener('load', () => {
         setTimeout(() => {
+            console.log('Reinicializando carrosséis após carregamento completo');
             initNewsCarousels();
         }, 500);
     });
-    
+
     // Funcionalidade para o botão "Carregar mais notícias"
     const loadMoreButton = document.querySelector('.load-more-button');
     if (loadMoreButton) {
