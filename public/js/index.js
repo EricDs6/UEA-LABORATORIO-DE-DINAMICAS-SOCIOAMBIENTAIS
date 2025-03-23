@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             function startAutoSlide() {
                 if (autoSlideTimer) clearInterval(autoSlideTimer);
                 if (slides.length > 1) {
-                    autoSlideTimer = setInterval(nextSlide, 5000);
+                    autoSlideTimer = setInterval(nextSlide, 2000);  // Alterado de 5000 para 2000 ms
                 }
             }
             
