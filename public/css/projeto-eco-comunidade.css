@@ -1015,20 +1015,50 @@ h2 {
     margin-bottom: 2rem;
 }
 
+/* Melhorias para exibição de logos de parceiros */
 .news-partners {
-    padding-top: 1.5rem;
+    margin-top: auto;
+        padding-top: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
 }
 
+.news-partners p {
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
 .partner-logos {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem;
+    gap: 1rem;
     align-items: center;
     margin-top: 0.5rem;
 }
 
+.partner-logo {
+    height: 35px;
+    width: auto;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+    object-fit: contain;
+    max-width: 120px;
+}
+
+.partner-logo:hover {
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .partner-logo {
+        height: 30px;
+        max-width: 100px;
+    }
+
+    .partner-logos {
+        gap: 0.8rem;
+    }
+}
 /* Carrossel nas notícias */
 .news-image-carousel {
     position: relative;
