@@ -1743,18 +1743,17 @@ p {
 /* Carrossel nas notícias */
 .news-image-carousel {
     position: relative;
-    height: 220px;
+    height: 0;
+    padding-bottom: 56.25%; /* Proporção 16:9, igual ao vídeo */
     overflow: hidden;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-        background-color: #f0f0f0;
-    }
-    
-    .news-image-carousel:hover .carousel-nav {
-        opacity: 1;
+    background-color: #f0f0f0;
 }
 
 .carousel-wrapper {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -1766,7 +1765,7 @@ p {
     position: relative;
 }
 
-/* Corrigir o display de imagens para garantir visibilidade */
+/* Ajuste para os slides de imagem ocuparem todo o espaço disponível */
 .carousel-slides img {
     position: absolute;
     top: 0;
@@ -1777,12 +1776,6 @@ p {
     display: none;
     opacity: 0;
     transition: opacity 0.5s ease;
-}
-
-.carousel-slides img.active {
-    opacity: 1;
-    display: block;
-    z-index: 1;
 }
 
 /* Melhorar a visibilidade e o estilo dos botões de navegação */
@@ -1864,14 +1857,21 @@ p {
 /* Vídeos em notícias */
 .news-video {
     position: relative;
-    height: auto;
+    height: 0;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
     overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    background-color: #000;
 }
 
-.news-video iframe {
+.news-video iframe, 
+.news-video > div {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-    display: block;
-    background-color: #000;
 }
 
 .news-video .news-date {
