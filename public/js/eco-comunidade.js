@@ -329,4 +329,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Carregar scripts do Vimeo apenas uma vez
+    if (!document.querySelector('script[src="https://player.vimeo.com/api/player.js"]')) {
+        const vimeoScript = document.createElement('script');
+        vimeoScript.src = 'https://player.vimeo.com/api/player.js';
+        document.body.appendChild(vimeoScript);
+    }
 });

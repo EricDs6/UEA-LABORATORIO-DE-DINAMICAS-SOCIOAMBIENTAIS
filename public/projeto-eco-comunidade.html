@@ -76,22 +76,7 @@
             </div>
         </section>
 
-        <section class="project-actions">
-            <div class="container">
-                <h2>Ações do Projeto</h2>
-                <div class="highlight-carousel">
-                    <div class="carousel-slide active">
-                        <img src="/img/projetos/eco-comunidade/acao1.jpg" alt="Ação 1" loading="lazy">
-                        <div class="carousel-content">
-                            <p><a href="#acoes">Em breve</a></p>
-                        </div>
-                    </div>
-                    <div class="carousel-dots"></div>
-                    <button class="carousel-prev">❮</button>
-                    <button class="carousel-next">❯</button>
-                </div>
-            </div>
-        </section>
+
 
         <!-- Nova seção de notícias do projeto -->
         <section class="project-news">
@@ -160,10 +145,15 @@
                     <!-- Notícia com vídeo do Vimeo -->
                     <article class="news-card">
                         <div class="news-video">
-                            <div class="video-placeholder" data-video-id="1068600491" data-video-title="primeira-colheita" data-video-hash="783861284a">
-                                <img src="img/projetos/eco-comunidade/capa-vid-primeira-colheita.png" alt="Primeira colheita do projeto" loading="lazy">
-                                <div class="video-play-icon">▶</div>
+                            <div style="padding:100% 0 0 0;position:relative;">
+                                <iframe src="https://player.vimeo.com/video/1068600491?h=783861284a&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&loop=0&title=0&byline=0&portrait=0&controls=0&sidedock=0" 
+                                    frameborder="0" 
+                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                                    title="primeira-colheita">
+                                </iframe>
                             </div>
+                            <script src="https://player.vimeo.com/api/player.js"></script>
                             <div class="news-date">7 de abril de 2024</div>
                         </div>
                         <div class="news-content">
@@ -256,7 +246,7 @@
             mobileMenuBtn.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
                 mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-                mobileMenuBtn.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+                mobileMenuBtn.setAttribute('aria-expanded', navLinks.class.contains('active'));
             });
             
             // Fecha menu ao clicar nos links
