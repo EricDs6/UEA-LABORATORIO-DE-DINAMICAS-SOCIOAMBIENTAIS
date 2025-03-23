@@ -4490,3 +4490,77 @@ body {
         transform: scale(1.2);
     }
 }
+/* Indicadores de carrossel tipo tracinhos */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 3px 6px;
+    border-radius: 10px;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 1px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.carousel-indicator.active {
+    background: var(--primary-color);
+    width: 16px;
+}
+
+@media (max-width: 768px) {
+    .carousel-indicators {
+        padding: 2px 5px;
+        gap: 3px;
+        bottom: 8px;
+    }
+
+    .carousel-indicator {
+        width: 10px;
+        height: 3px;
+        /* Mantida a altura igual à desktop para forma de tracinho */
+        border-radius: 1px;
+        /* Mantido para preservar o formato de tracinho */
+    }
+
+    .carousel-indicator.active {
+        width: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-indicators {
+        padding: 2px 4px;
+        gap: 3px;
+        bottom: 5px;
+    }
+
+    .carousel-indicator {
+        width: 8px;
+        height: 3px;
+        /* Mantida a altura igual à desktop para forma de tracinho */
+        border-radius: 1px;
+        /* Mantido para preservar o formato de tracinho */
+    }
+
+    .carousel-indicator.active {
+        width: 12px;
+    }
+}

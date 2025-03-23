@@ -308,7 +308,7 @@ nav {
 .project-hero {
     height: 100vh;
     width: 100%;
-        position: relative;
+    position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -322,7 +322,7 @@ nav {
     content: '';
     position: absolute;
     top: 0;
-        left: 0;
+    left: 0;
         right: 0;
         bottom: 0;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
@@ -331,19 +331,19 @@ nav {
 
 .project-hero-content {
     position: relative;
-        z-index: 2;
+    z-index: 2;
     text-align: center;
     color: var(--white);
     padding: 2rem;
-        max-width: 800px;
+    max-width: 800px;
         margin: 0 auto;
 }
 
 .project-hero-content p {
     font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-        line-height: 1.6;
+    line-height: 1.6;
     margin: 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         font-weight: 400;
 }
 
@@ -351,7 +351,7 @@ nav {
 .project-details {
     padding: 4rem 0;
     margin-top: -4rem;
-        position: relative;
+    position: relative;
         z-index: 2;
         background: linear-gradient(180deg, transparent 0%, var(--background-light) 100px);
     }
@@ -396,7 +396,7 @@ nav {
     margin-bottom: 2rem;
     box-shadow: var(--card-shadow);
     transition: transform 0.3s ease;
-        will-change: transform;
+    will-change: transform;
         position: relative;
     }
     
@@ -460,7 +460,7 @@ nav {
 .project-actions {
     padding: 6rem 0;
     background: var(--background-light);
-        position: relative;
+    position: relative;
         overflow: hidden;
     }
     
@@ -772,7 +772,7 @@ h2 {
         box-shadow: 0 2px 10px var(--shadow);
         z-index: 1000;
         flex-direction: column;
-            padding: 1rem;
+        padding: 1rem;
             gap: 1.5rem;
     }
 
@@ -1206,28 +1206,28 @@ p {
 
 .featured-content {
     padding: 3rem;
-        background: var(--white);
+    background: var(--white);
 }
 
 .featured-content h3 {
     font-size: 2.5rem;
-        margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
     color: var(--secondary-color);
     font-family: 'Montserrat', sans-serif;
-        line-height: 1.2;
+    line-height: 1.2;
     }
     
     .featured-content p {
         font-size: 1.1rem;
         line-height: 1.8;
-        color: var(--text-color);
+    color: var (--text-color);
         margin-bottom: 2rem;
 }
 
 .featured-meta {
     display: flex;
     gap: 1.5rem;
-        align-items: center;
+    align-items: center;
 }
 
 .featured-tag {
@@ -1249,27 +1249,27 @@ p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
-        margin: 0 auto;
+    margin: 0 auto;
         max-width: 1200px;
         padding: 0 2rem;
 }
 
 .info-card {
     background: linear-gradient(145deg, var(--white), #f8f9fa);
-        padding: 3rem;
+    padding: 3rem;
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
     transition: transform 0.3s ease;
-    }
-    
-    .info-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--hover-shadow);
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
 }
 
 .info-icon {
     font-size: 3rem;
-        margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
         color: var(--text-color);
         transition: transform 0.3s ease;
     }
@@ -1295,7 +1295,7 @@ p {
         padding-left: 2rem;
     margin-bottom: 1rem;
     font-size: 1.1rem;
-        color: var (--text-color);
+    color: var (--text-color);
 }
 
 .info-card li::before {
@@ -1334,7 +1334,7 @@ p {
 .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 3rem;
+    gap: 3rem;
         margin: 0 auto;
         max-width: 1200px;
         padding: 0 2rem;
@@ -1390,7 +1390,7 @@ p {
 .news-content h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-        color: var(--secondary-color);
+    color: var(--secondary-color);
         font-family: 'Montserrat', sans-serif;
         line-height: 1.3;
     }
@@ -1412,18 +1412,19 @@ p {
     align-items: center;
     gap: 1.5rem;
     margin-top: 1rem;
-    }
-    
-    .partner-logo {
-        height: 30px;
-        width: auto;
-        opacity: 0.8;
-        transition: opacity 0.3s ease;
-    }
-    
-    .partner-logo:hover {
-        opacity: 1;
-    }
+}
+
+.partner-logo {
+    height: 30px;
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.partner-logo:hover {
+    opacity: 1;
+}
+
 .community-tag {
     background: var(--gradient-primary);
     color: var(--secondary-color);
@@ -1432,6 +1433,7 @@ p {
     font-size: 0.9rem;
     font-weight: 600;
 }
+
 /* Melhorias para responsividade do projeto */
 @media (max-width: 768px) {
     .project-hero {
@@ -1503,13 +1505,13 @@ p {
 
 @media (max-width: 480px) {
     .container {
-            padding: 0 1rem;
+        padding: 0 1rem;
         }
-    
+        
         .featured-content h3 {
             font-size: 1.25rem;
         }
-    
+        
         .news-date {
             font-size: 0.875rem;
         }
@@ -1595,6 +1597,7 @@ p {
         background: var(--primary-dark);
     }
 }
+
 /* Seção de Notícias do Projeto */
 .project-news {
     padding: 6rem 0;
@@ -1782,6 +1785,7 @@ p {
     display: block;
     opacity: 1;
 }
+
 /* Melhorar a visibilidade e o estilo dos botões de navegação */
 .carousel-nav {
     position: absolute;
@@ -1807,6 +1811,7 @@ p {
 .news-image-carousel:hover .carousel-nav {
     opacity: 1;
 }
+
 .carousel-nav:hover {
     background: rgba(0, 0, 0, 0.9);
     transform: translateY(-50%) scale(1.1);
@@ -1820,42 +1825,92 @@ p {
     right: 10px;
 }
 
-/* Melhorar a visibilidade dos indicadores */
+/* Melhorias para os indicadores do carrossel - estilo de tracinhos discretos */
 .carousel-indicators {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px;
+    gap: 4px;
     z-index: 10;
-        background: rgba(0, 0, 0, 0.3);
-        padding: 5px 10px;
-        border-radius: 20px;
+    background: rgba(0, 0, 0, 0.2);
+        padding: 3px 6px;
+        border-radius: 10px;
 }
 
 .carousel-indicator {
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.7);
+    width: 12px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.5);
     border: none;
-    border-radius: 50%;
+    border-radius: 1px;
     padding: 0;
     margin: 0;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
-        outline: none;
+    outline: none;
     }
     
-    .carousel-indicator:hover {
-        background: rgba(255, 255, 255, 0.9);
-        transform: scale(1.1);
+.carousel-indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+        transform: scaleX(1.1);
 }
 
 .carousel-indicator.active {
     background: var(--primary-color);
-    transform: scale(1.2);
+    transform: scaleX(1.1);
+        width: 16px;
+    }
+    
+    /* Ajustes responsivos para os indicadores - versão ainda mais discreta para mobile */
+    @media (max-width: 768px) {
+        .carousel-indicators {
+            padding: 2px 5px;
+            gap: 3px;
+            bottom: 8px;
+            background: rgba(0, 0, 0, 0.15);
+        }
+    
+        .carousel-indicator {
+            width: 10px;
+            height: 3px;
+            /* Mantida a altura igual à desktop */
+            border-radius: 1px;
+            /* Mantido o formato de tracinho */
+        }
+    
+        .carousel-indicator.active {
+            width: 14px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .carousel-indicators {
+            padding: 2px 4px;
+            gap: 3px;
+            bottom: 5px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+    
+        .carousel-indicator {
+            width: 8px;
+            height: 3px;
+            /* Mantida a altura igual à desktop */
+            border-radius: 1px;
+            /* Mantido o formato de tracinho */
+        }
+    
+        .carousel-indicator.active {
+            width: 12px;
+        }
+    }
+    
+    /* Ajustes específicos para carrossel em notícias */
+    .news-image-carousel .carousel-indicators {
+        bottom: 40px;
+        /* Posicionar acima da data */
 }
 
 /* Vídeos em notícias */
@@ -1864,7 +1919,7 @@ p {
     height: 0;
     padding-bottom: 56.25%; /* Proporção 16:9 */
     overflow: hidden;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-radius: var(--border-radius) var (--border-radius) 0 0;
     background-color: #000;
     z-index: 1;
 }
@@ -1876,7 +1931,7 @@ p {
     width: 100%;
     height: 100%;
     border: none;
-        z-index: 2;
+    z-index: 2;
 }
 
 .news-video .news-date {
@@ -1896,17 +1951,15 @@ p {
 @media (max-width: 768px) {
     .news-video {
         height: 0;
-            padding-bottom: 56.25%;
-            /* Manter proporção 16:9 */
+        padding-bottom: 56.25%;
     }
 }
 
 @media (max-width: 480px) {
     .news-video {
         height: 0;
-            padding-bottom: 56.25%;
-            /* Manter proporção 16:9 */
-        }
+        padding-bottom: 56.25%;
+    
 }
 
 /* Botão de carregar mais */
@@ -1998,18 +2051,7 @@ p {
 
     .news-content p {
         font-size: 0.9rem;
-    }
-
-    .video-play-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-    }
-
-    .load-more-button {
-        padding: 0.7rem 1.6rem;
-        font-size: 0.95rem;
-    }
+    
 }
 
 /* Estilos para o modal de vídeo */
@@ -2021,11 +2063,11 @@ p {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.9);
     display: flex;
-    align-items: center;
     justify-content: center;
-    z-index: 9999;
+    align-items: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    z-index: 9999;
 }
 
 .video-modal.active {
@@ -2038,8 +2080,8 @@ p {
     max-width: 960px;
     background-color: #000;
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .video-modal-close {
@@ -2047,15 +2089,14 @@ p {
     top: 10px;
     right: 10px;
     background: rgba(0, 0, 0, 0.5);
-    border: none;
     color: white;
     font-size: 24px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     cursor: pointer;
     z-index: 1;
     transition: all 0.3s ease;

@@ -225,6 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (index === 0) indicator.classList.add('active');
                 indicator.setAttribute('aria-label', `Imagem ${index + 1}`);
                 indicator.addEventListener('click', () => goToSlide(index));
+                // Remover o uso do elemento span interno
+                
                 indicatorsContainer.appendChild(indicator);
             });
             

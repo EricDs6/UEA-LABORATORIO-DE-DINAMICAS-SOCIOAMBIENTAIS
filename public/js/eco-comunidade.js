@@ -212,13 +212,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
             console.log(`Criando ${slides.length} indicadores para o carrossel #${carouselIndex}`);
             
-            // Criar indicadores
+            // Criar indicadores como tracinhos
             slides.forEach((_, index) => {
                 const indicator = document.createElement('button');
                 indicator.classList.add('carousel-indicator');
                 if (index === 0) indicator.classList.add('active');
-                indicator.setAttribute('aria-label', `Imagem ${index + 1}`);
+                indicator.setAttribute('aria-label', `Slide ${index + 1}`);
                 indicator.addEventListener('click', () => goToSlide(index));
+                // Não adicionamos mais o elemento interno span, já que agora são tracinhos simples
+                
                 indicatorsContainer.appendChild(indicator);
             });
             
