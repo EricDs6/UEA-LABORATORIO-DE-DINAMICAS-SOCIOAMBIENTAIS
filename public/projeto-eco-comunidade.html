@@ -76,8 +76,6 @@
             </div>
         </section>
 
-
-
         <!-- Nova seção de notícias do projeto -->
         <section class="project-news">
             <div class="container">
@@ -85,26 +83,7 @@
                 <p class="section-description">Acompanhe as últimas atualizações e atividades do projeto ECOCOMUNIDADE</p>
                 
                 <div class="news-grid">
-                    <!-- Notícia com imagem -->
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="/img/projetos/eco-comunidade/eco-comunidade.jpg" alt="Oficina de Compostagem" loading="lazy">
-                            <div class="news-date">20 de junho de 2024</div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Oficina de Compostagem na Comunidade Chico Xavier</h3>
-                            <p>O projeto ECOCOMUNIDADE realizou uma oficina prática de compostagem para os moradores da Comunidade Chico Xavier, ensinando técnicas de aproveitamento de resíduos orgânicos e produção de adubo natural.</p>
-                            <div class="news-partners">
-                                <span>Parceiros:</span>
-                                <div class="partner-logos">
-                                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="partner-logo">
-                                    <span class="community-tag">Comunidade Chico Xavier</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Notícia com múltiplas imagens (carrossel) -->
+                    <!-- NOTÍCIA COM CARROSSEL - REFATORADA PARA SEGUIR O MESMO PADRÃO DA INDEX -->
                     <article class="news-card">
                         <div class="news-image-carousel">
                             <div class="carousel-wrapper">
@@ -116,11 +95,12 @@
                                     <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-5.jpg" alt="Replantio 5">
                                     <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-6.jpg" alt="Replantio 6">
                                     <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-7.jpg" alt="Replantio 7">
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-8.jpg" alt="Replantio 7">
-
+                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-8.jpg" alt="Replantio 8">
                                 </div>
                             </div>
-                            <!-- Navegação e indicadores serão injetados via JavaScript -->
+                            <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
+                            <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
+                            <div class="carousel-indicators"></div>
                             <div class="news-date">15 de maio de 2024</div>
                         </div>
                         <div class="news-content">
@@ -163,26 +143,11 @@
                         </div>
                     </article>
                     
-                    <!-- Espaço para uma quarta notícia -->
+                    <!-- Espaço para uma terceira notícia -->
                     <article class="news-card">
-                        <div class="news-image">
-                            <img src="/img/projetos/nao-esquenta/nao-esquenta-small.jpg" alt="Palestra de Educação Ambiental" loading="lazy">
-                            <div class="news-date">10 de março de 2024</div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Palestra sobre Educação Ambiental nas Escolas</h3>
-                            <p>O projeto ECOCOMUNIDADE realizou uma série de palestras sobre educação ambiental em escolas públicas de Itacoatiara, alcançando mais de 300 estudantes e promovendo a conscientização sobre a preservação do meio ambiente.</p>
-                            <div class="news-partners">
-                                <span>Parceiros:</span>
-                                <div class="partner-logos">
-                                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="partner-logo">
-                                    <span class="community-tag">Secretaria de Educação</span>
-                                </div>
-                            </div>
-                        </div>
                     </article>
                 </div>
-                
+
                 <!-- Botão para carregar mais notícias -->
                 <div class="load-more-container">
                     <button class="load-more-button">Carregar mais notícias</button>
@@ -304,5 +269,72 @@
             }, 1000);
         });
     </script>
+    <script>
+    // Script para verificação adicional do carrossel
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Verificando carrossel na DOMContentLoaded');
+        
+        // Adicionar classe active ao primeiro slide caso não exista
+        const carouselSlides = document.querySelectorAll('.carousel-slides img');
+        if (carouselSlides.length > 0 && !carouselSlides[0].classList.contains('active')) {
+            console.log('Adicionando classe active ao primeiro slide');
+            carouselSlides[0].classList.add('active');
+        }
+        
+        // Garantir que os carrosséis inicializem
+        if (typeof window.initNewsCarousels === 'function') {
+            window.initNewsCarousels();
+        } else {
+            console.log('Função de inicialização de carrossel não disponível ainda');
+        }
+    });
+    
+    // Verificação após carregamento completo
+    window.addEventListener('load', function() {
+        console.log('Verificando carrossel após carregamento completo');
+        setTimeout(function() {
+            if (typeof window.initNewsCarousels === 'function') {
+                window.initNewsCarousels();
+            }
+            
+            // Verificar se há algum indicador de slide criado
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            if (indicators.length === 0) {
+                console.log('Nenhum indicador encontrado, tentando reinicializar carrosséis');
+                // Última tentativa de recriar os carrosséis
+                const script = document.createElement('script');
+                script.textContent = `
+                    if (typeof window.initNewsCarousels === 'function') {
+                        console.log('Última tentativa de inicialização');
+                        window.initNewsCarousels();
+                    }
+                `;
+                document.body.appendChild(script);
+            }
+        }, 1000);
+    });
+</script>
+    <script>
+    // Script simplificado para garantir inicialização do carrossel
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded - Inicializando carrosséis');
+        
+        // Verificar se a função global existe
+        if (typeof window.initNewsCarousels === 'function') {
+            window.initNewsCarousels();
+        } else {
+            console.log('Função de carrossel não disponível ainda');
+        }
+    });
+    
+    window.addEventListener('load', function() {
+        console.log('Página carregada - Verificando carrosséis');
+        setTimeout(function() {
+            if (typeof window.initNewsCarousels === 'function') {
+                window.initNewsCarousels();
+            }
+        }, 500);
+    });
+</script>
 </body>
 </html>

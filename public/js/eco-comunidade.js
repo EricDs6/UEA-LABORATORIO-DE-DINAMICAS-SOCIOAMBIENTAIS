@@ -122,9 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     header.style.transition = 'top 0.3s';
     
-    // Inicializar carrosséis de imagens nas notícias - implementação idêntica à da página index
+    // Função padronizada para inicializar carrosséis - exatamente como na index
     function initNewsCarousels() {
-        console.log('Inicializando carrosséis de notícias (modo index)');
+        console.log('Inicializando carrosséis de notícias');
         const newsCarousels = document.querySelectorAll('.news-image-carousel');
         
         if (newsCarousels.length === 0) {
@@ -133,84 +133,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         newsCarousels.forEach((carousel, carouselIndex) => {
+            // Limpar os event listeners anteriores para evitar duplicações
+            const oldPrevBtn = carousel.querySelector('.carousel-nav.prev');
+            const oldNextBtn = carousel.querySelector('.carousel-nav.next');
+            
+            if (oldPrevBtn) {
+                const newPrevBtn = oldPrevBtn.cloneNode(true);
+                oldPrevBtn.parentNode.replaceChild(newPrevBtn, oldPrevBtn);
+            }
+            
+            if (oldNextBtn) {
+                const newNextBtn = oldNextBtn.cloneNode(true);
+                oldNextBtn.parentNode.replaceChild(newNextBtn, oldNextBtn);
+            }
+            
             // Obter elementos do carrossel
             const slidesContainer = carousel.querySelector('.carousel-slides');
-            if (!slidesContainer) {
-                console.log(`Carrossel #${carouselIndex}: Container de slides não encontrado`);
-                return;
-            }
+            if (!slidesContainer) return;
             
-            const slides = Array.from(slidesContainer.querySelectorAll('img'));
-            if (slides.length <= 1) {
-                console.log(`Carrossel #${carouselIndex}: Não há slides suficientes (${slides.length})`);
-                return;
-            }
+            const slides = slidesContainer.querySelectorAll('img');
+            if (slides.length <= 0) return;
             
-            console.log(`Carrossel #${carouselIndex}: ${slides.length} slides encontrados`);
+            // Botões de navegação
+            const prevBtn = carousel.querySelector('.carousel-nav.prev');
+            const nextBtn = carousel.querySelector('.carousel-nav.next');
             
-            // Botões de navegação - recriar para evitar duplicação de event listeners
-            let prevBtn = carousel.querySelector('.carousel-nav.prev');
-            let nextBtn = carousel.querySelector('.carousel-nav.next');
-            
-            if (prevBtn) prevBtn.remove();
-            if (nextBtn) nextBtn.remove();
-            
-            prevBtn = document.createElement('button');
-            prevBtn.className = 'carousel-nav prev';
-            prevBtn.innerHTML = '&#10094;';
-            prevBtn.setAttribute('aria-label', 'Imagem anterior');
-            
-            nextBtn = document.createElement('button');
-            nextBtn.className = 'carousel-nav next';
-            nextBtn.innerHTML = '&#10095;';
-            nextBtn.setAttribute('aria-label', 'Próxima imagem');
-            
-            carousel.appendChild(prevBtn);
-            carousel.appendChild(nextBtn);
-            
-            // Container de indicadores - recriar completamente
+            // Container de indicadores
             let indicatorsContainer = carousel.querySelector('.carousel-indicators');
-            if (indicatorsContainer) indicatorsContainer.remove();
+            if (!indicatorsContainer) {
+                indicatorsContainer = document.createElement('div');
+                indicatorsContainer.className = 'carousel-indicators';
+                carousel.appendChild(indicatorsContainer);
+            } else {
+                indicatorsContainer.innerHTML = '';
+            }
             
-            indicatorsContainer = document.createElement('div');
-            indicatorsContainer.className = 'carousel-indicators';
-            carousel.appendChild(indicatorsContainer);
-            
-            // Estado do carrossel
+            // Configurar estado inicial
             let currentSlide = 0;
             let autoSlideTimer = null;
             
-            // Resetar slides e ativar apenas o primeiro
+            // Garantir que apenas uma imagem esteja ativa inicialmente
             slides.forEach(slide => slide.classList.remove('active'));
             slides[0].classList.add('active');
             
-            // Criar indicadores para cada slide
-            for (let i = 0; i < slides.length; i++) {
+            // Criar indicadores
+            slides.forEach((_, index) => {
                 const indicator = document.createElement('button');
-                indicator.className = i === 0 ? 'carousel-indicator active' : 'carousel-indicator';
-                indicator.setAttribute('aria-label', `Imagem ${i + 1}`);
-                indicator.setAttribute('data-slide-index', i);
-                indicator.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    goToSlide(i);
-                });
+                indicator.classList.add('carousel-indicator');
+                if (index === 0) indicator.classList.add('active');
+                indicator.setAttribute('aria-label', `Imagem ${index + 1}`);
+                indicator.addEventListener('click', () => goToSlide(index));
                 indicatorsContainer.appendChild(indicator);
-            }
+            });
             
-            const indicators = Array.from(indicatorsContainer.querySelectorAll('.carousel-indicator'));
+            const indicators = carousel.querySelectorAll('.carousel-indicator');
             
-            // Funções de navegação
             function goToSlide(index) {
-                if (index >= 0 && index < slides.length) {
-                    slides[currentSlide].classList.remove('active');
-                    indicators[currentSlide].classList.remove('active');
-                    
-                    currentSlide = index;
-                    
-                    slides[currentSlide].classList.add('active');
-                    indicators[currentSlide].classList.add('active');
-                }
+                // Remover classe active do slide atual
+                slides[currentSlide].classList.remove('active');
+                if (indicators[currentSlide]) indicators[currentSlide].classList.remove('active');
+                
+                // Atualizar índice e adicionar classe active ao novo slide
+                currentSlide = index;
+                slides[currentSlide].classList.add('active');
+                if (indicators[currentSlide]) indicators[currentSlide].classList.add('active');
             }
             
             function nextSlide() {
@@ -221,10 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 goToSlide((currentSlide - 1 + slides.length) % slides.length);
             }
             
-            // Controle de timer para autoplay
             function startAutoSlide() {
-                stopAutoSlide();
-                autoSlideTimer = setInterval(nextSlide, 5000);
+                if (autoSlideTimer) clearInterval(autoSlideTimer);
+                if (slides.length > 1) {
+                    autoSlideTimer = setInterval(nextSlide, 5000);
+                }
             }
             
             function stopAutoSlide() {
@@ -234,57 +221,74 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Event listeners
-            prevBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                stopAutoSlide();
-                prevSlide();
-            });
+            // Adicionar event listeners
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    stopAutoSlide();
+                    prevSlide();
+                    startAutoSlide();
+                });
+            }
             
-            nextBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                stopAutoSlide();
-                nextSlide();
-            });
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    stopAutoSlide();
+                    nextSlide();
+                    startAutoSlide();
+                });
+            }
             
-            // Pausar/retomar autoplay com mouse hover
-            carousel.addEventListener('mouseenter', stopAutoSlide);
-            carousel.addEventListener('mouseleave', startAutoSlide);
-            
-            // Suporte para gestos de swipe em dispositivos móveis
-            let touchStartX = 0;
-            
-            carousel.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-            
-            carousel.addEventListener('touchend', (e) => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const diff = touchEndX - touchStartX;
+            // Iniciar carrossel automático se houver mais de uma imagem
+            if (slides.length > 1) {
+                // Exibir controles de navegação
+                if (prevBtn) prevBtn.style.display = 'flex';
+                if (nextBtn) nextBtn.style.display = 'flex';
+                indicatorsContainer.style.display = 'flex';
                 
-                stopAutoSlide();
-                if (diff < -30) {
-                    nextSlide(); // Swipe para a esquerda
-                } else if (diff > 30) {
-                    prevSlide(); // Swipe para a direita
-                }
-            }, { passive: true });
-            
-            // Iniciar autoplay
-            startAutoSlide();
+                startAutoSlide();
+                
+                // Pausar autoplay ao passar o mouse
+                carousel.addEventListener('mouseenter', stopAutoSlide);
+                carousel.addEventListener('mouseleave', startAutoSlide);
+                
+                // Suporte para gestos de swipe em dispositivos móveis
+                let touchStartX = 0;
+                
+                carousel.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    stopAutoSlide();
+                }, { passive: true });
+                
+                carousel.addEventListener('touchend', (e) => {
+                    const touchEndX = e.changedTouches[0].screenX;
+                    const diff = touchEndX - touchStartX;
+                    
+                    if (diff < -30) {
+                        nextSlide(); // Swipe para a esquerda
+                    } else if (diff > 30) {
+                        prevSlide(); // Swipe para a direita
+                    }
+                    startAutoSlide();
+                }, { passive: true });
+            } else {
+                // Esconder navegação se houver apenas uma imagem
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
+                indicatorsContainer.style.display = 'none';
+            }
         });
     }
-
-    // Remover qualquer versão anterior da função para evitar conflitos
+    
+    // Disponibilizar a função globalmente e inicializar
     window.initNewsCarousels = initNewsCarousels;
     
-    // Inicializar carrosséis ao carregar a página
+    // Inicializar no carregamento do DOM
     initNewsCarousels();
     
-    // Reinicializar após um pequeno atraso para garantir que as imagens estejam carregadas
-    window.addEventListener('load', () => {
+    // Inicializar novamente após carregamento completo
+    window.addEventListener('load', function() {
         setTimeout(initNewsCarousels, 500);
     });
 
