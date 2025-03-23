@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Carrossel de Imagens
+    // Carrossel de Imagens - corrigindo o erro
     const slides = document.querySelectorAll('.carousel-slide');
     const sliderDots = document.querySelector('.carousel-dots');
     const prevButton = document.querySelector('.carousel-prev');
@@ -24,58 +24,70 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlide = 0;
     let autoSlideInterval;
 
-    // Criar pontos de navegação
-    slides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.classList.add('dot');
-        dot.setAttribute('aria-label', `Slide ${index + 1}`);
-        dot.addEventListener('click', () => goToSlide(index));
-        sliderDots.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll('.dot');
-
-    function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        dots[currentSlide].classList.remove('active');
-        currentSlide = index;
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
-    }
-
-    // Inicializar o primeiro slide
-    goToSlide(0);
-
-    // Avançar slides automaticamente
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            goToSlide((currentSlide + 1) % slides.length);
-        }, 5000);
-    }
-
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-
-    startAutoSlide();
-
-    // Parar o avanço automático ao clicar em uma imagem e permitir navegação manual
-    slides.forEach(slide => {
-        slide.addEventListener('click', () => {
-            stopAutoSlide();
+    // Verificar se os elementos do carrossel principal existem antes de inicializar
+    if (slides.length > 0 && sliderDots) {
+        // Criar pontos de navegação
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            dot.setAttribute('aria-label', `Slide ${index + 1}`);
+            dot.addEventListener('click', () => goToSlide(index));
+            sliderDots.appendChild(dot);
         });
-    });
 
-    // Navegação manual com setas
-    prevButton.addEventListener('click', () => {
-        stopAutoSlide();
-        goToSlide((currentSlide - 1 + slides.length) % slides.length);
-    });
+        const dots = document.querySelectorAll('.dot');
 
-    nextButton.addEventListener('click', () => {
-        stopAutoSlide();
-        goToSlide((currentSlide + 1) % slides.length);
-    });
+        function goToSlide(index) {
+            // Verificar se os elementos existem antes de manipulá-los
+            if (slides[currentSlide] && dots[currentSlide]) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+            }
+            
+            currentSlide = index;
+            
+            if (slides[currentSlide] && dots[currentSlide]) {
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+        }
+
+        // Inicializar o primeiro slide se houver slides
+        if (slides.length > 0) {
+            goToSlide(0);
+        }
+
+        // Avançar slides automaticamente
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                goToSlide((currentSlide + 1) % slides.length);
+            }, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        startAutoSlide();
+
+        // Parar o avanço automático ao clicar em uma imagem e permitir navegação manual
+        slides.forEach(slide => {
+            slide.addEventListener('click', () => {
+                stopAutoSlide();
+            });
+        });
+
+        // Navegação manual com setas
+        prevButton.addEventListener('click', () => {
+            stopAutoSlide();
+            goToSlide((currentSlide - 1 + slides.length) % slides.length);
+        });
+
+        nextButton.addEventListener('click', () => {
+            stopAutoSlide();
+            goToSlide((currentSlide + 1) % slides.length);
+        });
+    }
 
     // Rolar suavemente para links de navegação
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -133,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         newsCarousels.forEach((carousel, carouselIndex) => {
+            console.log(`Inicializando carrossel #${carouselIndex}`);
+            
             // Limpar os event listeners anteriores para evitar duplicações
             const oldPrevBtn = carousel.querySelector('.carousel-nav.prev');
             const oldNextBtn = carousel.querySelector('.carousel-nav.next');
@@ -149,10 +163,18 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Obter elementos do carrossel
             const slidesContainer = carousel.querySelector('.carousel-slides');
-            if (!slidesContainer) return;
+            if (!slidesContainer) {
+                console.log(`Carrossel #${carouselIndex} não tem container de slides`);
+                return;
+            }
             
             const slides = slidesContainer.querySelectorAll('img');
-            if (slides.length <= 0) return;
+            if (slides.length <= 0) {
+                console.log(`Carrossel #${carouselIndex} não tem imagens`);
+                return;
+            }
+            
+            console.log(`Carrossel #${carouselIndex} tem ${slides.length} slides`);
             
             // Botões de navegação
             const prevBtn = carousel.querySelector('.carousel-nav.prev');
@@ -175,6 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Garantir que apenas uma imagem esteja ativa inicialmente
             slides.forEach(slide => slide.classList.remove('active'));
             slides[0].classList.add('active');
+            
+            console.log(`Criando ${slides.length} indicadores para o carrossel #${carouselIndex}`);
             
             // Criar indicadores
             slides.forEach((_, index) => {
@@ -281,15 +305,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Disponibilizar a função globalmente e inicializar
+    // Disponibilizar a função globalmente
+    console.log('Disponibilizando função initNewsCarousels globalmente');
     window.initNewsCarousels = initNewsCarousels;
     
     // Inicializar no carregamento do DOM
+    console.log('Tentando inicializar carrosséis de imediato');
     initNewsCarousels();
     
     // Inicializar novamente após carregamento completo
     window.addEventListener('load', function() {
-        setTimeout(initNewsCarousels, 500);
+        console.log('Evento load disparado, inicializando carrosséis após pequeno delay');
+        setTimeout(() => {
+            console.log('Executando inicialização de carrosséis após delay');
+            if (typeof initNewsCarousels === 'function') {
+                initNewsCarousels();
+            }
+        }, 500);
     });
 
     // Funcionalidade para o botão "Carregar mais notícias"
@@ -386,3 +418,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(vimeoScript);
     }
 });
+
+// Disponibilizar a função globalmente também fora do DOMContentLoaded
+// para garantir que esteja acessível o mais cedo possível
+console.log('Definindo função initNewsCarousels global');
+if (typeof window.initNewsCarousels !== 'function') {
+    window.initNewsCarousels = function() {
+        console.log('Chamada global para initNewsCarousels, redirecionando para implementação quando disponível');
+        if (window._realInitNewsCarousels) {
+            window._realInitNewsCarousels();
+        } else {
+            console.log('Implementação real ainda não disponível');
+        }
+    };
+}

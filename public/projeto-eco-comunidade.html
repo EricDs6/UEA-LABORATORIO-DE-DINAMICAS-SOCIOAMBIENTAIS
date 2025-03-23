@@ -195,146 +195,152 @@
         </div>
     </footer>
 
-    <script src="/js/eco-comunidade.js" defer></script>
+    <script src="/js/eco-comunidade.js"></script>
     <script>
-        // Script para menu mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
+    // Script unificado para inicialização do carrossel
+    document.addEventListener('DOMContentLoaded', function() {
+        // Função para verificar disponibilidade da função global
+        function checkAndInitCarousel() {
+            console.log('Verificando disponibilidade da função de carrossel...');
+            if (typeof window.initNewsCarousels === 'function') {
+                console.log('Função de carrossel encontrada, inicializando...');
+                window.initNewsCarousels();
+                return true;
+            }
+            return false;
+        }
+        
+        // Tentativa inicial
+        if (!checkAndInitCarousel()) {
+            console.log('Função de carrossel ainda não disponível, configurando observador...');
             
-            mobileMenuBtn.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                mobileMenuBtn.textContent = navLinks.class.contains('active') ? '✕' : '☰';
-                mobileMenuBtn.setAttribute('aria-expanded', navLinks.class.contains('active'));
-            });
+            // Tentar novamente em intervalos curtos
+            let attempts = 0;
+            const maxAttempts = 10;
+            const checkInterval = setInterval(function() {
+                if (checkAndInitCarousel() || attempts >= maxAttempts) {
+                    clearInterval(checkInterval);
+                    if (attempts >= maxAttempts) {
+                        console.warn('Máximo de tentativas atingido. Verificando alternativa.');
+                        initializeCarouselManually();
+                    }
+                }
+                attempts++;
+            }, 300);
+        }
+        
+        // Função de fallback para inicializar o carrossel manualmente se necessário
+        function initializeCarouselManually() {
+            console.log('Inicializando carrossel manualmente');
+            const carousels = document.querySelectorAll('.news-image-carousel');
             
-            // Fecha menu ao clicar nos links
-            const menuLinks = navLinks.querySelectorAll('a');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.textContent = '☰';
-                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                });
-            });
-        });
-    </script>
-    <script>
-        // Garantir que o carrossel seja inicializado corretamente após o carregamento
-        document.addEventListener('DOMContentLoaded', function() {
-            // Verificar se as imagens do carrossel estão carregadas
-            const carouselImages = document.querySelectorAll('.carousel-slides img');
-            let imagesLoaded = 0;
-            
-            carouselImages.forEach((img) => {
-                if (img.complete) {
-                    imagesLoaded++;
+            carousels.forEach(carousel => {
+                const slides = carousel.querySelectorAll('.carousel-slides img');
+                const prevBtn = carousel.querySelector('.carousel-nav.prev');
+                const nextBtn = carousel.querySelector('.carousel-nav.next');
+                
+                // Garantir que a primeira imagem esteja ativa
+                slides.forEach(slide => slide.classList.remove('active'));
+                if (slides[0]) slides[0].classList.add('active');
+                
+                // Criar container de indicadores se não existir
+                let indicators = carousel.querySelector('.carousel-indicators');
+                if (!indicators) {
+                    indicators = document.createElement('div');
+                    indicators.className = 'carousel-indicators';
+                    carousel.appendChild(indicators);
                 } else {
-                    img.addEventListener('load', () => {
-                        imagesLoaded++;
-                        if (imagesLoaded === carouselImages.length) {
-                            console.log('Todas as imagens do carrossel carregadas!');
-                            // Reinicializar o carrossel após carregar todas as imagens
-                            setTimeout(() => {
-                                if (typeof initNewsCarousels === 'function') {
-                                    initNewsCarousels();
-                                }
-                            }, 100);
-                        }
+                    indicators.innerHTML = '';
+                }
+                
+                // Criar indicadores
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-indicator');
+                    if (index === 0) dot.classList.add('active');
+                    
+                    dot.addEventListener('click', () => {
+                        // Mudar slide ao clicar no indicador
+                        slides.forEach(s => s.classList.remove('active'));
+                        slides[index].classList.add('active');
+                        
+                        // Atualizar indicadores
+                        indicators.querySelectorAll('.carousel-indicator').forEach(d => d.classList.remove('active'));
+                        dot.classList.add('active');
+                    });
+                    
+                    indicators.appendChild(dot);
+                });
+                
+                // Configurar navegação
+                let currentSlide = 0;
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', e => {
+                        e.preventDefault();
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        
+                        // Atualizar slide
+                        slides.forEach(s => s.classList.remove('active'));
+                        slides[currentSlide].classList.add('active');
+                        
+                        // Atualizar indicadores
+                        const dots = indicators.querySelectorAll('.carousel-indicator');
+                        dots.forEach(d => d.classList.remove('active'));
+                        dots[currentSlide].classList.add('active');
                     });
                 }
-            });
-        });
-    </script>
-    <script>
-        // Garantir que o carrossel seja iniciado corretamente
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof initNewsCarousels === 'function') {
-                console.log('Tentando inicializar carrosséis via callback de DOMContentLoaded');
-                initNewsCarousels();
-            } else {
-                console.log('Função initNewsCarousels não disponível ainda, esperando carregamento completo');
-            }
-        });
-        
-        // Backup: tentar novamente após o carregamento completo
-        window.addEventListener('load', function() {
-            console.log('Página completamente carregada, reinicializando carrosséis');
-            setTimeout(function() {
-                if (typeof initNewsCarousels === 'function') {
-                    initNewsCarousels();
-                } else {
-                    console.error('Função initNewsCarousels não encontrada após carregamento completo');
+                
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', e => {
+                        e.preventDefault();
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        
+                        // Atualizar slide
+                        slides.forEach(s => s.classList.remove('active'));
+                        slides[currentSlide].classList.add('active');
+                        
+                        // Atualizar indicadores
+                        const dots = indicators.querySelectorAll('.carousel-indicator');
+                        dots.forEach(d => d.classList.remove('active'));
+                        dots[currentSlide].classList.add('active');
+                    });
                 }
-            }, 1000);
-        });
-    </script>
-    <script>
-    // Script para verificação adicional do carrossel
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Verificando carrossel na DOMContentLoaded');
-        
-        // Adicionar classe active ao primeiro slide caso não exista
-        const carouselSlides = document.querySelectorAll('.carousel-slides img');
-        if (carouselSlides.length > 0 && !carouselSlides[0].classList.contains('active')) {
-            console.log('Adicionando classe active ao primeiro slide');
-            carouselSlides[0].classList.add('active');
-        }
-        
-        // Garantir que os carrosséis inicializem
-        if (typeof window.initNewsCarousels === 'function') {
-            window.initNewsCarousels();
-        } else {
-            console.log('Função de inicialização de carrossel não disponível ainda');
-        }
-    });
-    
-    // Verificação após carregamento completo
-    window.addEventListener('load', function() {
-        console.log('Verificando carrossel após carregamento completo');
-        setTimeout(function() {
-            if (typeof window.initNewsCarousels === 'function') {
-                window.initNewsCarousels();
-            }
-            
-            // Verificar se há algum indicador de slide criado
-            const indicators = document.querySelectorAll('.carousel-indicator');
-            if (indicators.length === 0) {
-                console.log('Nenhum indicador encontrado, tentando reinicializar carrosséis');
-                // Última tentativa de recriar os carrosséis
-                const script = document.createElement('script');
-                script.textContent = `
-                    if (typeof window.initNewsCarousels === 'function') {
-                        console.log('Última tentativa de inicialização');
-                        window.initNewsCarousels();
+                
+                // Configurar autoplay
+                let autoplayInterval;
+                
+                function startAutoplay() {
+                    if (slides.length > 1) {
+                        autoplayInterval = setInterval(() => {
+                            currentSlide = (currentSlide + 1) % slides.length;
+                            
+                            // Atualizar slide
+                            slides.forEach(s => s.classList.remove('active'));
+                            slides[currentSlide].classList.add('active');
+                            
+                            // Atualizar indicadores
+                            const dots = indicators.querySelectorAll('.carousel-indicator');
+                            dots.forEach(d => d.classList.remove('active'));
+                            dots[currentSlide].classList.add('active');
+                        }, 5000);
                     }
-                `;
-                document.body.appendChild(script);
-            }
-        }, 1000);
-    });
-</script>
-    <script>
-    // Script simplificado para garantir inicialização do carrossel
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOMContentLoaded - Inicializando carrosséis');
-        
-        // Verificar se a função global existe
-        if (typeof window.initNewsCarousels === 'function') {
-            window.initNewsCarousels();
-        } else {
-            console.log('Função de carrossel não disponível ainda');
+                }
+                
+                function stopAutoplay() {
+                    clearInterval(autoplayInterval);
+                }
+                
+                // Iniciar autoplay
+                startAutoplay();
+                
+                // Pausar ao interagir
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
+            });
         }
     });
     
-    window.addEventListener('load', function() {
-        console.log('Página carregada - Verificando carrosséis');
-        setTimeout(function() {
-            if (typeof window.initNewsCarousels === 'function') {
-                window.initNewsCarousels();
-            }
-        }, 500);
-    });
+    // Remover todos os outros scripts de inicialização de carrossel
 </script>
 </body>
 </html>
