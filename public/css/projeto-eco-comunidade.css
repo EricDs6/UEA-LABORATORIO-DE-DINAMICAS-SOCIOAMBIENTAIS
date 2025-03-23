@@ -1773,6 +1773,7 @@ p {
 .carousel-slides img.active {
     opacity: 1;
     display: block;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .carousel-nav {

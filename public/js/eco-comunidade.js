@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     header.style.transition = 'top 0.3s';
     
-    // Inicializar carrosséis de imagens nas notícias
+    // Inicializar carrosséis de imagens nas notícias - versão corrigida
     function initNewsCarousels() {
         const newsCarousels = document.querySelectorAll('.news-image-carousel');
         
@@ -150,6 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Configurar estado inicial
             let currentSlide = 0;
             let autoSlideTimer = null;
+            
+            // Garantir que apenas uma imagem esteja ativa inicialmente
+            slides.forEach(slide => slide.classList.remove('active'));
+            if (slides.length > 0) {
+                slides[0].classList.add('active');
+            }
             
             // Criar indicadores
             slides.forEach((_, index) => {
@@ -242,6 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar carrosséis de notícias
     initNewsCarousels();
+    
+    // Reiniciar carrosséis quando a página estiver totalmente carregada
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            initNewsCarousels();
+        }, 500);
+    });
     
     // Funcionalidade para o botão "Carregar mais notícias"
     const loadMoreButton = document.querySelector('.load-more-button');
