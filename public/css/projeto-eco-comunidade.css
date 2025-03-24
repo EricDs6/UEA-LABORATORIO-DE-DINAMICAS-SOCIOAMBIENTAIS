@@ -1503,3 +1503,126 @@ h2 {
     background: var(--primary-dark);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+/* Informações do Projeto - mais compacto como no "Não Esquenta" */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin: 3rem auto 0;
+    max-width: 1200px;
+}
+
+.info-card {
+    background: linear-gradient(145deg, var(--white), #f8f9fa);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+.info-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.info-icon:hover {
+    transform: scale(1.1);
+}
+
+.info-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.info-card li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.info-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .info-card {
+        padding: 2rem;
+    }
+
+    .info-icon {
+        font-size: 2.5rem;
+    }
+
+    .info-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .info-card li {
+        font-size: 1rem;
+        padding-left: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .info-card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-grid {
+        gap: 1.5rem;
+    }
+
+    .info-card {
+        padding: 1.5rem;
+    }
+
+    .info-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .info-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .info-card li {
+        font-size: 0.95rem;
+        padding-left: 1.5rem;
+    }
+
+    .info-card p {
+        font-size: 0.95rem;
+    }
+}
