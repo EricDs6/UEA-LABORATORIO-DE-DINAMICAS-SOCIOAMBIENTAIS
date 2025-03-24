@@ -83,6 +83,35 @@
                 padding: 0.3rem;
             }
         }
+
+        /* Optimizações para performance mobile */
+        body {
+            overscroll-behavior: contain;
+        }
+
+        img {
+            content-visibility: auto;
+        }
+
+        .carousel-slides img:not(.active) {
+            content-visibility: auto;
+            contain-intrinsic-size: 100% 100%;
+        }
+
+        @media screen and (max-width: 480px) {
+            header {
+                padding: 0;
+            }
+
+            .logo-text h1 {
+                font-size: 1rem;
+                white-space: nowrap;
+            }
+            
+            .nav-links a {
+                color: var(--secondary-color);
+            }
+        }
     </style>
 </head>
 
@@ -308,7 +337,7 @@
                         <div class="news-image">
                             <img src="img/extras/campeoes-da-gincana-de-ideacao.jpg"
                                 alt="Campeões da Gincana de Ideação" loading="lazy">
-                            <div class="news-date">20 de março de 2025</div>
+                            <div class="news-date">Março 2025</div> <!-- Formato padronizado: Mês Ano -->
                         </div>
                         <div class="news-content">
                             <h3>Parabéns aos nossos bolsistas campeões da gincana de ideação</h3>
@@ -328,7 +357,7 @@
                         <div class="news-image">
                             <img src="/img/projetos/eco-comunidade/3replantio-ecocomunidade.jpg"
                                 alt="Replantio na Comunidade" loading="lazy">
-                            <div class="news-date">24 de janeiro de 2025</div>
+                            <div class="news-date">Janeiro 2025</div> <!-- Formato padronizado: Mês Ano -->
                         </div>
                         <div class="news-content">
                             <h3>Terceiro Replantio na Comunidade Chico Xavier</h3>
@@ -362,7 +391,7 @@
                             <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
                             <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
                             <div class="carousel-indicators"></div>
-                            <div class="news-date">18 de março de 2025</div>
+                            <div class="news-date">Março 2025</div> <!-- Formato padronizado: Mês Ano -->
                         </div>
                         <div class="news-content">
                             <h3>Apresentação de Projetos de Extensão</h3>
@@ -520,7 +549,65 @@
                 // Inicializa os carrosséis de notícias
                 if (typeof initNewsCarousels === 'function') {
                     initNewsCarousels();
+                } else {
+                    // Função para inicializar carrosséis de notícias se não existir
+                    initNewsCarousels = function () {
+                        document.querySelectorAll('.news-image-carousel').forEach(function (carousel) {
+                            const slides = carousel.querySelectorAll('.carousel-slides img');
+                            const prevBtn = carousel.querySelector('.carousel-nav.prev');
+                            const nextBtn = carousel.querySelector('.carousel-nav.next');
+                            const indicators = carousel.querySelector('.carousel-indicators');
+
+                            if (!indicators) return;
+
+                            // Limpar indicadores existentes
+                            indicators.innerHTML = '';
+
+                            let currentSlide = 0;
+
+                            // Criar indicadores
+                            slides.forEach((_, index) => {
+                                const indicator = document.createElement('button');
+                                indicator.classList.add('carousel-indicator');
+                                if (index === 0) indicator.classList.add('active');
+                                indicator.setAttribute('aria-label', `Slide ${index + 1}`);
+                                indicator.addEventListener('click', () => goToSlide(index));
+                                indicators.appendChild(indicator);
+                            });
+
+                            // Função para ir para um slide específico
+                            function goToSlide(index) {
+                                slides[currentSlide].classList.remove('active');
+                                indicators.children[currentSlide].classList.remove('active');
+
+                                currentSlide = index;
+                                if (currentSlide >= slides.length) currentSlide = 0;
+                                if (currentSlide < 0) currentSlide = slides.length - 1;
+
+                                slides[currentSlide].classList.add('active');
+                                indicators.children[currentSlide].classList.add('active');
+                            }
+
+                            // Configurar navegação
+                            if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+                            if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+                            // Pré-carregar todas as imagens para garantir visibilidade
+                            slides.forEach(img => {
+                                // Forçar o carregamento da imagem
+                                const imgSrc = img.getAttribute('src');
+                                if (imgSrc) {
+                                    const preloadImg = new Image();
+                                    preloadImg.src = imgSrc;
+                                }
+                            });
+                        });
+                    };
+
+                    // Executar a função
+                    initNewsCarousels();
                 }
+
                 // Verifica novo intervalo
                 setTimeout(function () {
                     if (typeof initNewsCarousels === 'function') {
@@ -528,6 +615,7 @@
                     }
                 }, 500);
             });
+
             // Função para inicializar os indicadores de slide para mobile
             function initMobileSlideIndicators() {
                 // Para o carrossel de extensão
@@ -559,7 +647,180 @@
             window.addEventListener('resize', function () {
                 initMobileSlideIndicators();
             });
-        </script>
-</body>
 
+    // Inicializar os indicadores ao carregar a página
+    document.addEventListener('DOMContentLoaded', function () {
+        initMobileSlideIndicators();
+
+        // Tentar inicializar os carrosséis
+        setTimeout(function () {
+            if (typeof initNewsCarousels === 'function') {
+                initNewsCarousels();
+            }
+        }, 100);
+    });
+</script>
+<script>
+    // Adicionar este script ao final do arquivo, antes do fechamento do body
+    document.addEventListener('DOMContentLoaded', function () {
+        // Padroniza o formato das datas
+        const dataDivs = document.querySelectorAll('.news-date, .featured-date');
+        dataDivs.forEach(div => {
+            const textoData = div.textContent.trim();
+            // Se a data contiver números de dias (ex: "20 de março de 2025"), simplifique para "Março 2025"
+            if (textoData.includes(' de ')) {
+                const partes = textoData.split(' de ');
+                if (partes.length >= 3) {
+                    // Extrair o mês (primeira letra maiúscula) e o ano
+                    const mes = partes[1].charAt(0).toUpperCase() + partes[1].slice(1);
+                    const ano = partes[2];
+                    div.textContent = `${mes} ${ano}`;
+                }
+            }
+        });
+
+        // Certifica-se de que todos os containers de imagem de notícias tenham position: relative
+        document.querySelectorAll('.news-image, .featured-image').forEach(container => {
+            container.style.position = 'relative';
+        });
+    });
+</script>
+<script>
+    // Melhorias de desempenho e UX para mobile
+    document.addEventListener('DOMContentLoaded', function () {
+        // Melhor gerenciamento de rolagem para mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', function (e) {
+            touchStartY = e.touches[0].clientY;
+        }, false);
+
+        document.addEventListener('touchend', function (e) {
+            touchEndY = e.changedTouches[0].clientY;
+
+            // Detecta se o usuário está na parte inferior da página
+            const isAtBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100;
+
+            // Detecta se o usuário está rolando para baixo no final da página
+            if (touchStartY > touchEndY && isAtBottom) {
+                // Adiciona um pequeno feedback visual
+                document.body.classList.add('reached-bottom');
+                setTimeout(function () {
+                    document.body.classList.remove('reached-bottom');
+                }, 300);
+            }
+        }, false);
+
+        // Otimização de carregamento de imagens
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        imageObserver.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '100px'
+            });
+
+            images.forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Padroniza o formato das datas
+        const dataDivs = document.querySelectorAll('.news-date, .featured-date');
+        dataDivs.forEach(div => {
+            const textoData = div.textContent.trim();
+            if (textoData.includes(' de ')) {
+                const partes = textoData.split(' de ');
+                if (partes.length >= 3) {
+                    const mes = partes[1].charAt(0).toUpperCase() + partes[1].slice(1);
+                    const ano = partes[2];
+                    div.textContent = `${mes} ${ano}`;
+                }
+            }
+        });
+
+        // Melhora a experiência com o menu móvel
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileMenuBtn && navLinks) {
+            document.body.addEventListener('click', function (e) {
+                // Fecha o menu ao clicar fora dele
+                if (navLinks.classList.contains('active') &&
+                    !navLinks.contains(e.target) &&
+                    !mobileMenuBtn.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    document.querySelector('.site-header').classList.remove('menu-open');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // Inicializa os carrosséis com melhor suporte touch
+        initAllCarousels();
+    });
+
+    function initAllCarousels() {
+        // ... existing carousel initialization ...
+
+        // Adiciona suporte melhor para touch nos carrosséis
+        document.querySelectorAll('.carousel-nav, .carousel-indicator').forEach(control => {
+            control.addEventListener('touchstart', function (e) {
+                this.classList.add('touch-active');
+            });
+
+            control.addEventListener('touchend', function (e) {
+                this.classList.remove('touch-active');
+            });
+        });
+    }
+
+    // ... existing code ...
+</script>
+<script>
+    // Melhorias para garantir que imagens de carrossel sejam exibidas 100%
+    document.addEventListener('DOMContentLoaded', function() {
+        // Função para garantir que todas as imagens do carrossel sejam carregadas e exibidas corretamente
+        function ensureImagesDisplay() {
+            // Para carrosséis de notícias
+            document.querySelectorAll('.carousel-slides img').forEach(img => {
+                // Verifica se a imagem tem display none, que pode causar problemas de carregamento
+                if (window.getComputedStyle(img).display === 'none' && img.classList.contains('active')) {
+                    img.style.display = 'block';
+                }
+                // Força recálculo de layout para imagens
+                img.offsetHeight;
+            });
+            
+            // Para imagens normais de notícias
+            document.querySelectorAll('.news-image img, .featured-image img').forEach(img => {
+                // Garante que posicionamento está correto
+                if (!img.style.position) {
+                    img.style.position = 'relative';
+                }
+            });
+        }
+        
+        // Executa função inicial
+        ensureImagesDisplay();
+        
+        // Executa novamente após carregamento completo
+        window.addEventListener('load', ensureImagesDisplay);
+        
+        // E após pequeno delay para garantir que todas as imagens sejam processadas
+        setTimeout(ensureImagesDisplay, 500);
+    });
+</script>
+
+<!-- Inclui o script de otimização para mobile -->
+<script src="/js/mobile-optimizations.js"></script>
+</body>
 </html>
