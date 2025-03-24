@@ -4577,3 +4577,17 @@ body {
     width: 12px;
   }
 }
+
+/* Ajuste específico para a imagem do projeto "Não Esquenta" */
+.adjusted-project-image {
+    object-position: center 25%;
+    /* Move a imagem 25% para cima (mostrando mais a parte superior) */
+}
+
+/* Ajuste responsivo para telas menores */
+@media (max-width: 768px) {
+    .adjusted-project-image {
+        object-position: center 20%;
+        /* Ajuste ligeiramente diferente para telas menores */
+    }
+}
