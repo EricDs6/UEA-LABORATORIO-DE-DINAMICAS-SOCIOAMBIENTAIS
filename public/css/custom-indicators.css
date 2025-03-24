@@ -4,7 +4,7 @@
 .discrete-indicators {
   padding: 2px 4px !important;
   background: rgba(0, 0, 0, 0.15) !important;
-  border-radius: 8px !important;
+  border-radius: 50% !important;
   gap: 3px !important;
   bottom: 8px !important;
   max-width: 80% !important;
