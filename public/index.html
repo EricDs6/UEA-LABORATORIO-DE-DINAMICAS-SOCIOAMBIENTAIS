@@ -7,70 +7,25 @@
     <meta name="description"
         content="O Laboratório de Dinâmicas Socioambientais (LDS) promove pesquisa e soluções sustentáveis para preservação ambiental e engajamento comunitário em Itacoatiara-AM.">
     <title>LDS - Laboratório de Dinâmicas Socioambientais</title>
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lds-uea.com.br/">
-    <meta property="og:title" content="LDS - Laboratório de Dinâmicas Socioambientais">
-    <meta property="og:description"
-        content="O LDS desenvolve pesquisas e soluções inovadoras para desafios ambientais, unindo tecnologia e sustentabilidade na Amazônia.">
-    <meta property="og:image"
-        content="https://lds-uea.com.br/img/favicons/icon-round.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="LDS">
-    <meta property="og:locale" content="pt_BR">
-    
-    <!-- Twitter / WhatsApp -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="LDS - Laboratório de Dinâmicas Socioambientais">
-    <meta name="twitter:description"
-        content="O LDS desenvolve pesquisas e soluções inovadoras para desafios ambientais, unindo tecnologia e sustentabilidade na Amazônia.">
-    <meta name="twitter:image"
-        content="https://laboratorio-de-dinamicas-socioambi-git-7e0ef9-ericds6s-projects.vercel.app/img/og-image.jpg">
-    
-    <!-- WhatsApp específico -->
-    <meta property="og:image:alt" content="Logo e banner do Laboratório de Dinâmicas Socioambientais">
-    
-    <!-- Resto dos metatags -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicons/favicon-16x16.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap"
-        as="style" onload="this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap">
-    </noscript>
     <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="/css/index.css">
     <link rel="preload" href="./css/index.css" as="style">
     <link rel="preload" href="./js/index.js" as="script">
     <link rel="preload" href="./img/banner.webp" as="image" type="image/webp" fetchpriority="high">
-    <!-- Open Graph tags -->
-    <meta property="og:title" content="Laboratório de Dinâmicas Socioambientais">
-    <meta property="og:description"
-        content="LDS é uma iniciativa de pesquisa e inovação sustentável, promovendo educação ambiental e desenvolvimento comunitário na Amazônia.">
-    <meta property="og:image"
-        content="https://laboratorio-de-dinamicas-socioambi-git-7e0ef9-ericds6s-projects.vercel.app/img/favicons/icon-round.png">
-    <meta property="og:url"
-        content="https://laboratorio-de-dinamicas-socioambi-git-7e0ef9-ericds6s-projects.vercel.app/index.html">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Laboratório de Dinâmicas Socioambientais">
-    <!-- Preload de imagens críticas -->
-    <link rel="preload" as="image" href="./img/banner.webp" type="image/webp">
-    <link rel="preload" as="image" href="./img/favicons/icon-round.png" type="image/png">
-    <!-- Preconnect para recursos externos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn-icons-png.flaticon.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
-        as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-        as="style">
-    <!-- Fallback de fonte -->
+    <script defer src="/js/index.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registrado com sucesso:', registration);
+                    })
+                    .catch(error => {
+                        console.error('Falha ao registrar o ServiceWorker:', error);
+                    });
+            });
+        }
+    </script>
     <style>
         @font-face {
             font-family: 'Montserrat';
@@ -129,22 +84,6 @@
             }
         }
     </style>
-    <!-- Adicionar preload para script de menu mobile -->
-    <link rel="preload" href="./js/mobile-menu.js" as="script">
-    <script defer src="/js/index.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registrado com sucesso:', registration);
-                    })
-                    .catch(error => {
-                        console.error('Falha ao registrar o ServiceWorker:', error);
-                    });
-            });
-        }
-    </script>
 </head>
 
 <body>
@@ -172,7 +111,6 @@
             </nav>
         </div>
     </header>
-
     <main>
         <section class="hero">
             <img src="/img/banner.webp" alt="Banner LDS" class="hero-background" fetchpriority="high">
@@ -187,7 +125,6 @@
                 <a href="#projetos" class="cta-button">Conheça Nossos Projetos</a>
             </div>
         </section>
-
         <section id="sobre" class="section">
             <div class="container">
                 <h2>Sobre o LDS</h2>
@@ -212,7 +149,6 @@
                 </div>
             </div>
         </section>
-
         <section id="projetos" class="section projects">
             <div class="container">
                 <h2>Projetos em Destaque</h2>
@@ -226,14 +162,12 @@
                         <div class="project-content">
                             <h3>NÃO ESQUENTA!</h3>
                             <p>Projeto focado na mitigação dos efeitos das mudanças climáticas em Itacoatiara,
-                                promovendo soluções sustentáveis
-                                para reduzir a temperatura ambiente.</p>
+                                promovendo soluções sustentáveis para reduzir a temperatura ambiente.</p>
                             <div class="project-links">
                                 <a href="projeto-nao-esquenta.html" class="cta-button">Saiba mais</a>
                             </div>
                         </div>
                     </article>
-
                     <article class="project-card">
                         <img src="/img/projetos/eco-comunidade/eco-comunidade.jpg" alt="Projeto Ecocomunidade"
                             loading="lazy">
@@ -245,9 +179,6 @@
                 </div>
             </div>
         </section>
-
-
-
         <section id="extensao" class="section extension">
             <div class="container">
                 <h2>Extensão em Ação</h2>
@@ -285,14 +216,12 @@
                     <div class="carousel-slide">
                         <img src="/img/extensao/extensao11.jpg" alt="Ação 11">
                     </div>
-
                     <div class="carousel-dots"></div>
                     <button class="carousel-prev">❮</button>
                     <button class="carousel-next">❯</button>
                 </div>
             </div>
         </section>
-
         <section class="featured-news">
             <div class="container">
                 <h2>Destaques</h2>
@@ -342,7 +271,6 @@
                             </div>
                         </div>
                     </article>
-
                     <!-- Nova notícia -->
                     <article class="featured-main">
                         <div class="featured-image">
@@ -359,7 +287,8 @@
                         <div class="featured-content">
                             <h3>Visita ao INPA</h3>
                             <p>O grupo de extensão NÃO ESQUENTA visitou o INPA, aprofundando conhecimentos em métodos de
-                                ensino e estimulando a criação de jogos educativos com foco em temas socioambientais.</p>
+                                ensino e estimulando a criação de jogos educativos com foco em temas socioambientais.
+                            </p>
                             <div class="featured-meta">
                                 <span class="featured-tag">Vídeo</span>
                                 <span class="featured-partner">Parceria UEA x SEMMA</span>
@@ -370,7 +299,6 @@
             </div>
         </section>
         <script src="https://player.vimeo.com/api/player.js"></script>
-
         <section id="noticias" class="section news">
             <div class="container">
                 <h2>Últimas Notícias</h2>
@@ -416,7 +344,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Notícia com múltiplas imagens - carrossel corrigido -->
                     <article class="news-card">
                         <div class="news-image-carousel">
@@ -454,7 +381,6 @@
                 </div>
             </div>
         </section>
-
         <!-- Nova seção de Números -->
         <section class="stats-section">
             <div class="container">
@@ -474,13 +400,11 @@
                 </div>
             </div>
         </section>
-
         <section class="support-banner">
             <div class="container">
                 <img src="img/favicons/apoios.png" alt="Banner de Apoios" class="support-banner-image">
             </div>
         </section>
-
         <footer>
             <div class="container">
                 <div class="footer-content">
@@ -518,9 +442,7 @@
                 </div>
             </div>
         </footer>
-
         <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">↑</button>
-
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
@@ -534,14 +456,12 @@
                 });
             }
         </script>
-
         <script>
             // Script para o menu mobile
             document.addEventListener('DOMContentLoaded', function () {
                 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
                 const navLinks = document.getElementById('navLinks');
                 const header = document.querySelector('.site-header');
-
                 mobileMenuBtn.addEventListener('click', function () {
                     navLinks.classList.toggle('active');
                     mobileMenuBtn.classList.toggle('active');
@@ -549,7 +469,6 @@
                     const isExpanded = navLinks.classList.contains('active');
                     mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
                 });
-
                 // Controle de scroll para o header
                 let lastScrollTop = 0;
                 window.addEventListener('scroll', function () {
@@ -567,7 +486,6 @@
                     }
                     lastScrollTop = scrollTop;
                 });
-
                 // Fecha menu ao clicar nos links
                 const menuLinks = navLinks.querySelectorAll('a');
                 menuLinks.forEach(link => {
@@ -577,7 +495,6 @@
                         mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     });
                 });
-
                 // Botão voltar ao topo
                 const backToTopBtn = document.getElementById('backToTop');
                 window.addEventListener('scroll', function () {
@@ -587,13 +504,11 @@
                         backToTopBtn.classList.remove('visible');
                     }
                 });
-
                 backToTopBtn.addEventListener('click', function () {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
         </script>
-
         <!-- Adicionar antes do fechamento do body -->
         <div class="story-modal" id="storyModal">
             <!-- Remover todo o conteúdo do modal -->
@@ -602,43 +517,47 @@
         <script>
             // Garantir que o carrossel seja inicializado também após o carregamento total
             window.addEventListener('load', function () {
-                // Inicializa os carrosséis de no                                initNewsCarousels();
-                                          // Inicializa osc                        e
-                initMobileSlideIndicators();
-                                          // Verifica novurto intervalo para garantir que todos os elementos foram carregados
+                // Inicializa os carrosséis de notícias
+                if (typeof initNewsCarousels === 'function') {
+                    initNewsCarousels();
+                }
+                // Verifica novo intervalo
                 setTimeout(function () {
                     if (typeof initNewsCarousels === 'function') {
                         initNewsCarousels();
                     }
-                    if (typeof initMobileSlideIndicators === 'function') {
-                        initMobileSlideIndicators();
-                    }
                 }, 500);
             });
-            
-            // Função para inicialire                        para mobile
-            function initMobileSlideIndicators()                                // Para o carrossel de extensão
-                            const extensionCarousel = documen                            '.extension-carousel');
+            // Função para inicializar os indicadores de slide para mobile
+            function initMobileSlideIndicators() {
+                // Para o carrossel de extensão
+                const extensionCarousel = document.querySelector('.extension-carousel');
                 if (extensionCarousel) {
-                                   st slides = extensionCarou                                ('.carousel-slide');
-                    const dotsContainer = extensi                                ctor('.carousel-dots');
-                    
-                    if (dot                                  sContainer.innerHTML =                                          
-                       x)                                               const indicator = doc                                        );
-                            indicator.classList.a                                                                   if (index === 0) indi                                        );
-                            indicator.setAttribut                                        ex + 1}`);
-                            dotsContainer.appendC                                                      });
-                                                                                                                             ines                            mobile
-                const isMobile = window.innerWidt                                       document.querySelectorAll('.carou                            .forEach(indicatorsContainer => {
-                    indicatorsContainer.classList                                dicators', isMobile);
+                    const slides = extensionCarousel.querySelectorAll('.carousel-slide');
+                    const dotsContainer = extensionCarousel.querySelector('.carousel-dots');
+                    if (dotsContainer) {
+                        dotsContainer.innerHTML = '';
+                        slides.forEach((slide, index) => {
+                            const indicator = document.createElement('button');
+                            indicator.classList.add('carousel-indicator');
+                            if (index === 0) indicator.classList.add('active');
+                            indicator.setAttribute('aria-label', `Slide ${index + 1}`);
+                            dotsContainer.appendChild(indicator);
+                        });
+                    }
+                }
+                // Ajusta os indicadores de slide para mobile
+                const isMobile = window.innerWidth <= 768;
+                document.querySelectorAll('.carousel-indicators, .carousel-dots').forEach(indicatorsContainer => {
+                    indicatorsContainer.classList.toggle('discrete-indicators', isMobile);
                 });
-                
-                                      uerySou                            forEach(indicator => {
-                    indicator.classList.toggle('d                                isMobile);
+                document.querySelectorAll('.carousel-indicator').forEach(indicator => {
+                    indicator.classList.toggle('discrete-indicator', isMobile);
                 });
             }
-                                        Atual                        ado j                        dimensionada
-            window.addEventListener('resize', fun                                       initMobileSlideIndicators() ;
+            // Atualiza os indicadores de slide para mobile
+            window.addEventListener('resize', function () {
+                initMobileSlideIndicators();
             });
         </script>
 </body>

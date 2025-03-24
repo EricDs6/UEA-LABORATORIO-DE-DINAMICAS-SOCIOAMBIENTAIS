@@ -1,0 +1,56 @@
+/* Estilos para indicadores de carrossel em dispositivos móveis */
+
+/* Indicadores discretos para dispositivos móveis */
+.discrete-indicators {
+  padding: 2px 4px !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  gap: 3px !important;
+  bottom: 8px !important;
+  max-width: 80% !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  display: flex !important;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 10 !important;
+}
+
+.discrete-indicator {
+  width: 8px !important;
+  height: 3px !important;
+  border-radius: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.discrete-indicator.active {
+  width: 12px !important;
+  background: var(--primary-color) !important;
+}
+
+/* Estilos específicos para carrosséis de notícias */
+.news-image-carousel .discrete-indicators {
+  bottom: 40px !important;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 480px) {
+  .discrete-indicators {
+    gap: 2px !important;
+    padding: 1px 3px !important;
+  }
+  
+  .discrete-indicator {
+    width: 6px !important;
+  }
+  
+  .discrete-indicator.active {
+    width: 10px !important;
+  }
+}
