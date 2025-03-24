@@ -4549,7 +4549,7 @@ body {
     width: 10px;
     height: 3px;
     /* Mantida a altura igual à desktop para forma de tracinho */
-    border-radius: 1px;
+    border-radius: 50%;
     /* Mantido para preservar o formato de tracinho */
   }
 
