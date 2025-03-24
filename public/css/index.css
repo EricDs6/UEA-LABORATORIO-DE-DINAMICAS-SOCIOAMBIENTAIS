@@ -4591,3 +4591,95 @@ body {
         /* Ajuste ligeiramente diferente para telas menores */
     }
 }
+/* Indicadores de carrossel discretos para mobile */
+.discrete-indicators {
+  padding: 2px 4px !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  gap: 3px !important;
+  bottom: 8px !important;
+  max-width: 80% !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+}
+
+.discrete-indicator {
+  width: 8px !important;
+  height: 3px !important;
+  border-radius: 1px !important;
+  margin: 0 !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  transition: all 0.2s ease !important;
+}
+
+.discrete-indicator.active {
+  width: 12px !important;
+  background: var(--primary-color) !important;
+}
+
+/* Estilização específica para o carrossel de notícias em mobile */
+@media (max-width: 768px) {
+  .news-image-carousel .carousel-indicators {
+    padding: 2px 4px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    gap: 3px;
+    bottom: 8px;
+    max-width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .news-image-carousel .carousel-indicator {
+    width: 8px;
+    height: 3px;
+    border-radius: 1px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease;
+  }
+
+  .news-image-carousel .carousel-indicator.active {
+    width: 12px;
+    background: var(--primary-color);
+  }
+
+  /* Melhoria no posicionamento para evitar sobreposição com a data */
+  .news-image-carousel .carousel-indicators {
+    bottom: 40px;
+  }
+
+  /* Deixando os botões de navegação mais discretos em mobile */
+  .news-image-carousel .carousel-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+    opacity: 0.5;
+  }
+
+  .news-image-carousel .carousel-nav:hover,
+  .news-image-carousel .carousel-nav:active {
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-image-carousel .carousel-indicators {
+    bottom: 35px;
+    gap: 2px;
+  }
+
+  .news-image-carousel .carousel-indicator {
+    width: 6px;
+  }
+
+  .news-image-carousel .carousel-indicator.active {
+    width: 10px;
+  }
+
+  .news-image-carousel .carousel-nav {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+}

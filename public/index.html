@@ -602,11 +602,43 @@
         <script>
             // Garantir que o carrossel seja inicializado também após o carregamento total
             window.addEventListener('load', function () {
+                // Inicializa os carrosséis de no                                initNewsCarousels();
+                                          // Inicializa osc                        e
+                initMobileSlideIndicators();
+                                          // Verifica novurto intervalo para garantir que todos os elementos foram carregados
                 setTimeout(function () {
                     if (typeof initNewsCarousels === 'function') {
                         initNewsCarousels();
                     }
-                }, 100);
+                    if (typeof initMobileSlideIndicators === 'function') {
+                        initMobileSlideIndicators();
+                    }
+                }, 500);
+            });
+            
+            // Função para inicialire                        para mobile
+            function initMobileSlideIndicators()                                // Para o carrossel de extensão
+                            const extensionCarousel = documen                            '.extension-carousel');
+                if (extensionCarousel) {
+                                   st slides = extensionCarou                                ('.carousel-slide');
+                    const dotsContainer = extensi                                ctor('.carousel-dots');
+                    
+                    if (dot                                  sContainer.innerHTML =                                          
+                       x)                                               const indicator = doc                                        );
+                            indicator.classList.a                                                                   if (index === 0) indi                                        );
+                            indicator.setAttribut                                        ex + 1}`);
+                            dotsContainer.appendC                                                      });
+                                                                                                                             ines                            mobile
+                const isMobile = window.innerWidt                                       document.querySelectorAll('.carou                            .forEach(indicatorsContainer => {
+                    indicatorsContainer.classList                                dicators', isMobile);
+                });
+                
+                                      uerySou                            forEach(indicator => {
+                    indicator.classList.toggle('d                                isMobile);
+                });
+            }
+                                        Atual                        ado j                        dimensionada
+            window.addEventListener('resize', fun                                       initMobileSlideIndicators() ;
             });
         </script>
 </body>
