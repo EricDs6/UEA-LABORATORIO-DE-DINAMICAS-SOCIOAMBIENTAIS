@@ -3,335 +3,485 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
-    <meta name="description"
-        content="O Laboratório de Dinâmicas Socioambientais (LDS) promove pesquisa e soluções sustentáveis para preservação ambiental e engajamento comunitário em Itacoatiara-AM.">
-    <title>LDS - Laboratório de Dinâmicas Socioambientais</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicons/favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <title>ECOCOMUNIDADE - Projeto LDS</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/testes.css">
-</head>
-
-<body class="bg-light">
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="/img/favicons/icon-round.png" alt="LDS" width="40" height="40"
-                    class="d-inline-block align-text-top me-2 logo">
-                <div class="logo-text">
-                    <h1>LDS</h1>
-                    <p>Laboratório de Dinâmicas Socioambientais</p>
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="./css/testes.css">
+    
+    <!-- Meta tags SEO -->
+    <meta name="description"
+        content="Projeto do LDS que visa promover a sustentabilidade e a preservação ambiental em comunidades urbanas e rurais.">
+    <meta name="theme-color" content="#c4d600">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="ECOCOMUNIDADE - Projeto LDS">
+    <meta property="og:description"
+        content="Projeto do LDS que visa promover a sustentabilidade e a preservação ambiental em comunidades urbanas e rurais.">
+    <meta property="og:image" content="/img/projetos/eco-comunidade/eco-comunidade.jpg">
+    <meta property="og:url" content="lds-ericds6s-projects.vercel.app">
+    <meta property="og:type" content="website">
+    </head>
+    
+    <body>
+        <!-- Header/Navbar -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+                <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" width="55" height="55" class="me-2">
+                    <div class="logo-text">
+                        <h1 class="mb-0 fs-5 fw-bold">LDS</h1>
+                        <p class="mb-0 small text-muted">Laboratório de Dinâmicas Socioambientais</p>
+                        </div>
+                        </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#sobre">Sobre</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="index.html#projetos">Projetos</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="index.html#noticias">Notícias</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="index.html#contato">Contato</a>
+                            </li>
+                            </ul>
+                            </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="pt-5">
+        <!-- Hero Section -->
+        <section class="project-hero d-flex align-items-center text-white text-center position-relative">
+            <div class="container">
+                <div class="project-hero-content">
+                    <h2 class="display-4 fw-bold">ECOCOMUNIDADE</h2>
+                    <p class="lead mb-0">Promovendo a sustentabilidade e a preservação ambiental em comunidades urbanas e rurais</p>
                 </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav nav-links">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sobre">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projetos">Projetos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#noticias">Notícias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contato">Contato</a>
-                    </li>
-                </ul>
             </div>
-            </div>
-    </nav>
-<!-- Hero Section -->
-<section class="hero-section" style="background-image: url('/img/banner.webp');">
-    <div class="container text-center text-white hero-content">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h2 class="display-4 fw-bold mb-3">Laboratório de Dinâmicas Socioambientais</h2>
-                <p class="lead mb-4 hero-subtitle">Inovação e pesquisa para um futuro sustentável na Amazônia</p>
-                <a href="#projetos" class="cta-button btn btn-warning btn-lg">Conheça Nossos Projetos</a>
-                </div>
-            </div>
-        </div>
         </section>
-<!-- Sobre -->
-    <section id="sobre" class="section">
-        <div class="container">
-            <h2 class="fw-bold">Sobre o LDS</h2>
-            <p class="section-description">O LDS desenvolve pesquisas e soluções inovadoras para desafios ambientais, unindo
-                tecnologia e sustentabilidade em Itacoatiara-AM.</p>
-            <div class="row g-4 features">
-                <div class="col-md-4">
-                    <div class="card h-100 text-center p-4 feature-card">
-                        <div class="fs-1">🔬</div>
-                        <h3 class="h4 mt-3">Pesquisa</h3>
-                        <p class="text-muted">Pesquisas científicas focadas em soluções sustentáveis</p>
+<!-- Seção Sobre o Projeto -->
+<section class="py-5">
+    <div class="container">
+                <h2 class="text-center fw-bold mb-4">Sobre o Projeto</h2>
+                <p class="text-center mb-5">
+                    O <strong>ECOCOMUNIDADE</strong> é um projeto do LDS que visa promover a sustentabilidade e a preservação ambiental
+                    em comunidades
+                    urbanas e rurais, através de ações educativas, práticas sustentáveis e engajamento comunitário.
+                </p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm info-card">
+                            <div class="card-body text-center">
+                                <div class="info-icon mb-3 display-4">🌱</div>
+                                <h3 class="card-title mb-3">Objetivos</h3>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2"></i> Promover a educação ambiental nas
+                                        comunidades</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2"></i> Implementar práticas sustentáveis no
+                                        dia a dia</li>
+                                    <li class="mb-2"><i class="bi bi-check-circle-fill me-2"></i> Engajar a comunidade em ações de
+                                        preservação</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 text-center p-4 feature-card">
-                        <div class="fs-1">🌱</div>
-                        <h3 class="h4 mt-3">Extensão</h3>
-                        <p class="text-muted">Conexão entre academia e comunidade através da educação ambiental</p>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm info-card">
+                            <div class="card-body text-center">
+                                <div class="info-icon mb-3 display-4">🔄</div>
+                                <h3 class="card-title mb-3">Atividades</h3>
+                                <p class="card-text">
+                                    O projeto envolve diversas atividades, incluindo oficinas, palestras, campanhas de conscientização
+                                    e ações práticas de sustentabilidade para transformar comunidades.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 text-center p-4 feature-card">
-                        <div class="fs-1">💡</div>
-                        <h3 class="h4 mt-3">Inovação</h3>
-                        <p class="text-muted">Tecnologia e criatividade para preservação ambiental</p>
                     </div>
-                </div>
             </div>
+        </section>
+<!-- Seção Notícias do Projeto -->
+<section class="py-5 bg-light">
+    <div class="container">
+                <h2 class="text-center fw-bold mb-2">Notícias do Projeto</h2>
+                <p class="text-center mb-5">Acompanhe as últimas atualizações e atividades do projeto ECOCOMUNIDADE</p>
+                
+                <div class="row g-4">
+                    <!-- Notícia com carrossel -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="position-relative news-image-carousel">
+                                <div class="carousel-wrapper">
+                                    <div class="carousel-slides">
+                                        <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-1.jpg" alt="Replantio 1"
+                                            class="active">
+                                        <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-2.jpg" alt="Replantio 2">
+                                        <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-3.jpg" alt="Replantio 3">
+                                        <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-4.jpg" alt="Replantio 4">
+                                        <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-5.jpg" alt="Replantio 5">
+                                        <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-6.jpg" alt="Replantio 6">
+                                        <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-7.jpg" alt="Replantio 7">
+                                        <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-8.jpg" alt="Replantio 8">
+                                    </div>
+                                </div>
+                                <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
+                                <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
+                                <div class="carousel-indicators"></div>
+                                <div class="news-date">15 de maio de 2024</div>
+                                </div>
+                            <div class="card-body">
+                                <h3 class="card-title fs-4">Plantar e reciclar: uma combinação perfeita!</h3>
+                                <p class="card-text">
+                                    Reutilizando garrafas PET, unimos coleta seletiva, compostagem, horticultura e reutilização
+                                    de resíduos em nossos canteiros.
+                                </p>
+                            </div>
+                            </div>
+                    </div>
+<!-- Notícia com vídeo -->
+<div class="col-lg-6 mb-4">
+    <div class="card h-100 border-0 shadow-sm">
+        <div class="position-relative news-video">
+            <iframe
+                src="https://player.vimeo.com/video/1068600491?h=783861284a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&background=0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title="primeira-colheita">
+            </iframe>
+            <div class="news-date">7 de abril de 2024</div>
+        </div>
+                            <div class="card-body">
+                                <h3 class="card-title fs-4">Primeira Colheita do Projeto</h3>
+                                <p class="card-text">
+                                    Celebramos a primeira colheita de hortaliças do nosso projeto de horta comunitária,
+                                    demonstrando como a agricultura urbana pode transformar espaços ociosos em fontes de alimento saudável.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+<!-- Terceiro replantio -->
+<div class="col-lg-6 mb-4">
+    <div class="card h-100 border-0 shadow-sm">
+        <div class="position-relative news-image-carousel">
+            <div class="carousel-wrapper">
+                <div class="carousel-slides">
+                    <img src="img/projetos/eco-comunidade/3-plantio-1.jpg" alt="Replantio 1" class="active">
+                    <img src="img/projetos/eco-comunidade/3-plantio-8.jpg" alt="Replantio 2">
+                    <img src="img/projetos/eco-comunidade/3-plantio-2.jpg" alt="Replantio 3">
+                    <img src="img/projetos/eco-comunidade/3-plantio-3.jpg" alt="Replantio 4">
+                    <img src="img/projetos/eco-comunidade/3-plantio-4.jpg" alt="Replantio 5">
+                    <img src="img/projetos/eco-comunidade/3-plantio-5.jpg" alt="Replantio 6">
+                    <img src="img/projetos/eco-comunidade/3-plantio-6.jpg" alt="Replantio 7">
+                    <img src="img/projetos/eco-comunidade/3-plantio-7.jpg" alt="Replantio 8">
+                                    </div>
+                                </div>
+                                <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
+                                <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
+                                <div class="carousel-indicators"></div>
+                                <div class="news-date">24 de janeiro de 2025</div>
+                                </div>
+                            <div class="card-body">
+                                <h3 class="card-title fs-4">Terceiro Replantio Realizado</h3>
+                                <p class="card-text">
+                                    Terceiro replantio realizado pelo grupo da eco comunidade juntamente com os bolsistas da
+                                    comunidade Chico Xavier.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+<!-- Estudantes de Engenharia Florestal -->
+<div class="col-lg-6 mb-4">
+    <div class="card h-100 border-0 shadow-sm">
+        <div class="position-relative news-image-carousel">
+            <div class="carousel-wrapper">
+                <div class="carousel-slides">
+                                        <img src="img/projetos/eco-comunidade/3-plantio-1.jpg" alt="Replantio 1" class="active">
+                                        <img src="img/extensao/extensao1.jpg" alt="Replantio 2">
+                                        <img src="img/extensao/extensao2.jpg" alt="Replantio 3">
+                                        <img src="img/extensao/extensao3.jpg" alt="Replantio 4">
+                                        <img src="img/extensao/extensao4.jpg" alt="Replantio 5">
+                                        <img src="img/extensao/extensao5.jpg" alt="Replantio 6">
+                                        <img src="img/extensao/extensao6.jpg" alt="Replantio 7">
+                                        <img src="img/extensao/extensao7.jpg" alt="Replantio 8">
+                                        <img src="img/extensao/extensao8.jpg" alt="Replantio 9">
+                                        <img src="img/extensao/extensao9.jpg" alt="Replantio 10">
+                                        <img src="img/extensao/extensao10.jpg" alt="Replantio 11">
+                                        </div>
+                                        </div>
+                                        <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
+                                        <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
+                                        <div class="carousel-indicators"></div>
+                                <div class="news-date">24 de janeiro de 2025</div>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title fs-4">Estudantes do Curso de Engenharia Florestal</h3>
+                                    <p class="card-text">
+                                        Estudantes do Curso de Engenharia Florestal, coordenados pelo Prof. Me. Daniel Campos, estão realizando
+                                        diversos projetos na Biblioteca Comunitária Maria Dolores, localizada no Município de Itacoatiara-AM.
+                                    </p>
+                                    <p class="card-text">
+                                        Dentre os projetos em destaque, destaca-se o Projeto de Horticultura Orgânica, que tem como objetivo
+                                        auxiliar a comunidade na condução de uma horta orgânica comunitária e, concomitantemente, abordar
+                                        aspectos fundamentais da questão ambiental por meio de ações de educação ambiental.
+                                    </p>
+                                    <p class="card-text">
+                                        Conheça a Biblioteca Comunitária Maria Dolores, localizada na rua Padre Calebe, 3725 -
+                                        Mamoud Amed, Itacoatiara-AM.
+                                    </p>
+                                </div>
+                                </div>
+                                </div>
+<!-- Prática de Semeadura -->
+<div class="col-lg-6 mb-4">
+    <div class="card h-100 border-0 shadow-sm">
+        <div class="position-relative news-video">
+            <iframe
+                src="https://player.vimeo.com/video/1067347511?h=8e8731ee20&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&background=0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title="primeira-colheita">
+            </iframe>
+            <div class="news-date">17 de dezembro de 2023</div>
+        </div>
+                            <div class="card-body">
+                                <h3 class="card-title fs-4">Prática de Semeadura</h3>
+                                <p class="card-text">
+                                    O curso de horticultura promoveu uma prática de semeadura, incentivando a sustentabilidade e
+                                    o cultivo consciente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!-- Botão para carregar mais notícias -->
+<div class="text-center mt-4 pt-2">
+    <button class="btn btn-outline-success px-4 py-2 load-more-button">Carregar mais notícias</button>
+                </div>
             </div>
             </section>
-<!-- Projetos -->
-<section id="projetos" class="section projects">
-    <div class="container">
-            <h2 class="fw-bold">Projetos em Destaque</h2>
-            <div class="row g-4 project-grid">
-                <div class="col-lg-6">
-                    <div class="card h-100 project-card">
-                        <div class="position-relative">
-                            <img src="/img/projetos/nao-esquenta/nao-esquenta 1920x1080.jpg"
-                                class="card-img-top adjusted-project-image" alt="Projeto Não Esquenta">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title">NÃO ESQUENTA!</h3>
-                            <p class="card-text">Projeto focado na mitigação dos efeitos das mudanças climáticas em Itacoatiara, promovendo
-                                soluções sustentáveis para reduzir a temperatura ambiente.</p>
-                            <a href="projeto-nao-esquenta.html" class="cta-button mt-3 align-self-start">Saiba mais</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card h-100 project-card">
-                        <div class="position-relative">
-                            <img src="/img/projetos/eco-comunidade/eco-comunidade.jpg" class="card-img-top" alt="Projeto Ecocomunidade"
-                                loading="lazy">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title">ECOCOMUNIDADE 🌿🏙️</h3>
-                            <p class="card-text">Iniciativa que promove práticas sustentáveis e educação ambiental em comunidades locais,
-                                transformando a relação entre pessoas e meio ambiente.</p>
-                            <a href="projeto-eco-comunidade.html" class="cta-button mt-3 align-self-start">Ver Mais</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            </section>
-<!-- Estatísticas -->
-<section class="stats-section">
-    <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">2</span>
-                    <span class="stat-label">Projetos Ativos</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Parceiros</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">Pessoas Impactadas</span>
-                </div>
-                </div>
-        </div>
-        </section>
-<!-- Notícias -->
-<section id="noticias" class="section news">
-    <div class="container">
-            <h2 class="fw-bold">Últimas Notícias</h2>
-            <div class="row g-4 news-grid">
-                <div class="col-lg-4">
-                    <div class="card h-100 news-card">
-                        <div class="news-image">
-                            <img src="img/extras/campeoes-da-gincana-de-ideacao.jpg" alt="Campeões da Gincana de Ideação" loading="lazy">
-                            <div class="news-date">Março 2025</div>
-                        </div>
-                        <div class="card-body news-content">
-                            <h3>Parabéns aos nossos bolsistas campeões da gincana de ideação</h3>
-                            <p>Realizada pela professora Deoluci, a gincana de ideação destacou a criatividade e o trabalho em equipe dos nossos
-                                bolsistas. Um momento de aprendizado e celebração!</p>
-                            <div class="news-partners">
-                                <span>Participantes:</span>
-                                <div class="partner-logos">
-                                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="partner-logo">
-                                    <span class="community-tag">UEA</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 news-card">
-                        <div class="news-image">
-                            <img src="/img/projetos/eco-comunidade/3replantio-ecocomunidade.jpg" alt="Replantio na Comunidade" loading="lazy">
-                            <div class="news-date">Janeiro 2025</div>
-                        </div>
-                        <div class="card-body news-content">
-                            <h3>Terceiro Replantio na Comunidade Chico Xavier</h3>
-                            <p>Foi realizado o terceiro replantio pelo grupo da eco comunidade em conjunto com os bolsistas da comunidade Chico
-                                Xavier. Esta ação fortalece nossa missão de preservação ambiental e engajamento comunitário.</p>
-                            <div class="news-partners">
-                                <span>Participantes:</span>
-                                <div class="partner-logos">
-                                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="partner-logo">
-                                    <span class="community-tag">Comunidade Chico Xavier</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 news-card">
-                        <div class="news-image-carousel">
-                            <div class="carousel-wrapper">
-                                <div class="carousel-slides">
-                                    <img src="img/extras/Apresentacao-dos-projetos1.jpg" alt="Apresentação dos projetos 1" class="active">
-                                    <img src="img/extras/Apresentacao-dos-projetos2.jpg" alt="Apresentação dos projetos 2">
-                                    <img src="img/extras/Apresentacao-dos-projetos3.jpg" alt="Apresentação dos projetos 3">
-                                    <img src="img/extras/Apresentacao-dos-projetos4.jpg" alt="Apresentação dos projetos 4">
-                                </div>
-                            </div>
-                            <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
-                            <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
-                            <div class="carousel-indicators"></div>
-                            <div class="news-date">Março 2025</div>
-                        </div>
-                        <div class="card-body news-content">
-                            <h3>Apresentação de Projetos de Extensão</h3>
-                            <p>Durante a XII Semana de Engenharia Florestal do CESIT, foram apresentados projetos de extensão desenvolvidos na
-                                Biblioteca Maria Dolores, com foco em sustentabilidade e desenvolvimento comunitário.</p>
-                            <div class="news-partners">
-                                <span>Parceiros:</span>
-                                <div class="partner-logos">
-                                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="partner-logo">
-                                    <span class="community-tag">UEA</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                </div>
-                </section>
+    </main>
 
-    <section class="support-banner">
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
         <div class="container">
-            <img src="img/favicons/apoios.png" alt="Banner de Apoios" class="support-banner-image">
-        </div>
-    </section>
-<!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="footer-logo">
-                    <div class="footer-text">
-                        <h4>LDS</h4>
-                        <p>Laboratório de Dinâmicas Socioambientais</p>
-                        <p>CESIT - UEA, Itacoatiara-AM</p>
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="d-flex align-items-center footer-info">
+                        <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="me-3" width="60" height="60">
+                        <div>
+                            <h4 class="text-success mb-2">LDS</h4>
+                            <p class="mb-1">Laboratório de Dinâmicas Socioambientais</p>
+                            <p class="mb-0">CESIT - UEA, Itacoatiara-AM</p>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Links Rápidos</h4>
-                    <ul>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#projetos">Projetos</a></li>
-                        <li><a href="parceiros.html">Parceiros</a></li>
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <h4 class="text-success mb-3">Links Rápidos</h4>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="index.html#sobre" class="text-white text-decoration-none">Sobre</a></li>
+                        <li class="mb-2"><a href="index.html#projetos" class="text-white text-decoration-none">Projetos</a></li>
+                        <li class="mb-2"><a href="index.html#pesquisas" class="text-white text-decoration-none">Pesquisas</a></li>
+                        <li class="mb-2"><a href="index.html#contato" class="text-white text-decoration-none">Contato</a></li>
+                        <li class="mb-2"><a href="parceiros.html" class="text-white text-decoration-none">Parceiros</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h4>Redes Sociais</h4>
-                    <ul>
+                <div class="col-md-6 col-lg-3">
+                    <h4 class="text-success mb-3">Redes Sociais</h4>
+                    <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="https://www.instagram.com/lds_cesit/" target="_blank" class="social-link">
-                                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon">
+                            <a href="https://www.instagram.com/lds_cesit/" target="_blank"
+                                class="text-white text-decoration-none d-flex align-items-center social-link">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="20" height="20"
+                                    class="me-2">
                                 <span>Instagram</span>
-                                </a>
-                                </li>
-                                </ul>
-                                </div>
-                                </div>
-                                <div class="footer-bottom">
-                                    <p>&copy; 2024 Laboratório de Dinâmicas Socioambientais. Todos os direitos reservados.</p>
-                                </div>
-                                </div>
-                                </footer>
+                            </a>
+                            </li>
+                            </ul>
+                            </div>
+                            </div>
+            <hr class="my-4 bg-secondary opacity-25">
+            
+            <div class="text-center">
+                <p class="mb-0 text-white-50">&copy; 2024 Laboratório de Dinâmicas Socioambientais. Todos os direitos reservados.
+                </p>
+            </div>
+            </div>
+            </footer>
 
-    <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">↑</button>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/mobile-optimizations.js"></script>
-<script src="/js/bootstrap-custom.js"></script>
-<script>
-            // Script para inicializar os carousséis
-            document.addEventListener('DOMContentLoaded', function () {
-                // Botão voltar ao topo
-                const backToTopBtn = document.getElementById('backToTop');
-            window.addEventListener('scroll', function () {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-            backToTopBtn.addEventListener('click', function () {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="/js/eco-comunidade.js"></script>
+    <script src="/js/vimeo-helper.js"></script>
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Inicializar carrosséis
+                initializeCarousels();
 
-            // Inicializar carrossel de notícias
-            document.querySelectorAll('.news-image-carousel').forEach(function (carousel) {
-                const slides = carousel.querySelectorAll('.carousel-slides img');
-                const prevBtn = carousel.querySelector('.carousel-nav.prev');
-                const nextBtn = carousel.querySelector('.carousel-nav.next');
-                const indicators = carousel.querySelector('.carousel-indicators');
+                // Ajustar altura dos vídeos
+                adjustVideoHeight();
 
-                if (!indicators) return;
+                // Ajustar altura dos vídeos quando a janela for redimensionada
+                window.addEventListener('resize', adjustVideoHeight);
 
-                // Limpar indicadores existentes
-                indicators.innerHTML = '';
+                // Função para inicializar carrosséis
+                function initializeCarousels() {
+                    const carousels = document.querySelectorAll(".news-image-carousel");
 
-                let currentSlide = 0;
+                    carousels.forEach((carousel) => {
+                        const slides = carousel.querySelectorAll(".carousel-slides img");
+                        const prevBtn = carousel.querySelector(".carousel-nav.prev");
+                        const nextBtn = carousel.querySelector(".carousel-nav.next");
 
-                // Criar indicadores
-                slides.forEach((_, index) => {
-                    const indicator = document.createElement('button');
-                    indicator.classList.add('carousel-indicator');
-                    if (index === 0) indicator.classList.add('active');
-                    indicator.setAttribute('aria-label', `Slide ${index + 1}`);
-                    indicator.addEventListener('click', () => goToSlide(index));
-                    indicators.appendChild(indicator);
+                        // Garantir que a primeira imagem esteja ativa
+                        slides.forEach((slide) => slide.classList.remove("active"));
+                        if (slides[0]) slides[0].classList.add("active");
+
+                        // Criar container de indicadores se não existir
+                        let indicators = carousel.querySelector(".carousel-indicators");
+                        if (!indicators) {
+                            indicators = document.createElement("div");
+                            indicators.className = "carousel-indicators";
+                            carousel.appendChild(indicators);
+                        } else {
+                        indicators.innerHTML = "";
+                    }
+
+                    // Criar indicadores
+                    slides.forEach((_, index) => {
+                        const dot = document.createElement("button");
+                        dot.classList.add("carousel-indicator");
+                        if (index === 0) dot.classList.add("active");
+
+                        dot.addEventListener("click", () => {
+                            // Mudar slide ao clicar no indicador
+                            slides.forEach((s) => s.classList.remove("active"));
+                            slides[index].classList.add("active");
+
+                            // Atualizar indicadores
+                            indicators
+                                .querySelectorAll(".carousel-indicator")
+                                .forEach((d) => d.classList.remove("active"));
+                            dot.classList.add("active");
+                        });
+
+                        indicators.appendChild(dot);
+                    });
+
+                    // Configurar navegação
+                    let currentSlide = 0;
+                    if (prevBtn) {
+                        prevBtn.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            currentSlide =
+                                (currentSlide - 1 + slides.length) % slides.length;
+
+                            // Atualizar slide
+                            slides.forEach((s) => s.classList.remove("active"));
+                            slides[currentSlide].classList.add("active");
+
+                            // Atualizar indicadores
+                            const dots = indicators.querySelectorAll(".carousel-indicator");
+                            dots.forEach((d) => d.classList.remove("active"));
+                            dots[currentSlide].classList.add("active");
+                        });
+                    }
+
+                    if (nextBtn) {
+                        nextBtn.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            currentSlide = (currentSlide + 1) % slides.length;
+
+                            // Atualizar slide
+                            slides.forEach((s) => s.classList.remove("active"));
+                            slides[currentSlide].classList.add("active");
+
+                            // Atualizar indicadores
+                            const dots = indicators.querySelectorAll(".carousel-indicator");
+                            dots.forEach((d) => d.classList.remove("active"));
+                            dots[currentSlide].classList.add("active");
+                        });
+                    }
+
+                    // Configurar autoplay
+                    let autoplayInterval;
+
+                    function startAutoplay() {
+                        if (slides.length > 1) {
+                            autoplayInterval = setInterval(() => {
+                                currentSlide = (currentSlide + 1) % slides.length;
+
+                                // Atualizar slide
+                                slides.forEach((s) => s.classList.remove("active"));
+                                slides[currentSlide].classList.add("active");
+
+                                // Atualizar indicadores
+                                const dots = indicators.querySelectorAll(
+                                    ".carousel-indicator"
+                                );
+                                dots.forEach((d) => d.classList.remove("active"));
+                                dots[currentSlide].classList.add("active");
+                            }, 5000);
+                        }
+                    }
+
+                    function stopAutoplay() {
+                        clearInterval(autoplayInterval);
+                    }
+
+                    // Iniciar autoplay
+                    startAutoplay();
+
+                    // Pausar ao interagir
+                    carousel.addEventListener("mouseenter", stopAutoplay);
+                    carousel.addEventListener("mouseleave", startAutoplay);
                 });
+            }
+                    
+            // Função para ajustar proporção dos vídeos
+            function adjustVideoHeight() {
+                const videoContainers = document.querySelectorAll('.news-video');
+                videoContainers.forEach(container => {
+                    container.style.position = 'relative';
+                    container.style.paddingBottom = '56.25%'; // Proporção 16:9
+                    container.style.height = '0';
+                    container.style.overflow = 'hidden';
 
-                // Função para ir para um slide específico
-                function goToSlide(index) {
-                    slides[currentSlide].classList.remove('active');
-                    indicators.children[currentSlide].classList.remove('active');
-
-                    currentSlide = index;
-                    if (currentSlide >= slides.length) currentSlide = 0;
-                    if (currentSlide < 0) currentSlide = slides.length - 1;
-
-                    slides[currentSlide].classList.add('active');
-                    indicators.children[currentSlide].classList.add('active');
-                }
-
-                // Configurar navegação
-                if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-                if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-            });
+                    const iframe = container.querySelector('iframe');
+                    if (iframe) {
+                        iframe.style.position = 'absolute';
+                        iframe.style.top = '0';
+                        iframe.style.left = '0';
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100%';
+                        iframe.style.border = '0';
+                    }
+                });
+            }
         });
-        </script>
+</script>
 </body>
 
 </html>
