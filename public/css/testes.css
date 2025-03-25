@@ -269,10 +269,13 @@ img {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    justify-content: center;
     gap: 6px;
     padding: 5px 10px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 20px;
+    width: auto;
+    margin: 0 auto;
 }
 
 .carousel-indicator {
@@ -295,9 +298,9 @@ img {
     right: 15px;
     background: var(--primary-color);
     color: var(--secondary-color);
-    padding: 0.5rem 1rem;
+    padding: 0.1rem 1rem;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: 600;
 }
 
