@@ -2,277 +2,396 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
     <title>ECOCOMUNIDADE - Projeto LDS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap"
-        rel="stylesheet" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="stylesheet" href="./css/projeto-eco-comunidade.css" />
-    <link rel="preload" href="./css/projeto-eco-comunidade.css" as="style" />
-    <link rel="preload" href="./js/eco-comunidade.js" as="script" />
 
-    <!-- Open Graph tags -->
-    <meta property="og:title" content="ECOCOMUNIDADE - Projeto LDS" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+    <!-- Primeiro carrega Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Depois as fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Primeiro carrega o CSS principal da index (contém estilos de header e footer) -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Por último o CSS específico da página que pode sobrescrever estilos se necessário -->
+    <link rel="stylesheet" href="css/projeto-eco-comunidade.css">
+
+    <meta name="description"
+        content="Projeto do LDS que visa promover a sustentabilidade e a preservação ambiental em comunidades urbanas e rurais.">
+    <meta name="theme-color" content="#c4d600">
+
+    <meta property="og:title" content="ECOCOMUNIDADE - Projeto LDS">
     <meta property="og:description"
-        content="Projeto do LDS que visa promover a sustentabilidade e a preservação ambiental em comunidades urbanas e rurais." />
-    <meta property="og:image" content="/img/projetos/eco-comunidade/eco-comunidade.jpg" />
-    <meta property="og:url" content="lds-ericds6s-projects.vercel.app" />
-    <meta property="og:type" content="website" />
+        content="Projeto do LDS que visa promover a sustentabilidade e a preservação ambiental em comunidades urbanas e rurais.">
+    <meta property="og:image" content="/img/projetos/eco-comunidade/eco-comunidade.jpg">
+    <meta property="og:url" content="lds-ericds6s-projects.vercel.app">
+    <meta property="og:type" content="website">
 </head>
 
-<body>
-    <header>
-        <nav>
-            <div class="logo-container">
-                <a href="index.html" aria-label="Página inicial">
-                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="logo" width="55" height="55" />
-                </a>
+<body class="bg-light">
+    <!-- Navbar - usando exatamente o mesmo HTML da index -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="/img/favicons/icon-round.png" alt="LDS" width="40" height="40"
+                    class="d-inline-block align-text-top me-2 logo">
                 <div class="logo-text">
                     <h1>LDS</h1>
                     <p>Laboratório de Dinâmicas Socioambientais</p>
                 </div>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html#sobre">Sobre</a></li>
-                <li><a href="index.html#projetos">Projetos</a></li>
-                <li><a href="index.html#noticias">Notícias</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
-            </ul>
-            <button class="mobile-menu" id="mobileMenuBtn" aria-label="Abrir menu">
-                ☰
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        </nav>
-    </header>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav nav-links">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#projetos">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#noticias">Notícias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <main>
-        <section class="project-hero">
-            <div class="project-hero-content">
+        <!-- Hero Section - Banner completo -->
+        <section class="project-hero d-flex align-items-center text-white text-center position-relative">
+            <div class="container">
+                <div class="project-hero-content">
+
+                </div>
             </div>
+            </div>
+            <div class="hero-overlay"></div>
         </section>
 
-        <section class="project-details">
+        <!-- Seção Sobre o Projeto -->
+        <section class="section py-5">
             <div class="container">
-                <h2>Sobre o Projeto</h2>
-                <p>
-                    O <strong>ECOCOMUNIDADE</strong> é um projeto do LDS que visa
-                    promover a sustentabilidade e a preservação ambiental em comunidades
-                    urbanas e rurais, através de ações educativas, práticas sustentáveis
-                    e engajamento comunitário.
-                </p>
-
-                <div class="info-grid">
-                    <div class="info-card">
-                        <div class="info-icon">🌱</div>
-                        <h3>Objetivos</h3>
-                        <ul>
-                            <li>Promover a educação ambiental nas comunidades</li>
-                            <li>Implementar práticas sustentáveis no dia a dia</li>
-                            <li>Engajar a comunidade em ações de preservação</li>
-                        </ul>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">🔄</div>
-                        <h3>Atividades</h3>
-                        <p>
-                            O projeto envolve diversas atividades, incluindo oficinas,
-                            palestras, campanhas de conscientização e ações práticas de
-                            sustentabilidade para transformar comunidades.
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <h2 class="text-center fw-bold mb-4 animate-on-scroll">Sobre o Projeto</h2>
+                        <p class="text-center mb-5 section-description animate-on-scroll">
+                            O <strong>ECOCOMUNIDADE</strong> é um projeto do LDS que visa promover a sustentabilidade e
+                            a preservação ambiental em comunidades urbanas e rurais, através de ações educativas,
+                            práticas sustentáveis e engajamento comunitário.
                         </p>
+                    </div>
+                </div>
+
+                <div class="row g-4 animate-on-scroll">
+                    <div class="col-md-6">
+                        <div class="card h-100 info-card">
+                            <div class="card-body text-center p-4 p-lg-5">
+                                <div class="info-icon mb-4 display-4">🌱</div>
+                                <h3 class="card-title mb-3 fw-bold">Objetivos</h3>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-3">Promover a educação ambiental nas comunidades</li>
+                                    <li class="mb-3">Implementar práticas sustentáveis no dia a dia</li>
+                                    <li class="mb-3">Engajar a comunidade em ações de preservação</li>
+                                    <li class="mb-3">Desenvolver consciência ecológica entre os jovens</li>
+                                    <li class="mb-3">Criar hortas comunitárias autossustentáveis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 info-card">
+                            <div class="card-body text-center p-4 p-lg-5">
+                                <div class="info-icon mb-4 display-4">🔄</div>
+                                <h3 class="card-title mb-3 fw-bold">Atividades</h3>
+                                <div class="row activities-grid text-start">
+                                    <div class="col-6 mb-3">
+                                        <div class="activity-item">
+                                            <span class="activity-icon">🌿</span>
+                                            <span class="activity-text">Oficinas de Plantio</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="activity-item">
+                                            <span class="activity-icon">🧪</span>
+                                            <span class="activity-text">Pesquisa Ambiental</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="activity-item">
+                                            <span class="activity-icon">👨‍🏫</span>
+                                            <span class="activity-text">Palestras Educativas</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="activity-item">
+                                            <span class="activity-icon">♻️</span>
+                                            <span class="activity-text">Reciclagem Comunitária</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="activity-item">
+                                            <span class="activity-icon">🌱</span>
+                                            <span class="activity-text">Horta Comunitária</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="activity-item">
+                                            <span class="activity-icon">📊</span>
+                                            <span class="activity-text">Estudo de Impacto</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Nova seção de notícias do projeto -->
-        <section class="project-news">
+
+        <section class="section news py-5 bg-light">
             <div class="container">
-                <h2>Notícias do Projeto</h2>
-                <p class="section-description">
-                    Acompanhe as últimas atualizações e atividades do projeto
-                    ECOCOMUNIDADE
-                </p>
+                <h2 class="text-center fw-bold mb-4 animate-on-scroll">Notícias do Projeto</h2>
+                <p class="text-center mb-5 section-description animate-on-scroll">Acompanhe as últimas atualizações e
+                    atividades do projeto ECOCOMUNIDADE</p>
 
-                <div class="news-grid expanded-news">
-                    <!-- NOTÍCIA COM CARROSSEL - REFATORADA PARA SEGUIR O MESMO PADRÃO DA INDEX -->
-                    <article class="news-card">
-                        <div class="news-image-carousel">
-                            <div class="carousel-wrapper">
-                                <div class="carousel-slides">
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-1.jpg" alt="Replantio 1"
-                                        class="active" />
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-2.jpg" alt="Replantio 2" />
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-3.jpg" alt="Replantio 3" />
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-4.jpg" alt="Replantio 4" />
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-5.jpg" alt="Replantio 5" />
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-6.jpg" alt="Replantio 6" />
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-7.jpg" alt="Replantio 7" />
-                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-8.jpg" alt="Replantio 8" />
+                <!-- Layout de notícias melhorado -->
+                <div class="news-container">
+                    <!-- Notícia em destaque -->
+                    <div class="news-highlight animate-on-scroll">
+                        <div class="card news-card featured">
+                            <div class="row g-0">
+                                <div class="col-lg-7 position-relative">
+                                    <div class="news-media">
+                                        <div class="position-relative news-image-carousel">
+                                            <div class="carousel-wrapper">
+                                                <div class="carousel-slides">
+                                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-6.jpg"
+                                                        alt="Plantar e reciclar 1" class="active">
+                                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-2.jpg"
+                                                        alt="Plantar e reciclar 2">
+                                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-3.jpg"
+                                                        alt="Plantar e reciclar 3">
+                                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-4.jpg"
+                                                        alt="Plantar e reciclar 4">
+                                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-5.jpg"
+                                                        alt="Plantar e reciclar 5">
+                                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-7.jpg"
+                                                        alt="Plantar e reciclar 6">
+                                                    <img src="img/projetos/eco-comunidade/Plantar-e-reciclar-8.jpg"
+                                                        alt="Plantar e reciclar 7">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-nav prev"
+                                                aria-label="Imagem anterior">&#10094;</button>
+                                            <button class="carousel-nav next"
+                                                aria-label="Próxima imagem">&#10095;</button>
+                                            <div class="carousel-indicators"></div>
+                                        </div>
+                                        <div class="news-badge">Destaque</div>
+                                        <div class="news-category">Plantio</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="news-meta mb-2">
+                                            <span class="news-date-label"><i class="bi bi-calendar3"></i> 15 de maio de
+                                                2024</span>
+                                        </div>
+                                        <h3 class="card-title fw-bold">Plantar e reciclar: uma combinação perfeita!</h3>
+                                        <p class="card-text">Reutilizando garrafas PET, unimos coleta seletiva,
+                                            compostagem, horticultura e
+                                            reutilização de resíduos em nossos canteiros. Esta iniciativa transforma
+                                            materiais descartados em
+                                            ferramentas para o cultivo sustentável, promovendo educação ambiental
+                                            prática.</p>
+                                        <div class="mt-auto">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="news-tag">Comunidade Chico Xavier</span>
+                                                <a href="#" class="btn-readmore">Leia mais</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <button class="carousel-nav prev" aria-label="Imagem anterior">
-                                &#10094;
-                            </button>
-                            <button class="carousel-nav next" aria-label="Próxima imagem">
-                                &#10095;
-                            </button>
-                            <div class="carousel-indicators"></div>
-                            <div class="news-date">15 de maio de 2024</div>
                         </div>
-                        <div class="news-content">
-                            <h3>Plantar e reciclar: uma combinação perfeita!</h3>
-                            <p>
-                                Reutilizando garrafas PET, unimos coleta seletiva,
-                                compostagem, horticultura e reutilização de resíduos em nossos
-                                canteiros.
-                            </p>
-                        </div>
-                    </article>
+                    </div>
 
-                    <!-- Notícia com vídeo do Vimeo -->
-                    <article class="news-card">
-                        <div class="news-video">
-                            <iframe
-                                src="https://player.vimeo.com/video/1068600491?h=783861284a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&background=0"
-                                style="
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                  " frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                                title="primeira-colheita">
-                            </iframe>
-                            <div class="news-date">7 de abril de 2024</div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Primeira Colheita do Projeto</h3>
-                            <p>
-                                Celebramos a primeira colheita de hortaliças do nosso projeto
-                                de horta comunitária, demonstrando como a agricultura urbana
-                                pode transformar espaços ociosos em fontes de alimento
-                                saudável.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image-carousel">
-                            <div class="carousel-wrapper">
-                                <div class="carousel-slides">
-                                    <img src="img/projetos/eco-comunidade/3-plantio-1.jpg" alt="Replantio 1"
-                                        class="active" />
-                                    <img src="img/projetos/eco-comunidade/3-plantio-8.jpg" alt="Replantio 2" />
-                                    <img src="img/projetos/eco-comunidade/3-plantio-2.jpg" alt="Replantio 3" />
-                                    <img src="img/projetos/eco-comunidade/3-plantio-3.jpg" alt="Replantio 4" />
-                                    <img src="img/projetos/eco-comunidade/3-plantio-4.jpg" alt="Replantio 5" />
-                                    <img src="img/projetos/eco-comunidade/3-plantio-5.jpg" alt="Replantio 6" />
-                                    <img src="img/projetos/eco-comunidade/3-plantio-6.jpg" alt="Replantio 7" />
-                                    <img src="img/projetos/eco-comunidade/3-plantio-7.jpg" alt="Replantio 8" />
+                    <!-- Grid de notícias -->
+                    <div class="news-grid">
+                        <!-- Colheita do Projeto (vídeo) -->
+                        <div class="news-item animate-on-scroll" data-category="colheita">
+                            <div class="card news-card">
+                                <div class="news-media">
+                                    <div class="position-relative news-video">
+                                        <iframe
+                                            src="https://player.vimeo.com/video/1068600491?h=783861284a&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&background=0"
+                                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                                            title="primeira-colheita"></iframe>
+                                        <div class="news-badge video-badge">Vídeo</div>
+                                        <div class="news-category success">Colheita</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="news-meta mb-2">
+                                        <span class="news-date-label">7 de abril de 2024</span>
+                                    </div>
+                                    <h3 class="card-title">Primeira Colheita do Projeto</h3>
+                                    <p class="card-text">Celebramos a primeira colheita de hortaliças do nosso projeto
+                                        de horta comunitária,
+                                        demonstrando como a agricultura urbana pode transformar espaços ociosos.</p>
+                                    <div class="news-footer">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="news-tag">UEA</span>
+                                            <a href="#" class="btn-readmore">Leia mais</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <button class="carousel-nav prev" aria-label="Imagem anterior">
-                                &#10094;
-                            </button>
-                            <button class="carousel-nav next" aria-label="Próxima imagem">
-                                &#10095;
-                            </button>
-                            <div class="carousel-indicators"></div>
-                            <div class="news-date">24 de janeiro de 2025</div>
                         </div>
-                        <div class="news-content">
-                            <h3>Terceiro Replantio Realizado</h3>
-                            <p>
-                                Terceiro replantio realizado pelo grupo da eco comunidade juntamente com os bolsistas da
-                                comunidade Chico Xavier
-                            </p>
+
+                        <!-- Terceiro Replantio -->
+                        <div class="news-item animate-on-scroll" data-category="plantio">
+                            <div class="card news-card">
+                                <div class="news-media">
+                                    <div class="position-relative news-image-carousel">
+                                        <div class="carousel-wrapper">
+                                            <div class="carousel-slides">
+                                                <img src="img/projetos/eco-comunidade/3-plantio-1.jpg" alt="Replantio 1"
+                                                    class="active">
+                                                <img src="img/projetos/eco-comunidade/3-plantio-2.jpg"
+                                                    alt="Replantio 2">
+                                                <img src="img/projetos/eco-comunidade/3-plantio-3.jpg"
+                                                    alt="Replantio 3">
+                                                <img src="img/projetos/eco-comunidade/3-plantio-4.jpg"
+                                                    alt="Replantio 4">
+                                                <img src="img/projetos/eco-comunidade/3-plantio-5.jpg"
+                                                    alt="Replantio 5">
+                                                <img src="img/projetos/eco-comunidade/3-plantio-6.jpg"
+                                                    alt="Replantio 6">
+                                                <img src="img/projetos/eco-comunidade/3-plantio-7.jpg"
+                                                    alt="Replantio 7">
+                                                <img src="img/projetos/eco-comunidade/3-plantio-8.jpg"
+                                                    alt="Replantio 8">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-nav prev" aria-label="Imagem anterior">&#10094;</button>
+                                        <button class="carousel-nav next" aria-label="Próxima imagem">&#10095;</button>
+                                        <div class="carousel-indicators"></div>
+                                        <div class="news-category">Plantio</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="news-meta mb-2">
+                                        <span class="news-date-label">24 de janeiro de 2025</span>
+                                    </div>
+                                    <h3 class="card-title">Terceiro Replantio Realizado</h3>
+                                    <p class="card-text">Terceiro replantio realizado pelo grupo da eco comunidade
+                                        juntamente com os bolsistas
+                                        da comunidade Chico Xavier, reforçando práticas sustentáveis.</p>
+                                    <div class="news-footer">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="news-tag">Comunidade Chico Xavier</span>
+                                            <a href="#" class="btn-readmore">Leia mais</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </article>
+                    </div>
+
+                    <!-- Linha com cards horizontais -->
+                    <div class="news-row row g-4 mt-4">
+                        <!-- Estudantes de Engenharia Florestal -->
+                        <div class="col-md-6 animate-on-scroll">
+                            <div class="card news-card horizontal">
+                                <div class="row g-0 h-100">
+                                    <div class="col-lg-5 col-md-5 position-relative">
+                                        <div class="news-media h-100">
+                                            <img src="img/extensao/extensao1.jpg" alt="Engenharia Florestal"
+                                                class="object-fit-cover">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-7 d-flex">
+                                        <div class="card-body">
+                                            <div class="news-meta mb-2">
+                                                <span class="news-date-label">10 de fevereiro de 2025</span>
+                                            </div>
+                                            <h3 class="card-title">Estudantes de Engenharia Florestal</h3>
+                                            <p class="card-text">Estudantes coordenados pelo Prof. Me. Daniel Campos
+                                                realizam projetos na Biblioteca Comunitária
+                                                Maria Dolores.</p>
+                                            <div class="news-footer mt-auto">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span class="news-tag">UEA</span>
+                                                    <a href="#" class="btn-readmore">Leia mais</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prática de Semeadura -->
+                        <div class="col-md-6 animate-on-scroll">
+                            <div class="card news-card horizontal">
+                                <div class="row g-0 h-100">
+                                    <div class="col-lg-5 col-md-5 position-relative">
+                                        <div class="news-media h-100">
+                                            <div class="position-relative news-video h-100">
+                                                <iframe
+                                                    src="https://player.vimeo.com/video/1067347511?h=8e8731ee20&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&background=0"
+                                                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                                                    title="pratica-semeadura"></iframe>
+                                            </div>
+                                            <div class="news-badge video-badge">Vídeo</div>
+                                            <div class="news-category info">Educação</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-7 d-flex">
+                                        <div class="card-body">
+                                            <div class="news-meta mb-2">
+                                                <span class="news-date-label">17 de dezembro de 2023</span>
+                                            </div>
+                                            <h3 class="card-title">Prática de Semeadura</h3>
+                                            <p class="card-text">O curso de horticultura promoveu uma prática de
+                                                semeadura, incentivando a
+                                                sustentabilidade e o cultivo consciente.</p>
+                                            <div class="news-footer mt-auto">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span class="news-tag">UEA</span>
+                                                    <a href="#" class="btn-readmore">Leia mais</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <article class="news-card">
-                    <div class="news-image-carousel">
-                        <div class="carousel-wrapper">
-                            <div class="carousel-slides">
-                                <img src="img/projetos/eco-comunidade/3-plantio-1.jpg" alt="Replantio 1"
-                                    class="active" />
-                                <img src="img/extensao/extensao1.jpg" alt="Replantio 2" />
-                                <img src="img/extensao/extensao2.jpg" alt="Replantio 3" />
-                                <img src="img/extensao/extensao3.jpg" alt="Replantio 4" />
-                                <img src="img/extensao/extensao4.jpg" alt="Replantio 5" />
-                                <img src="img/extensao/extensao5.jpg" alt="Replantio 6" />
-                                <img src="img/extensao/extensao6.jpg" alt="Replantio 7" />
-                                <img src="img/extensao/extensao7.jpg" alt="Replantio 8" />
-                                <img src="img/extensao/extensao8.jpg" alt="Replantio 8" />
-                                <img src="img/extensao/extensao9.jpg" alt="Replantio 8" />
-                                <img src="img/extensao/extensao10.jpg" alt="Replantio 8" />
-                            </div>
-                        </div>
-                        <button class="carousel-nav prev" aria-label="Imagem anterior">
-                            &#10094;
-                        </button>
-                        <button class="carousel-nav next" aria-label="Próxima imagem">
-                            &#10095;
-                        </button>
-                        <div class="carousel-indicators"></div>
-                        <div class="news-date">24 de janeiro de 2025</div>
-                    </div>
-                    <div class="news-content">
-                        <h3>Estudantes do Curso de Engenharia Florestal</h3>
-                        <p>
-                            Estudantes do Curso de Engenharia Florestal, coordenados pelo Prof. Me. Daniel Campos, estão realizando diversos projetos na Biblioteca Comunitária Maria Dolores, localizada no Município de Itacoatiara-AM.
-                        </p>
-                        <p>
-                            Dentre os projetos em destaque, destaca-se o Projeto de Horticultura Orgânica, que tem como objetivo auxiliar a comunidade na condução de uma horta orgânica comunitária e, concomitantemente, abordar aspectos fundamentais da questão ambiental por meio de ações de educação ambiental.
-                        </p>
-                        <p>
-                            Conheça a Biblioteca Comunitária Maria Dolores, localizada na rua Padre Calebe, 3725 - Mamoud Amed, Itacoatiara-AM.
-                        </p>
-                    </div>
-                </article>
-
-                <article class="news-card">
-                    <div class="news-video">
-                        <iframe
-                            src="https://player.vimeo.com/video/1067347511?h=8e8731ee20&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&background=0"
-                            style="
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    width: 100%;
-                                    height: 100%;
-                                  " frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                            title="primeira-colheita">
-                        </iframe>
-                        <div class="news-date">17 de Dezembro de 2023</div>
-                    </div>
-                    <div class="news-content">
-                        <h3>Prática de Semeadura</h3>
-                        <p>
-                            O curso de horticultura promoveu uma prática de semeadura, incentivando a sustentabilidade e o cultivo consciente.
-                        </p>
-                    </div>
-                </article>
-
-            </div>
-
-
-            <!-- Botão para carregar mais notícias -->
-            <div class="load-more-container">
-                <button class="load-more-button">Carregar mais notícias</button>
-            </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer - usando exatamente o mesmo HTML da index -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="footer-logo" />
+                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="footer-logo">
                     <div class="footer-text">
                         <h4>LDS</h4>
                         <p>Laboratório de Dinâmicas Socioambientais</p>
@@ -284,8 +403,6 @@
                     <ul>
                         <li><a href="index.html#sobre">Sobre</a></li>
                         <li><a href="index.html#projetos">Projetos</a></li>
-                        <li><a href="index.html#pesquisas">Pesquisas</a></li>
-                        <li><a href="index.html#contato">Contato</a></li>
                         <li><a href="parceiros.html">Parceiros</a></li>
                     </ul>
                 </div>
@@ -295,7 +412,7 @@
                         <li>
                             <a href="https://www.instagram.com/lds_cesit/" target="_blank" class="social-link">
                                 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"
-                                    class="social-icon" />
+                                    class="social-icon">
                                 <span>Instagram</span>
                             </a>
                         </li>
@@ -303,167 +420,121 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>
-                    &copy; 2024 Laboratório de Dinâmicas Socioambientais. Todos os
-                    direitos reservados.
-                </p>
+                <p>&copy; 2024 Laboratório de Dinâmicas Socioambientais. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="/js/eco-comunidade.js"></script>
-    <script src="/js/vimeo-helper.js"></script>
+    <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/mobile-optimizations.js"></script>
+    <script src="/js/bootstrap-custom.js"></script>
     <script>
-        // Script unificado para inicialização do carrossel
-        document.addEventListener("DOMContentLoaded", function () {
-            // Função para verificar disponibilidade da função global
-            function checkAndInitCarousel() {
-                console.log("Verificando disponibilidade da função de carrossel...");
-                if (typeof window.initNewsCarousels === "function") {
-                    console.log("Função de carrossel encontrada, inicializando...");
-                    window.initNewsCarousels();
-                    return true;
+        document.addEventListener('DOMContentLoaded', function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
                 }
-                return false;
-            }
+            });
+            backToTopBtn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
-            // Tentativa inicial
-            if (!checkAndInitCarousel()) {
-                console.log(
-                    "Função de carrossel ainda não disponível, configurando observador..."
-                );
+            document.querySelectorAll('.news-image-carousel').forEach(function (carousel) {
+                const slides = carousel.querySelectorAll('.carousel-slides img');
+                const prevBtn = carousel.querySelector('.carousel-nav.prev');
+                const nextBtn = carousel.querySelector('.carousel-nav.next');
+                const indicators = carousel.querySelector('.carousel-indicators');
 
-                // Tentar novamente em intervalos curtos
-                let attempts = 0;
-                const maxAttempts = 10;
-                const checkInterval = setInterval(function () {
-                    if (checkAndInitCarousel() || attempts >= maxAttempts) {
-                        clearInterval(checkInterval);
-                        if (attempts >= maxAttempts) {
-                            console.warn(
-                                "Máximo de tentativas atingido. Verificando alternativa."
-                            );
-                            initializeCarouselManually();
-                        }
+                if (!indicators) return;
+
+                indicators.innerHTML = '';
+                let currentSlide = 0;
+
+                slides.forEach((_, index) => {
+                    const indicator = document.createElement('button');
+                    indicator.classList.add('carousel-indicator');
+                    if (index === 0) indicator.classList.add('active');
+                    indicator.setAttribute('aria-label', `Slide ${index + 1}`);
+                    indicator.addEventListener('click', () => goToSlide(index));
+                    indicators.appendChild(indicator);
+                });
+
+                function goToSlide(index) {
+                    slides[currentSlide].classList.remove('active');
+                    indicators.children[currentSlide].classList.remove('active');
+                    currentSlide = index;
+                    if (currentSlide >= slides.length) currentSlide = 0;
+                    if (currentSlide < 0) currentSlide = slides.length - 1;
+                    slides[currentSlide].classList.add('active');
+                    indicators.children[currentSlide].classList.add('active');
+                }
+
+                if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+                if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+                let autoplayInterval;
+                function startAutoplay() {
+                    if (slides.length > 1) {
+                        autoplayInterval = setInterval(() => {
+                            goToSlide((currentSlide + 1) % slides.length);
+                        }, 5000);
                     }
-                    attempts++;
-                }, 300);
-            }
+                }
+                function stopAutoplay() {
+                    clearInterval(autoplayInterval);
+                }
 
-            // Função de fallback para inicializar o carrossel manualmente se necessário
-            function initializeCarouselManually() {
-                console.log("Inicializando carrossel manualmente");
-                const carousels = document.querySelectorAll(".news-image-carousel");
+                startAutoplay();
+                carousel.addEventListener("mouseenter", stopAutoplay);
+                carousel.addEventListener("mouseleave", startAutoplay);
+            });
 
-                carousels.forEach((carousel) => {
-                    const slides = carousel.querySelectorAll(".carousel-slides img");
-                    const prevBtn = carousel.querySelector(".carousel-nav.prev");
-                    const nextBtn = carousel.querySelector(".carousel-nav.next");
-
-                    // Garantir que a primeira imagem esteja ativa
-                    slides.forEach((slide) => slide.classList.remove("active"));
-                    if (slides[0]) slides[0].classList.add("active");
-
-                    // Criar container de indicadores se não existir
-                    let indicators = carousel.querySelector(".carousel-indicators");
-                    if (!indicators) {
-                        indicators = document.createElement("div");
-                        indicators.className = "carousel-indicators";
-                        carousel.appendChild(indicators);
-                    } else {
-                        indicators.innerHTML = "";
+            function adjustVideoHeight() {
+                const videoContainers = document.querySelectorAll('.news-video');
+                videoContainers.forEach(container => {
+                    container.style.position = 'relative';
+                    container.style.paddingBottom = '56.25%';
+                    container.style.height = '0';
+                    container.style.overflow = 'hidden';
+                    const iframe = container.querySelector('iframe');
+                    if (iframe) {
+                        iframe.style.position = 'absolute';
+                        iframe.style.top = '0';
+                        iframe.style.left = '0';
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100%';
+                        iframe.style.border = '0';
                     }
-
-                    // Criar indicadores
-                    slides.forEach((_, index) => {
-                        const dot = document.createElement("button");
-                        dot.classList.add("carousel-indicator");
-                        if (index === 0) dot.classList.add("active");
-
-                        dot.addEventListener("click", () => {
-                            // Mudar slide ao clicar no indicador
-                            slides.forEach((s) => s.classList.remove("active"));
-                            slides[index].classList.add("active");
-
-                            // Atualizar indicadores
-                            indicators
-                                .querySelectorAll(".carousel-indicator")
-                                .forEach((d) => d.classList.remove("active"));
-                            dot.classList.add("active");
-                        });
-
-                        indicators.appendChild(dot);
-                    });
-
-                    // Configurar navegação
-                    let currentSlide = 0;
-                    if (prevBtn) {
-                        prevBtn.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            currentSlide =
-                                (currentSlide - 1 + slides.length) % slides.length;
-
-                            // Atualizar slide
-                            slides.forEach((s) => s.classList.remove("active"));
-                            slides[currentSlide].classList.add("active");
-
-                            // Atualizar indicadores
-                            const dots = indicators.querySelectorAll(".carousel-indicator");
-                            dots.forEach((d) => d.classList.remove("active"));
-                            dots[currentSlide].classList.add("active");
-                        });
-                    }
-
-                    if (nextBtn) {
-                        nextBtn.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            currentSlide = (currentSlide + 1) % slides.length;
-
-                            // Atualizar slide
-                            slides.forEach((s) => s.classList.remove("active"));
-                            slides[currentSlide].classList.add("active");
-
-                            // Atualizar indicadores
-                            const dots = indicators.querySelectorAll(".carousel-indicator");
-                            dots.forEach((d) => d.classList.remove("active"));
-                            dots[currentSlide].classList.add("active");
-                        });
-                    }
-
-                    // Configurar autoplay
-                    let autoplayInterval;
-
-                    function startAutoplay() {
-                        if (slides.length > 1) {
-                            autoplayInterval = setInterval(() => {
-                                currentSlide = (currentSlide + 1) % slides.length;
-
-                                // Atualizar slide
-                                slides.forEach((s) => s.classList.remove("active"));
-                                slides[currentSlide].classList.add("active");
-
-                                // Atualizar indicadores
-                                const dots = indicators.querySelectorAll(
-                                    ".carousel-indicator"
-                                );
-                                dots.forEach((d) => d.classList.remove("active"));
-                                dots[currentSlide].classList.add("active");
-                            }, 5000);
-                        }
-                    }
-
-                    function stopAutoplay() {
-                        clearInterval(autoplayInterval);
-                    }
-
-                    // Iniciar autoplay
-                    startAutoplay();
-
-                    // Pausar ao interagir
-                    carousel.addEventListener("mouseenter", stopAutoplay);
-                    carousel.addEventListener("mouseleave", startAutoplay);
                 });
             }
+            adjustVideoHeight();
+            window.addEventListener('resize', adjustVideoHeight);
+
+            function handleScrollAnimations() {
+                const animatedElements = document.querySelectorAll('.animate-on-scroll');
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -10% 0px'
+                    });
+                    animatedElements.forEach(el => observer.observe(el));
+                } else {
+                    animatedElements.forEach(el => el.classList.add('visible'));
+                }
+            }
+            handleScrollAnimations();
         });
     </script>
 </body>
