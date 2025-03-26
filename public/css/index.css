@@ -469,6 +469,19 @@ img {
   padding: 4px 8px;
   border-radius: 50px;
   z-index: 5;
+  margin: 0;
+  width: auto;
+  justify-content: center;
+}
+
+/* Ajuste específico para o indicador do carrossel na seção de notícias */
+.news-image-carousel .carousel-indicators {
+  width: auto;
+  max-width: 100px;
+  left: 50%;
+  right: auto;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .carousel-indicator {
@@ -499,12 +512,16 @@ img {
 .support-banner {
   background-color: var(--primary-color);
   padding: 2rem 0;
+  overflow: hidden;
 }
 
 .support-banner-image {
   width: 100%;
-  max-height: 100px;
+  max-width: 1684px;
+  height: auto;
   object-fit: contain;
+  margin: 0 auto;
+  display: block;
 }
 
 /* Footer */
@@ -689,6 +706,10 @@ footer {
   .footer-logo {
     margin-bottom: 1rem;
   }
+
+  .support-banner {
+    padding: 1.5rem 0;
+  }
 }
 
 @media (max-width: 576px) {
@@ -725,6 +746,10 @@ footer {
 
   .section-description {
     font-size: 0.95rem;
+  }
+
+  .support-banner {
+    padding: 1rem 0;
   }
 }
 
