@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Permitir acesso a recursos estáticos
+RewriteCond %{REQUEST_URI} !^/img/
+RewriteCond %{REQUEST_URI} !^/css/
+RewriteCond %{REQUEST_URI} !^/js/
+RewriteCond %{REQUEST_URI} !^/fonts/
+
+# Não redirecionar se já estiver na página de manutenção
+RewriteCond %{REQUEST_URI} !^/manutencao.html
+
+# Redirecionar todas as outras requisições para a página de manutenção
+RewriteRule ^(.*)$ /manutencao.html [R=307,L] 
