@@ -1,103 +1,404 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parceiros - LDS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/css/parceiros.css">
-    <link rel="preload" href="/css/parceiros.css" as="style">
-    <link rel="preload" href="/js/parceiros.js" as="script">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Equipe - LDS</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicons/favicon-16x16.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/equipe.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Open Graph tags -->
-    <meta property="og:title" content="Parceiros - LDS">
-    <meta property="og:description" content="Conheça os parceiros que colaboram conosco para promover a sustentabilidade e a preservação ambiental.">
-    <meta property="og:image" content="/img/favicons/icon-round.png">
-    <meta property="og:url" content="lds-ericds6s-projects.vercel.app">
+    <meta property="og:title" content="Equipe do Laboratório de Dinâmicas Socioambientais (LDS)">
+    <meta property="og:description" content="Conheça nossa equipe dedicada a projetos socioambientais, incluindo pesquisadores, bolsistas e colaboradores trabalhando em iniciativas como gestão de resíduos sólidos, horticultura orgânica e monitoramento IoT.">
+    <meta property="og:image" content="https://lds-uea.com.br/img/favicons/icon-round.png">
+    <meta property="og:url" content="https://lds-uea.com.br/equipe">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LDS - UEA">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Equipe do Laboratório de Dinâmicas Socioambientais (LDS)">
+    <meta name="twitter:description" content="Conheça nossa equipe dedicada a projetos socioambientais, incluindo pesquisadores, bolsistas e colaboradores trabalhando em iniciativas como gestão de resíduos sólidos, horticultura orgânica e monitoramento IoT.">
+    <meta name="twitter:image" content="https://lds-uea.com.br/img/favicons/icon-round.png">
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="logo">
-                </a>
+
+<body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="/img/favicons/icon-round.png" alt="LDS" width="45" height="45"
+                    class="d-inline-block align-text-top me-2 logo animate__animated animate__fadeIn">
                 <div class="logo-text">
                     <h1>LDS</h1>
                     <p>Laboratório de Dinâmicas Socioambientais</p>
                 </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav nav-links">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#projetos">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#noticias">Notícias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="equipe.html">Equipe</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html#sobre">Sobre</a></li>
-                <li><a href="index.html#projetos">Projetos</a></li>
-                <li><a href="index.html#pesquisas">Pesquisas</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
-                <li><a href="parceiros.html">Parceiros</a></li>
-            </ul>
-            <button class="mobile-menu">☰</button>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main>
-        <section class="partners">
+        <!-- Hero Section -->
+        <section class="hero-section"
+            style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/img/banner.webp');">
+            <div class="container text-center text-white hero-content">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <h2 class="display-4 fw-bold mb-4 animate__animated animate__fadeInUp">Nossa Equipe</h2>
+                        <p class="lead mb-4 hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                            Conheça os pesquisadores e colaboradores que fazem parte do LDS
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coordenação -->
+        <section class="section py-5">
             <div class="container">
-                <h2>Nossos Parceiros</h2>
-                <p>Conheça os parceiros que colaboram conosco para promover a sustentabilidade e a preservação ambiental.</p>
-                <div class="partners-grid">
-                    <div class="partner-card">
-                        <img src="/img/parceiros/parceiro1.png" alt="Parceiro 1">
-                        <h3>Parceiro 1</h3>
-                        <p>Parceiro 1</p>
+                <h2 class="fw-bold text-center mb-4">Coordenação</h2>
+                <div class="row justify-content-center">
+                    <!-- Daniel Ferreira Campos -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 team-card coordinator shadow-sm border-0">
+                            <div class="card-body p-4">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4 text-center">
+                                        <div class="team-member-image mb-3">
+                                            <img src="img/equipe/Daniel Ferreira Campos.jpg"
+                                                alt="Daniel Ferreira Campos" class="rounded-circle">
+                                        </div>
+                                        <h3 class="h4 mb-2">Daniel Ferreira Campos</h3>
+                                        <p class="text-muted mb-3">Coordenador</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="coordinator-details">
+                                            <p class="mb-3">Professor de engenharia florestal no Centro de Estudos
+                                                Superiores de Itacoatiara</p>
+                                            <p class="mb-3">Formado em Engenharia Florestal pelo Centro de Estudos
+                                                Superiores de Itacoatiara, mestre em ciências do ambiente pela UFAM.</p>
+                                            <p class="mb-3">Atualmente, também é coordenador do curso de Engenharia
+                                                Florestal na instituição em que trabalha</p>
+                                            <p class="mb-3">Responsável pelos projetos da ecocomunidade desde 2018.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="partner-card">
-                        <img src="/img/parceiros/parceiro2.png" alt="Parceiro 2">
-                        <h3>Parceiro 2</h3>
-                        <p>Parceiro 2</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programa de Educação Ambiental -->
+        <section class="section py-5 bg-light">
+            <div class="container">
+                <h2 class="fw-bold text-center mb-4">Educação Ambiental e Gestão Sustentável de Resíduos Sólidos Urbanos Residenciais</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="card p-4 shadow-sm border-0">
+                            <div class="program-description">
+                                <p class="mb-4">O programa tem como objetivo principal conscientizar seus participantes a respeito dos impactos ocasionados pela destinação incorreta dos resíduos sólidos urbanos residenciais, apresentando alternativas úteis e sustentáveis para o seu melhor aproveitamento no âmbito doméstico e comunitário.</p>
+                                
+                                <p class="mb-4">Para tanto, o programa pretende trabalhar 5 projetos com famílias assistidas pela Biblioteca Comunitária Maria Dolores localizada no bairro Mamoud Amed, periferia do município de Itacoatiara/AM, composta, em sua maioria, por pessoas de baixa renda e/ou em situação de vulnerabilidade.</p>
+                                
+                                <p class="mb-4">O presente programa surgiu a partir de projetos individuais desenvolvidos desde 2019 pelo proponente no âmbito do extinto PROGEX (programa de extensão da UEA que precedeu o PADEX), totalizando 4 anos de existência.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="partner-card">
-                        <img src="/img/parceiros/parceiro3.png" alt="Parceiro 3">
-                        <h3>Parceiro 3</h3>
-                        <p>Parceiro 3</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards de Projetos -->
+        <section class="section py-5">
+            <div class="container">
+                <h2 class="fw-bold text-center mb-5">Nossos Projetos</h2>
+                <div class="row g-4">
+                    <!-- Projeto 1 -->
+                    <div class="col-12 mb-4">
+                        <div class="project-card bg-light p-4 rounded-3 shadow-sm">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <h2 class="project-title fw-bold mb-4">Produção de Adubo Orgânico para Autoabastecimento da Horta Comunitária</h2>
+                                    
+                                    <div class="project-description mb-4">
+                                        <p>O projeto visa demonstrar que é possível a obtenção de composto orgânico (adubo) de qualidade produzido a partir de resíduos gerados, separados e coletados na própria residência dos moradores da comunidade participante e materiais como esterco, serragem, dentre outros adequados à prática da compostagem.</p>
+                                    </div>
+
+                                    <div class="project-team">
+                                        <h3 class="h5 mb-3">Bolsistas de iniciação tecnológica-PADEX</h3>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">Igor Nascimento</li>
+                                            <li class="mb-2">Maisa Martins</li>
+                                        </ul>
+                                        <p class="mt-3"><strong>Orientador:</strong> Prof. Daniel Ferreira Campos</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="project-images">
+                                        <div class="image-circle primary mb-3">
+                                            <img src="img/equipe/Igor Nascimento.jpeg" alt="Igor Nascimento" class="img-fluid rounded-circle">
+                                        </div>
+                                        <div class="image-circle secondary">
+                                            <img src="img/equipe/Maisa Martins.png" alt="Maisa Martins" class="img-fluid rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 2 -->
+                    <div class="col-12 mb-4">
+                        <div class="project-card bg-light p-4 rounded-3 shadow-sm">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <h2 class="project-title fw-bold mb-4">Educação Ambiental e Gestão Sustentável de Resíduos Sólidos</h2>
+                                    
+                                    <div class="project-description mb-4">
+                                        <p>O programa tem como objetivo principal conscientizar seus participantes a respeito dos impactos ocasionados pela destinação incorreta dos resíduos sólidos urbanos residenciais, apresentando alternativas úteis e sustentáveis para o seu melhor aproveitamento.</p>
+                                    </div>
+
+                                    <div class="project-team">
+                                        <h3 class="h5 mb-3">Bolsistas de iniciação tecnológica-PADEX</h3>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">Carla Victória Medeiros Lourenço</li>
+                                            <li class="mb-2">Aldenor Taumaturgo Almeida Souza</li>
+                                        </ul>
+                                        <p class="mt-3"><strong>Orientador:</strong> Prof. Daniel Ferreira Campos</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="project-images">
+                                        <div class="image-circle primary mb-3">
+                                            <img src="img/equipe/Carla Victória.png" alt="Carla Victória" class="img-fluid rounded-circle">
+                                        </div>
+                                        <div class="image-circle secondary">
+                                            <img src="img/equipe/Aldenor Taumaturgo.png" alt="Aldenor Taumaturgo Almeida Souza" class="img-fluid rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 3 - Horticultura Orgânica -->
+                    <div class="col-12 mb-4">
+                        <div class="project-card bg-light p-4 rounded-3 shadow-sm">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <h2 class="project-title fw-bold mb-4">Horticultura Orgânica como Alternativa Sustentável</h2>
+                                    
+                                    <div class="project-description mb-4">
+                                        <p>A agricultura orgânica é um sistema de manejo sustentável da unidade de produção, visando a sustentabilidade social, ambiental e econômica no tempo e no espaço.</p>
+                                    </div>
+
+                                    <div class="project-team">
+                                        <h3 class="h5 mb-3">Bolsistas de iniciação tecnológica-PADEX</h3>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">Livian Cooper de Souza</li>
+                                            <li class="mb-2">Leonardo Lira da Silva</li>
+                                        </ul>
+                                        <p class="mt-3"><strong>Orientador:</strong> Prof. Daniel Ferreira Campos</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="project-images">
+                                        <div class="image-circle primary mb-3">
+                                            <img src="img/equipe/Livian.png" alt="Livian Cooper de Souza" class="img-fluid rounded-circle">
+                                        </div>
+                                        <div class="image-circle secondary">
+                                            <img src="img/equipe/Leonardo Lira.png" alt="Leonardo Lira da Silva" class="img-fluid rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 4 - Monitoramento IoT -->
+                    <div class="col-12 mb-4">
+                        <div class="project-card bg-light p-4 rounded-3 shadow-sm">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <h2 class="project-title fw-bold mb-4">Monitoramento de Hortas Orgânicas por meio de Dispositivos IoT</h2>
+                                    
+                                    <div class="project-description mb-4">
+                                        <p>A integração da tecnologia IoT, por meio de sensores e dispositivos conectados, possibilita o monitoramento e controle precisos de aspectos vitais para o crescimento das plantas, como umidade do solo, temperatura, luminosidade e nutrientes. Diante disso, este projeto tem como objetivo, implementar um sistema inovador de irrigação nas hortas.</p>
+                                    </div>
+
+                                    <div class="project-team">
+                                        <h3 class="h5 mb-3">Bolsistas de iniciação tecnológica-PADEX</h3>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">Suzyane Brito de Oliveira</li>
+                                            <li class="mb-2">Vinícius da Cruz Marques</li>
+                                        </ul>
+                                        <p class="mt-3"><strong>Orientador:</strong> Prof. Daniel Ferreira Campos</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="project-images">
+                                        <div class="image-circle primary mb-3">
+                                            <img src="img/equipe/Suzyane Brito.png" alt="Suzyane Brito de Oliveira" class="img-fluid rounded-circle">
+                                        </div>
+                                        <div class="image-circle secondary">
+                                            <img src="img/equipe/Vinícius da Cruz.png" alt="Vinícius da Cruz Marques" class="img-fluid rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 5 - Gerenciamento de Resíduos Sólidos -->
+                    <div class="col-12 mb-4">
+                        <div class="project-card bg-light p-4 rounded-3 shadow-sm">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <h2 class="project-title fw-bold mb-4">Gerenciamento de Resíduos Sólidos Urbanos Residenciais por meio de Coleta Seletiva</h2>
+                                    
+                                    <div class="project-description mb-4">
+                                        <p>O presente projeto pretende levar ao conhecimento das famílias atendidas pela Biblioteca Comunitária Maria Dolores algumas práticas simples de gestão de resíduos sólidos residenciais através da coleta seletiva. O projeto adotará como metodologias palestras de conscientização e capacitação dos participantes, e pretende implementar nas residências de moradores.</p>
+                                    </div>
+
+                                    <div class="project-team">
+                                        <h3 class="h5 mb-3">Bolsistas de iniciação tecnológica-PADEX</h3>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">Gabriele de Vasconcelos César</li>
+                                            <li class="mb-2">José Carlos Carvalho Pinheiro</li>
+                                        </ul>
+                                        <p class="mt-3"><strong>Orientador:</strong> Prof. Daniel Ferreira Campos</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="project-images">
+                                        <div class="image-circle primary mb-3">
+                                            <img src="img/equipe/Gabriele de Vasconcelos.png" alt="Gabriele de Vasconcelos César" class="img-fluid rounded-circle">
+                                        </div>
+                                        <div class="image-circle secondary">
+                                            <img src="img/equipe/José Carlos.png" alt="José Carlos Carvalho Pinheiro" class="img-fluid rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white py-5">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
                     <img src="/img/favicons/icon-round.png" alt="Logo LDS" class="footer-logo">
-                    <p>LDS - CESIT - UEA</p>
+                    <div class="footer-text">
+                        <h4>LDS</h4>
+                        <p>Laboratório de Dinâmicas Socioambientais</p>
+                        <p>CESIT - UEA, Itacoatiara-AM</p>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>Links Rápidos</h4>
                     <ul>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#noticias">Noticias</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                        <li><a href="index.html#projetos">Projetos</a></li>
+                        <li><a href="index.html#noticias">Notícias</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
-                    <h4>Siga-nos</h4>
+                    <h4>Redes Sociais</h4>
                     <ul>
-                        <li><a href="https://www.instagram.com/lds_cesit/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon"> Instagram</a></li>
+                        <li>
+                            <a href="https://www.instagram.com/lds_cesit/" target="_blank" class="social-link">
+                                <i class="bi bi-instagram me-2"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
+            <hr class="mt-4 mb-4 border-secondary">
             <div class="footer-bottom">
-                <p>&copy; 2024 Laboratório de Dinâmicas Socioambientais. Todos os direitos reservados.</p>
+                <p class="text-center mb-0">&copy; 2024 Laboratório de Dinâmicas Socioambientais. Todos os direitos
+                    reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="/js/parceiros.js"></script>
+    <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">↑</button>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/mobile-optimizations.js"></script>
+    <script src="/js/bootstrap-custom.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Botão voltar ao topo
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            backToTopBtn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Animação ao rolar a página
+            const animateOnScroll = function () {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (elementPosition < windowHeight - 50) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Executar uma vez na carga da página
+
+            // Elementos com animação ao scroll
+            document.querySelectorAll('.team-card').forEach(el => {
+                el.classList.add('animate-on-scroll');
+            });
+        });
+    </script>
 </body>
+
 </html>
