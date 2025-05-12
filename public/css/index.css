@@ -291,13 +291,13 @@ img {
 
 .project-card img {
   width: 100%;
-  height: 280px;
+  height: 100%;
   object-fit: cover;
 }
 
 .project-image-container {
   overflow: hidden;
-  height: 300px;
+  height: 60%;
 }
 
 .project-image-container img {
