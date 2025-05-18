@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: EricDs6/UEA-LABORATORIO-DE-DINAMICAS-SOCIOAMBIENTAIS
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "equipe"
+    label: "Equipe"
+    file: "public/conteudo/equipe.json"
+    format: "json"
+    fields:
+      - label: "Membros"
+        name: "membros"
+        widget: "list"
+        fields:
+          - { label: "Nome", name: "nome", widget: "string" }
+          - { label: "Cargo", name: "cargo", widget: "string" }
+          - { label: "Foto", name: "foto", widget: "image" }
