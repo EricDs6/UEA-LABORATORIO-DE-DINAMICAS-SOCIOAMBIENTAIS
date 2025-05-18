@@ -2,20 +2,17 @@ backend:
   name: github
   repo: EricDs6/UEA-LABORATORIO-DE-DINAMICAS-SOCIOAMBIENTAIS
   branch: main
-
-media_folder: "public/uploads"
-public_folder: "/uploads"
-
+  site_domain: lds-uea.com.br
+media_folder: "uploads"
+publish_mode: editorial_workflow
 collections:
-  - name: "equipe"
-    label: "Equipe"
-    file: "public/conteudo/equipe.json"
-    format: "json"
-    fields:
-      - label: "Membros"
-        name: "membros"
-        widget: "list"
+  - name: "noticias"
+    label: "Notícias"
+    files:
+      - label: "Notícias"
+        name: "noticias"
+        file: "public/data/noticias.json"
         fields:
-          - { label: "Nome", name: "nome", widget: "string" }
-          - { label: "Cargo", name: "cargo", widget: "string" }
-          - { label: "Foto", name: "foto", widget: "image" }
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Resumo", name: "resumo", widget: "text" }
+          - { label: "Imagem", name: "imagem", widget: "string", required: false }
