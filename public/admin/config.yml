@@ -5,6 +5,10 @@ backend:
   auth_scope: repo
   open_authoring: false
 media_folder: "img/uploads"
+media_library:
+  name: uploadcare
+  config:
+    publicKey: "demopublickey"
 publish_mode: editorial_workflow
 collections:
   - name: "noticias"
