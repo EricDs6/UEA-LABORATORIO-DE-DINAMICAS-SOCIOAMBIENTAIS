@@ -1,17 +1,8 @@
 backend:
-  name: github
-  repo: EricDs6/UEA-LABORATORIO-DE-DINAMICAS-SOCIOAMBIENTAIS
+  name: git-gateway
   branch: main
-  auth_scope: repo
-  open_authoring: false
 
-media_folder: "public/img/uploads"
-public_folder: "/img/uploads"
-
-media_library:
-  name: uploadcare
-  config:
-    publicKey: "demopublickey"
+media_folder: "img/uploads"
 
 publish_mode: editorial_workflow
 
