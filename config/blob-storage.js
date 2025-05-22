@@ -1,14 +1,23 @@
 import { put, list, del } from "@vercel/blob";
 
-const STORE_ID = "LDS-STORAGE";
-
 export async function uploadImage(file, filename) {
     try {
-        const { url } = await put(filename, file, {
-            access: 'public',
-            addRandomSuffix: false
+        // Criar um FormData para enviar o arquivo
+        const formData = new FormData();
+        formData.append('file', file);
+
+        // Fazer o upload através da API do Vercel Blob
+        const response = await fetch(`/api/upload?filename=${filename}`, {
+            method: 'POST',
+            body: formData
         });
-        return url;
+
+        if (!response.ok) {
+            throw new Error('Erro ao fazer upload');
+        }
+
+        const data = await response.json();
+        return data.url;
     } catch (error) {
         console.error('Erro ao fazer upload:', error);
         throw error;
